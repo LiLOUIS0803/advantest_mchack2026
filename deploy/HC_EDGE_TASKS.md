@@ -24,7 +24,7 @@ python3 --version
 hostname -I
 ```
 
-The HC receiver requires Python 3.8+ and only the standard library. Identify the
+The HC receiver requires Python 3.6+ and only the standard library. Identify the
 **HC address reachable from Edge**; do not use the Edge address or localhost below.
 Use the actual assigned image namespace in place of grp4 if necessary:
 

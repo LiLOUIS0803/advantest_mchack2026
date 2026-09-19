@@ -1,6 +1,6 @@
 {
   "app_descriptor.json": "ca57ded7d2e525a1be2744689f6322e7c1a10abb4fb38a655421af086c43144e",
-  "DEPLOY.md": "7ecd74a5ee453f90afbe95c4b895d2f7a117297a1e7b9c29157b8c8b8a24a276",
+  "DEPLOY.md": "5b12a29e1819ab573219d5faa62ecddba422abeb34c55f5fdbd9062d37005732",
   "py-app.dockerfile": "00fb63e339beedd1a5f6da87712cb5830151836a717514eb739c6f2d21ba9397",
   "requirements.txt": "fb8d11b9ccfbbced8ce206d8c64efd8a00f6a56048cb8551fc04926ac3066610",
   "tag.sh": "4e642663ecb3743454ef82e17f5d210143bccc77211e14ab8a64c73224fbf312",
@@ -20,7 +20,7 @@
   "bin/verify_runtime.py": "720ea6ac83e0487d456fdf826096ff3f4781c929c7dd27b607bd8e5861169283",
   "hc/setup.py": "00d3f270b2e2886e7ba14831d94fb05ac521682b6134266ebb34f6c1ca596926",
   "hc/start.py": "566590d9c760b6f8e16c6dc241b79f9de12d5c87547a376e4a085b8e0bfc2726",
-  "hc/realtime/hc_server.py": "5d5bcbe45744b1835a937cdc008fe7b4e5e3ea656907c63ae67e57edd2ae3adb",
+  "hc/realtime/hc_server.py": "57a4426ffd98684d91575138f24b4108e65e750d888bd4a4f444ca7c495b7121",
   "hc/realtime/__init__.py": "62f20af0c940f5448232ca3fa3da9d8ebf202a44e0c71911f37456bef893dd38",
   "hc/realtime/web/api.js": "7cc78d7681ad24daaec6ac5607c3a86a5ea761f8589487cbaf6d4170d03dba64",
   "hc/realtime/web/app.js": "ef617fa04d7820f1fcf98c3b16761020c5faa7be17dbe244f44d20bfae1136a7",

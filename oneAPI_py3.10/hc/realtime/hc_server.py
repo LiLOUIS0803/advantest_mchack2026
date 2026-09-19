@@ -2,7 +2,14 @@
 import argparse,hashlib,hmac,json,math,os,sqlite3,statistics,time
 from contextlib import contextmanager
 from pathlib import Path
-from http.server import BaseHTTPRequestHandler,ThreadingHTTPServer
+from http.server import BaseHTTPRequestHandler,HTTPServer
+try:
+    from http.server import ThreadingHTTPServer
+except ImportError:  # HC installations may provide Python 3.6.
+    from socketserver import ThreadingMixIn
+
+    class ThreadingHTTPServer(ThreadingMixIn, HTTPServer):
+        daemon_threads = True
 from urllib.parse import urlparse,parse_qs
 
 WEB=Path(__file__).parent/'web'

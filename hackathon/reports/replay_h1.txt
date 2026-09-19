@@ -1,0 +1,46 @@
+2026-09-19 15:10:42,641 [INFO] WAFERSTART wafer=1 lot=A12345
+2026-09-19 15:10:57,445 [WARNING] wafer=1 die PID=8 site=4 (X=10.0,Y=2.0) 判定為離群 die：79 個測項離群
+2026-09-19 15:11:03,188 [WARNING] wafer=1 die PID=12 site=4 (X=3.0,Y=3.0) 判定為離群 die：80 個測項離群
+2026-09-19 15:11:08,770 [WARNING] wafer=1 die PID=16 site=4 (X=7.0,Y=3.0) 判定為離群 die：78 個測項離群
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 1] ABNORMAL → 原因：Site 不平衡 (Site Unbalance)
+  - 3/3 顆離群 die 集中在 site 4，其他 site 同期間正常
+  問題 die：PID8(site4,X10,Y2); PID12(site4,X3,Y3); PID16(site4,X7,Y3)
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_01_20260919_151108_(midwafer).html
+
+2026-09-19 15:11:08,799 [WARNING] wafer=1 ABNORMAL cause=site_unbalance final=False
+2026-09-19 15:11:14,544 [WARNING] wafer=1 die PID=20 site=4 (X=2.0,Y=2.0) 判定為離群 die：78 個測項離群
+2026-09-19 15:11:20,386 [WARNING] wafer=1 die PID=24 site=4 (X=9.0,Y=4.0) 判定為離群 die：79 個測項離群
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 1] ABNORMAL → 原因：Site 不平衡 (Site Unbalance)
+  - 5/5 顆離群 die 集中在 site 4，其他 site 同期間正常
+  問題 die：PID8(site4,X10,Y2); PID12(site4,X3,Y3); PID16(site4,X7,Y3); PID20(site4,X2,Y2); PID24(site4,X9,Y4)
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_01_20260919_151241.html
+
+2026-09-19 15:12:41,466 [WARNING] wafer=1 ABNORMAL cause=site_unbalance final=True
+2026-09-19 15:12:41,466 [INFO] WAFEREND wafer=1 n_devices=80 yield=85.0%
+wafer  1 [Site unbalance  ] -> final_alerted=True (any_alerted=True)
+2026-09-19 15:12:41,487 [INFO] WAFERSTART wafer=2 lot=A12345
+2026-09-19 15:14:09,150 [INFO] wafer=2 normal, report saved to C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_02_20260919_151409.html
+2026-09-19 15:14:09,150 [INFO] WAFEREND wafer=2 n_devices=80 yield=53.8%
+wafer  2 [Normal          ] -> final_alerted=False (any_alerted=False)
+
+=== 場景二：線上（causally-safe）預測誤差，依 stage ===
+           mean    max  count
+stage                        
+1      0.008787  0.180    160
+2      0.004175  0.068    160
+3      0.009694  0.170    160
+4      0.002556  0.009    160
+5      0.002956  0.019    160
+6      0.002875  0.011    160
+
+saved C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\replay_predictions_h1.csv
+
+=== 場景一：異常偵測 vs. 已知 ground truth ===
+（final_alerted 是 WAFEREND 當下的最終結論；any_alerted 連同測到一半的早期預警也算，僅供參考）
+  W01: status=Site unbalance   final=OK  (any=OK)
+  W02: status=Normal           final=OK  (any=OK)
+
+最終判斷：2/2 正確
+含早期預警在內：2/2 正確

@@ -1,0 +1,31 @@
+2026-09-19 15:10:47,380 [INFO] WAFERSTART wafer=25 lot=A12345
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 25] ABNORMAL → 原因：變異數下降趨勢 (Stdev Trend Down)
+  - wafer 統計偵測：100% 關鍵測項超標
+  - 主要測項 5900_Main.subflow1.Flow1_Suite267#CP (z=-18.1)
+  - 此異常類型為變異數縮小，沒有任何單顆離群 die，無法定位到單顆 die
+  問題 die：此類異常無法定位到單顆 die（整片 wafer 的變異數變化）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_25_20260919_151245.html
+
+2026-09-19 15:12:46,023 [WARNING] wafer=25 ABNORMAL cause=stdev_trend_down final=True
+2026-09-19 15:12:46,024 [INFO] WAFEREND wafer=25 n_devices=80 yield=90.0%
+wafer 25 [Stdev Trend Down] -> final_alerted=True (any_alerted=True)
+
+=== 場景二：線上（causally-safe）預測誤差，依 stage ===
+           mean    max  count
+stage                        
+1      0.004125  0.015     80
+2      0.003012  0.008     80
+3      0.003963  0.016     80
+4      0.002462  0.007     80
+5      0.002750  0.007     80
+6      0.002500  0.006     80
+
+saved C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\replay_predictions_h3.csv
+
+=== 場景一：異常偵測 vs. 已知 ground truth ===
+（final_alerted 是 WAFEREND 當下的最終結論；any_alerted 連同測到一半的早期預警也算，僅供參考）
+  W25: status=Stdev Trend Down final=OK  (any=OK)
+
+最終判斷：1/1 正確
+含早期預警在內：1/1 正確

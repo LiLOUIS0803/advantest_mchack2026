@@ -1,0 +1,475 @@
+flow Main {
+    setup {
+
+           suite lotidTest calls ACSTML.StringTest
+           {
+               tpVar = "lotid";
+
+           }
+           suite waferidTest calls ACSTML.StringTest
+           {
+               tpVar = "waferid";
+
+           }
+            suite sensor1 calls CustomTML.ContiTest
+            {
+                dpsSignals = "VCC";
+                dpsVrange= 1;
+                dpsIrange= 0.01;
+                dpsSignalsIclamp= 0.01;
+                measureMode= Parallel;
+                specParameters=  setupRef(common.GroupAndVar);
+                measurement.specification= setupRef(common.MainSpec);
+                signals= "CP";
+            }
+            suite sensor2 calls CustomTML.ContiTest
+            {
+                dpsSignals = "VCC";
+                dpsVrange= 1;
+                dpsIrange= 0.01;
+                dpsSignalsIclamp= 0.01;
+                measureMode= Parallel;
+                specParameters=  setupRef(common.GroupAndVar);
+                measurement.specification= setupRef(common.MainSpec);
+                signals= "DS0";
+            }
+            suite sensor3 calls CustomTML.ContiTest
+            {
+                dpsSignals = "VCC";
+                dpsVrange= 1;
+                dpsIrange= 0.01;
+                dpsSignalsIclamp= 0.01;
+                measureMode= Parallel;
+                specParameters=  setupRef(common.GroupAndVar);
+                measurement.specification= setupRef(common.MainSpec);
+                signals= "IO4";
+            }
+            suite sensor4 calls CustomTML.ContiTest
+            {
+                dpsSignals = "VCC";
+                dpsVrange= 1;
+                dpsIrange= 0.01;
+                dpsSignalsIclamp= 0.01;
+                measureMode= Parallel;
+                specParameters=  setupRef(common.GroupAndVar);
+                measurement.specification= setupRef(common.MainSpec);
+                signals= "IO1";
+            }
+            suite sensor5 calls CustomTML.ContiTest
+            {
+                dpsSignals = "VCC";
+                dpsVrange= 1;
+                dpsIrange= 0.01;
+                dpsSignalsIclamp= 0.01;
+                measureMode= Parallel;
+                specParameters=  setupRef(common.GroupAndVar);
+                measurement.specification= setupRef(common.MainSpec);
+                signals= "IO2";
+            }
+            suite sensor6 calls CustomTML.ContiTest
+            {
+                dpsSignals = "VCC";
+                dpsVrange= 1;
+                dpsIrange= 0.01;
+                dpsSignalsIclamp= 0.01;
+                measureMode= Parallel;
+                specParameters=  setupRef(common.GroupAndVar);
+                measurement.specification= setupRef(common.MainSpec);
+                signals= "IO3";
+            }
+            suite Suite1 calls CustomTML.ContiTest
+            {
+                dpsSignals = "VCC";
+                dpsVrange= 1;
+                dpsIrange= 0.01;
+                dpsSignalsIclamp= 0.01;
+                measureMode= Parallel;
+                specParameters=  setupRef(common.GroupAndVar);
+                measurement.specification= setupRef(common.MainSpec);
+                signals= "CP";
+            }
+
+            suite Suite1_0 calls CustomTML.ContiTest
+            {
+                dpsSignals = "VCC";
+                dpsVrange= 1;
+                dpsIrange= 0.01;
+                dpsSignalsIclamp= 0.01;
+                measureMode= Parallel;
+                specParameters=  setupRef(common.GroupAndVar);
+                measurement.specification= setupRef(common.MainSpec);
+                signals= "DS0";
+            }
+
+            suite Suite2 calls CustomTML.ContiTest
+            {
+                dpsSignals = "VCC";
+                dpsVrange= 1;
+                dpsIrange= 0.01;
+                dpsSignalsIclamp= 0.01;
+                measureMode= Parallel;
+                specParameters=  setupRef(common.GroupAndVar);
+                measurement.specification= setupRef(common.MainSpec);
+                signals= "IO1";
+            }
+
+            suite Suite3 calls CustomTML.ContiTest
+            {
+                dpsSignals = "VCC";
+                dpsVrange= 1;
+                dpsIrange= 0.01;
+                dpsSignalsIclamp= 0.01;
+                measureMode= Parallel;
+                specParameters=  setupRef(common.GroupAndVar);
+                measurement.specification= setupRef(common.MainSpec);
+                signals= "IO2";
+            }
+
+            suite Suite4 calls CustomTML.ContiTest
+            {
+            dpsSignals = "VCC";
+            dpsVrange= 1;
+            dpsIrange= 0.01;
+            dpsSignalsIclamp= 0.01;
+            measureMode= Parallel;
+            specParameters=  setupRef(common.GroupAndVar);
+            measurement.specification= setupRef(common.MainSpec);
+            signals= "IO3";
+            }
+
+            suite Suite5 calls CustomTML.ContiTest
+            {
+            dpsSignals = "VCC";
+            dpsVrange= 1;
+            dpsIrange= 0.01;
+            dpsSignalsIclamp= 0.01;
+            measureMode= Parallel;
+            specParameters=  setupRef(common.GroupAndVar);
+            measurement.specification= setupRef(common.MainSpec);
+            signals= "IO4";
+            }
+
+            suite Suite6 calls CustomTML.ContiTest
+            {
+            dpsSignals = "VCC";
+            dpsVrange= 1;
+            dpsIrange= 0.01;
+            dpsSignalsIclamp= 0.01;
+            measureMode= Parallel;
+            specParameters=  setupRef(common.GroupAndVar);
+            measurement.specification= setupRef(common.MainSpec);
+            signals= "IO5";
+            }
+
+            suite Suite7 calls CustomTML.ContiTest
+            {
+            dpsSignals = "VCC";
+            dpsVrange= 1;
+            dpsIrange= 0.01;
+            dpsSignalsIclamp= 0.01;
+            measureMode= Parallel;
+            specParameters=  setupRef(common.GroupAndVar);
+            measurement.specification= setupRef(common.MainSpec);
+            signals= "IO6";
+            }
+
+            suite Suite8 calls CustomTML.ContiTest
+            {
+            dpsSignals = "VCC";
+            dpsVrange= 1;
+            dpsIrange= 0.01;
+            dpsSignalsIclamp= 0.01;
+            measureMode= Parallel;
+            specParameters=  setupRef(common.GroupAndVar);
+            measurement.specification= setupRef(common.MainSpec);
+            signals= "IO7";
+            }
+
+            suite Suite9 calls CustomTML.ContiTest
+            {
+            dpsSignals = "VCC";
+            dpsVrange= 1;
+            dpsIrange= 0.01;
+            dpsSignalsIclamp= 0.01;
+            measureMode= Parallel;
+            specParameters=  setupRef(common.GroupAndVar);
+            measurement.specification= setupRef(common.MainSpec);
+            signals= "Q7";
+            }
+
+            suite Suite9_0 calls CustomTML.ContiTest
+            {
+            dpsSignals = "VCC";
+            dpsVrange= 1;
+            dpsIrange= 0.01;
+            dpsSignalsIclamp= 0.01;
+            measureMode= Parallel;
+            specParameters=  setupRef(common.GroupAndVar);
+            measurement.specification= setupRef(common.MainSpec);
+            signals= "DS7";
+            }
+
+            suite Suite9_0_0 calls CustomTML.ContiTest
+            {
+            dpsSignals = "VCC";
+            dpsVrange= 1;
+            dpsIrange= 0.01;
+            dpsSignalsIclamp= 0.01;
+            measureMode= Parallel;
+            specParameters=  setupRef(common.GroupAndVar);
+            measurement.specification= setupRef(common.MainSpec);
+            signals= "S1";
+            }
+
+            suite Suite9_1 calls CustomTML.ContiTest
+            {
+            dpsSignals = "VCC";
+            dpsVrange= 1;
+            dpsIrange= 0.01;
+            dpsSignalsIclamp= 0.01;
+            measureMode= Parallel;
+            specParameters=  setupRef(common.GroupAndVar);
+            measurement.specification= setupRef(common.MainSpec);
+            signals= "S0";
+            }
+
+            suite Suite10 calls CustomTML.ContiTest
+            {
+            dpsSignals = "VCC";
+            dpsVrange= 1;
+            dpsIrange= 0.01;
+            dpsSignalsIclamp= 0.01;
+            measureMode= Parallel;
+            specParameters=  setupRef(common.GroupAndVar);
+            measurement.specification= setupRef(common.MainSpec);
+            signals= "Q0";
+            }
+
+            suite Suite11 calls CustomTML.ContiTest
+            {
+            dpsSignals = "VCC";
+            dpsVrange= 1;
+            dpsIrange= 0.01;
+            dpsSignalsIclamp= 0.01;
+            measureMode= Parallel;
+            specParameters=  setupRef(common.GroupAndVar);
+            measurement.specification= setupRef(common.MainSpec);
+            signals= "MR";
+            }
+
+            suite Suite12 calls CustomTML.ContiTest
+            {
+            dpsSignals = "VCC";
+            dpsVrange= 1;
+            dpsIrange= 0.01;
+            dpsSignalsIclamp= 0.01;
+            measureMode= Parallel;
+            specParameters=  setupRef(common.GroupAndVar);
+            measurement.specification= setupRef(common.MainSpec);
+            signals= "CP";
+            }
+
+            suite Suite13 calls CustomTML.FunctionalTest
+            {
+            specification =  setupRef(common.SpecData);
+            pattern= setupRef(patterns.PatA1);
+            signals =  "AllPins";
+            }
+
+            suite Suite14 calls CustomTML.ContiTest
+            {
+            dpsSignals = "VCC";
+            dpsVrange= 1;
+            dpsIrange= 0.01;
+            dpsSignalsIclamp= 0.01;
+            measureMode= Parallel;
+            specParameters=  setupRef(common.GroupAndVar);
+            measurement.specification= setupRef(common.MainSpec);
+            signals= "CP+MR";
+            }
+            suite PatRun calls CustomTML.FunctionalTest
+            {
+                specification =  setupRef(common.SpecData);
+                pattern =  setupRef(patterns.PatA1);
+                signals =  "AllPins";
+            }
+            suite Func_PatSeq1 calls CustomTML.FunctionalTest
+            {
+                specification =  setupRef(common.SpecData);
+                operatingSequence= setupRef(patterns.PatSeq1);
+                signals =  "AllPins";
+
+            }
+            suite Func_PatSeq2 calls CustomTML.FunctionalTest
+            {
+                specification =  setupRef(common.SpecData);
+                operatingSequence= setupRef(patterns.PatSeq2);
+                signals =  "AllPins";
+            }
+            suite Func_PatSeq3 calls CustomTML.FunctionalTest
+            {
+                specification =  setupRef(common.SpecData);
+                operatingSequence= setupRef(patterns.PatSet3);
+                signals =  "AllPins";  /* singls need to be contained in pattern */
+            }
+            suite Func_PatARun calls CustomTML.FunctionalTest
+            {
+                specification =  setupRef(common.SpecData);
+                operatingSequence= setupRef(patterns.PatARun);
+                signals =  "AllPins";
+            }
+            suite Func_PatBRun calls CustomTML.FunctionalTest
+            {
+                specification =  setupRef(common.SpecData);
+                operatingSequence= setupRef(patterns.PatBRun);
+                signals =  "AllPins";
+            }
+            suite Func_PatCRun calls CustomTML.FunctionalTest
+            {
+                specification =  setupRef(common.SpecData);
+                operatingSequence= setupRef(patterns.PatCRun);
+                signals =  "AllPins";
+            }
+            suite Func_PatC1Run calls CustomTML.FunctionalTest
+            {
+                specification =  setupRef(common.SpecData);
+                operatingSequence= setupRef(patterns.PatCRun);
+                signals =  "AllPins";
+            }
+           suite Func_PatD1Run calls CustomTML.FunctionalTest
+            {
+                specification =  setupRef(common.SpecData);
+                operatingSequence= setupRef(patterns.PatDRun);
+                signals =  "AllPins";
+            }
+            suite Func_BurstAll calls CustomTML.FunctionSmartBurst
+            {
+                specification =  setupRef(common.SpecData);
+                operatingSequence= setupRef(patterns.BurstAll);
+                signals =  "AllPins";
+            }
+            flow subflow1 calls TestCase1.flow1
+            {
+              bypass = false;
+            }
+            flow subflow2 calls TestCase1.flow2
+            {
+              bypass = false;
+            }
+            flow subflow3 calls TestCase1.flow3
+            {
+              bypass = false;
+            }
+            flow subflow4 calls TestCase1.flow4
+            {
+              bypass = false;
+            }
+            flow subflow5 calls TestCase1.flow5
+            {
+              bypass = false;
+            }
+            flow subflow6 calls TestCase1.flow6
+            {
+              bypass = false;
+            }
+            flow IDDQ_flow calls TestCase1.IDDQ
+            {
+
+            }
+            suite receive_temp_predict1 calls ACSTML.Predict
+            {
+                debugLevel= 0;
+                predict_num = 1;
+                AppName= "py-app";
+                AppLoc= "edge";
+                messUtil= "util/MessUI";
+            }
+            suite receive_temp_predict2 calls ACSTML.Predict
+            {
+                debugLevel= 0;
+                predict_num = 2;
+                AppName= "py-app";
+                AppLoc= "edge";
+                messUtil= "util/MessUI";
+            }
+            suite receive_temp_predict3 calls ACSTML.Predict
+            {
+                debugLevel= 0;
+                predict_num = 3;
+                AppName= "py-app";
+                AppLoc= "edge";
+                messUtil= "util/MessUI";
+            }
+            suite receive_temp_predict4 calls ACSTML.Predict
+            {
+                debugLevel= 0;
+                predict_num = 4;
+                AppName= "py-app";
+                AppLoc= "edge";
+                messUtil= "util/MessUI";
+            }
+            suite receive_temp_predict5 calls ACSTML.Predict
+            {
+                debugLevel= 0;
+                predict_num = 5;
+                AppName= "py-app";
+                AppLoc= "edge";
+                messUtil= "util/MessUI";
+            }
+            suite receive_temp_predict6 calls ACSTML.Predict
+            {
+                debugLevel= 0;
+                predict_num = 6;
+                AppName= "py-app";
+                AppLoc= "edge";
+                messUtil= "util/MessUI";
+            }
+
+    }
+    execute {
+
+            if(testProgramVariables.getString("stage") == "ft")
+            {
+                lotidTest.execute();
+                waferidTest.execute();
+            }
+           Suite1.execute();
+           Suite2.execute();
+           Suite3.execute();
+           Suite4.execute();
+           Suite5.execute();
+           Suite6.execute();
+           Suite7.execute();
+           Suite8.execute();
+           Suite9.execute();
+           Suite10.execute();
+           Suite11.execute();
+           Suite12.execute();
+           Suite13.execute();
+           Suite14.execute();
+           IDDQ_flow.execute();
+           receive_temp_predict1.execute();
+           sensor1.execute();
+           subflow1.execute();
+           receive_temp_predict2.execute();
+           sensor2.execute();
+           subflow2.execute();
+           receive_temp_predict3.execute();
+           sensor3.execute();
+           subflow3.execute();
+           receive_temp_predict4.execute();
+           sensor4.execute();
+           subflow4.execute();
+           receive_temp_predict5.execute();
+           sensor5.execute();
+           subflow5.execute();
+           receive_temp_predict6.execute();
+           sensor6.execute();
+           subflow6.execute();
+           if(testProgramVariables.getLong("sim_result") < testProgramVariables.getLong("fail_rate"))
+           {
+               addBin(30);
+           }
+           addBin(1);
+    }
+ }

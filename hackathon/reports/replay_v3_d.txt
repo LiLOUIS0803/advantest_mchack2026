@@ -1,0 +1,64 @@
+2026-09-19 14:51:45,365 [INFO] WAFERSTART wafer=20 lot=A12345
+2026-09-19 14:53:56,724 [INFO] wafer=20 normal, report saved to C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_20_20260919_145356.html
+2026-09-19 14:53:56,725 [INFO] WAFEREND wafer=20 n_devices=80 yield=98.8%
+wafer 20 [Normal          ] -> final_alerted=False (any_alerted=False)
+2026-09-19 14:53:56,751 [INFO] WAFERSTART wafer=21 lot=A12345
+2026-09-19 14:56:09,313 [INFO] wafer=21 normal, report saved to C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_21_20260919_145609.html
+2026-09-19 14:56:09,314 [INFO] WAFEREND wafer=21 n_devices=80 yield=96.2%
+wafer 21 [Normal          ] -> final_alerted=False (any_alerted=False)
+2026-09-19 14:56:09,343 [INFO] WAFERSTART wafer=22 lot=A12345
+2026-09-19 14:58:17,167 [INFO] wafer=22 normal, report saved to C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_22_20260919_145817.html
+2026-09-19 14:58:17,167 [INFO] WAFEREND wafer=22 n_devices=80 yield=93.8%
+wafer 22 [Normal          ] -> final_alerted=False (any_alerted=False)
+2026-09-19 14:58:17,190 [INFO] WAFERSTART wafer=23 lot=A12345
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 23] 偵測到 1 項異常：
+  - 變異數上升趨勢 (Stdev Trend Up) [critical] score=1.000 （主因測項：5280_Main.subflow1.Flow1_Suite236#CP, z=-25.05）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_23_20260919_150025_(midwafer).html
+
+2026-09-19 15:00:25,406 [WARNING] wafer=23 ANOMALY findings=['stdev_trend_up']
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 23] 偵測到 1 項異常：
+  - 變異數上升趨勢 (Stdev Trend Up) [critical] score=1.000 （主因測項：5280_Main.subflow1.Flow1_Suite236#CP, z=-25.05）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_23_20260919_150025.html
+
+2026-09-19 15:00:25,434 [WARNING] wafer=23 ANOMALY findings=['stdev_trend_up']
+2026-09-19 15:00:25,434 [INFO] WAFEREND wafer=23 n_devices=80 yield=83.8%
+wafer 23 [Stdev Trend Up  ] -> final_alerted=True (any_alerted=True)
+2026-09-19 15:00:25,464 [INFO] WAFERSTART wafer=24 lot=A12345
+2026-09-19 15:02:38,358 [INFO] wafer=24 normal, report saved to C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_24_20260919_150238.html
+2026-09-19 15:02:38,358 [INFO] WAFEREND wafer=24 n_devices=80 yield=81.2%
+wafer 24 [Normal          ] -> final_alerted=False (any_alerted=False)
+2026-09-19 15:02:38,377 [INFO] WAFERSTART wafer=25 lot=A12345
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 25] 偵測到 1 項異常：
+  - 變異數下降趨勢 (Stdev Trend Down) [critical] score=1.000 （主因測項：5900_Main.subflow1.Flow1_Suite267#CP, z=-18.06）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_25_20260919_150450.html
+
+2026-09-19 15:04:50,636 [WARNING] wafer=25 ANOMALY findings=['stdev_trend_down']
+2026-09-19 15:04:50,636 [INFO] WAFEREND wafer=25 n_devices=80 yield=90.0%
+wafer 25 [Stdev Trend Down] -> final_alerted=True (any_alerted=True)
+
+=== 場景二：線上（causally-safe）預測誤差，依 stage ===
+           mean    max  count
+stage                        
+1      0.004619  0.037    480
+2      0.003044  0.013    480
+3      0.003925  0.019    480
+4      0.002569  0.008    480
+5      0.002590  0.007    480
+6      0.002615  0.007    480
+
+saved C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\replay_predictions_d.csv
+
+=== 場景一：異常偵測 vs. 已知 ground truth ===
+（final_alerted 是 WAFEREND 當下的最終結論；any_alerted 連同測到一半的早期預警也算，僅供參考）
+  W20: status=Normal           final=OK  (any=OK)
+  W21: status=Normal           final=OK  (any=OK)
+  W22: status=Normal           final=OK  (any=OK)
+  W23: status=Stdev Trend Up   final=OK  (any=OK)
+  W24: status=Normal           final=OK  (any=OK)
+  W25: status=Stdev Trend Down final=OK  (any=OK)
+
+最終判斷：6/6 正確
+含早期預警在內：6/6 正確

@@ -1,0 +1,40 @@
+
+sequence PatSet3 {
+
+    sequential seqG5
+    {
+        patternCall patterns.PatAll3;
+        parallel patGrpG5_1
+        {
+            sequential s_A5
+            {
+                patternCall patterns.PatA5;
+            }
+
+              sequential s_C5
+            {
+                patternCall patterns.PatC5;
+            }
+                         sequential s_B5
+            {
+                patternCall patterns.PatB5;
+            }
+        }
+        parallel patGrpG6_1
+        {
+            sequential s_A6
+            {
+                patternCall patterns.PatA6;
+            }
+             sequential s_B6
+            {
+                patternCall patterns.PatB6;
+            }
+              sequential s_C6
+            {
+                patternCall patterns.PatC6;
+            }
+        }
+        patternCall patterns.PatAll4;
+    }
+}

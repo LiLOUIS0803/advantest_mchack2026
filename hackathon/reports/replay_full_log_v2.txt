@@ -1,0 +1,12 @@
+﻿python : 2026-09-19 14:04:40,645 [INFO] WAFERSTART wafer=1 lot=A12345
+At line:1 char:357
++ ... \hackathon\app; python replay.py *> ..\reports\replay_full_log_v2.txt
++                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-09-19 14:0...er=1 lot=A12345:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-09-19 14:05:47,660 [WARNING] wafer=1 ANOMALY findings=['site_unbalance']
+2026-09-19 14:06:09,412 [WARNING] wafer=1 ANOMALY findings=['site_unbalance']
+2026-09-19 14:06:09,433 [WARNING] wafer=1 ANOMALY findings=['site_unbalance']
+2026-09-19 14:06:09,433 [INFO] WAFEREND wafer=1 n_devices=80 yield=85.0%
+2026-09-19 14:06:09,446 [INFO] WAFERSTART wafer=2 lot=A12345

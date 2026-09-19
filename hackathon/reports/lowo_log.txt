@@ -1,0 +1,34 @@
+held-out  true              stage1    stage2 cause       結果
+W01      Site unbalance    ABNORMAL  site_unbalance     OK  （該類型唯一範例被拿掉）
+W02      Normal            normal    -                  OK  
+W03      Low yield         normal    -                  BAD 
+W04      Normal            normal    -                  OK  
+W05      Normal            normal    -                  OK  
+W06      Normal            normal    -                  OK  
+W07      Normal            normal    -                  OK  
+W08      Normal            normal    -                  OK  
+W09      Low yield         normal    -                  BAD 
+W10      Normal            normal    -                  OK  
+W11      Normal            normal    -                  OK  
+W12      Normal            normal    -                  OK  
+W13      Normal            normal    -                  OK  
+W14      Mean Trend Up     ABNORMAL  mean_trend_up      OK  （該類型唯一範例被拿掉）
+W15      Normal            normal    -                  OK  
+W16      Normal            normal    -                  OK  
+W17      Normal            normal    -                  OK  
+W18      Mean Trend Down   ABNORMAL  mean_trend_down    OK  （該類型唯一範例被拿掉）
+W19      Normal            normal    -                  OK  
+W20      Normal            normal    -                  OK  
+W21      Normal            normal    -                  OK  
+W22      Normal            normal    -                  OK  
+W23      Stdev Trend Up    ABNORMAL  stdev_trend_up     OK  （該類型唯一範例被拿掉）
+W24      Normal            normal    -                  OK  
+W25      Stdev Trend Down  normal    -                  BAD （該類型唯一範例被拿掉）
+
+=== 留一片交叉驗證（25 折）===
+第 1 層 二元判斷：22/25
+  Normal wafer 誤報：0/18
+  異常 wafer 漏報：3/7
+第 2 層 原因分類：22/25
+  異常 wafer 原因正確：4/7
+  其中「該類型還有其他範例」：0/2；「唯一範例被拿掉」：4/5

@@ -1,0 +1,26 @@
+wafer,true,abnormal,cause,s1_ok,s2_ok,only_example,n_exc,pids
+1,Site unbalance,True,site_unbalance,True,True,True,5,"[8, 12, 16, 20, 24]"
+2,Normal,False,,True,True,False,0,[]
+3,Low yield,False,,False,False,False,0,[]
+4,Normal,False,,True,True,False,0,[]
+5,Normal,False,,True,True,False,0,[]
+6,Normal,False,,True,True,False,0,[]
+7,Normal,False,,True,True,False,0,[]
+8,Normal,False,,True,True,False,0,[]
+9,Low yield,False,,False,False,False,0,[]
+10,Normal,False,,True,True,False,0,[]
+11,Normal,False,,True,True,False,0,[]
+12,Normal,False,,True,True,False,0,[]
+13,Normal,False,,True,True,False,0,[]
+14,Mean Trend Up,True,mean_trend_up,True,True,True,13,"[16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28]"
+15,Normal,False,,True,True,False,0,[]
+16,Normal,False,,True,True,False,0,[]
+17,Normal,False,,True,True,False,0,[]
+18,Mean Trend Down,True,mean_trend_down,True,True,True,13,"[16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28]"
+19,Normal,False,,True,True,False,0,[]
+20,Normal,False,,True,True,False,0,[]
+21,Normal,False,,True,True,False,0,[]
+22,Normal,False,,True,True,False,0,[]
+23,Stdev Trend Up,True,stdev_trend_up,True,True,True,9,"[20, 21, 22, 23, 24, 25, 26, 27, 28]"
+24,Normal,False,,True,True,False,0,[]
+25,Stdev Trend Down,False,,False,False,True,0,[]

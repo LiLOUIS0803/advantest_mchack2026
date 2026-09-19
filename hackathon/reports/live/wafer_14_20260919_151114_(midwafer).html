@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8">
+<title>Wafer 14 異常報告</title>
+<style>
+  body { font-family: -apple-system, "Segoe UI", "Noto Sans TC", sans-serif; background:#f3f4f6; color:#111827; margin:0; padding:24px; }
+  h1 { margin:0 0 4px; font-size:22px; }
+  .meta { color:#6b7280; font-size:13px; margin-bottom:20px; }
+  .status { display:inline-block; padding:4px 12px; border-radius:999px; color:white; font-weight:600; background:#dc2626; }
+  .card { background:white; border-radius:10px; padding:16px 20px; margin-bottom:16px; box-shadow:0 1px 3px rgba(0,0,0,.08); }
+  .card h3 { margin:0 0 6px; display:flex; align-items:center; gap:8px; font-size:16px; }
+  .dot { width:10px; height:10px; border-radius:50%; display:inline-block; }
+  .badge { margin-left:auto; color:white; font-size:11px; padding:2px 8px; border-radius:6px; }
+  table { border-collapse: collapse; width:100%; font-size:12px; margin-top:8px; }
+  th, td { border-bottom:1px solid #e5e7eb; padding:4px 8px; text-align:left; }
+  th { color:#6b7280; font-weight:600; }
+  .grid { display:flex; gap:16px; flex-wrap:wrap; }
+  .map-cell { background:white; border-radius:10px; padding:12px; box-shadow:0 1px 3px rgba(0,0,0,.08); }
+  .map-title { font-size:12px; color:#6b7280; margin-bottom:6px; }
+  .legend span { display:inline-flex; align-items:center; gap:4px; margin-right:14px; font-size:12px; color:#374151; }
+  .legend i { width:10px; height:10px; border-radius:50%; display:inline-block; }
+  summary { cursor:pointer; color:#2563eb; font-size:13px; margin-top:8px; }
+  .steps { display:flex; align-items:stretch; gap:10px; flex-wrap:wrap; }
+  .step { flex:1; min-width:200px; background:#f9fafb; border-radius:8px; padding:10px 12px; }
+  .step-h { font-size:11px; color:#6b7280; margin-bottom:4px; }
+  .step-t { font-size:12px; color:#374151; margin-top:6px; line-height:1.5; }
+  .arrow { align-self:center; color:#9ca3af; font-size:20px; }
+  .pill { color:white; font-size:12px; font-weight:700; padding:2px 10px; border-radius:999px; }
+</style></head>
+<body>
+  <h1>Wafer 14 即時異常報告 <span class="status">均值上升趨勢 (Mean Trend Up)</span></h1>
+  <div class="meta">
+    Lot A12345 ・ Tester SIM_TESTER_1 ・ 產出時間 2026-09-19 15:11:14 (mid-wafer) ・
+    已測 18 顆 ・ 良率 94.4%
+  </div>
+
+  
+    <section class="card">
+      <div class="steps">
+        <div class="step"><div class="step-h">第 1 層 · 二元判斷</div><span class="pill" style="background:#dc2626">ABNORMAL</span><div class="step-t">3 / 18 顆 die 被判定為離群 die</div></div>
+        <div class="arrow">→</div>
+        <div class="step"><div class="step-h">第 2 層 · 原因</div><b>均值上升趨勢 (Mean Trend Up)</b><div class="step-t">3 顆離群 die 橫跨 3 個 site，PID 16~18，離群方向為正的比例 100%<br>離群測項數隨測試順序 19 → 61（最大 61）</div></div>
+        <div class="arrow">→</div>
+        <div class="step"><div class="step-h">第 3 層 · die 定位</div><b>3 顆 die</b><div class="step-t">PID 16~18，明細見下表</div></div>
+      </div>
+    </section>
+    <section class="card">
+      <h4 style="margin-top:0">每顆 die 的離群測項數（依測試順序；虛線 = 判定門檻 10）</h4>
+      <svg viewBox="0 0 640 190" width="100%" height="190" role="img"><rect x="0" y="0" width="640" height="190" fill="#f9fafb" rx="8"/><rect x="34.0" y="168.0" width="32.2" height="1.0" fill="#16a34a"><title>PID 1 site1 離群測項 0</title></rect><rect x="67.2" y="168.0" width="32.2" height="1.0" fill="#16a34a"><title>PID 2 site2 離群測項 0</title></rect><rect x="100.4" y="168.0" width="32.2" height="1.0" fill="#16a34a"><title>PID 3 site3 離群測項 0</title></rect><rect x="133.7" y="168.0" width="32.2" height="1.0" fill="#16a34a"><title>PID 4 site4 離群測項 0</title></rect><rect x="166.9" y="155.0" width="32.2" height="13.0" fill="#f87171"><title>PID 5 site1 離群測項 5</title></rect><rect x="200.1" y="168.0" width="32.2" height="1.0" fill="#16a34a"><title>PID 6 site2 離群測項 0</title></rect><rect x="233.3" y="168.0" width="32.2" height="1.0" fill="#16a34a"><title>PID 7 site3 離群測項 0</title></rect><rect x="266.6" y="168.0" width="32.2" height="1.0" fill="#16a34a"><title>PID 8 site4 離群測項 0</title></rect><rect x="299.8" y="168.0" width="32.2" height="1.0" fill="#16a34a"><title>PID 9 site1 離群測項 0</title></rect><rect x="333.0" y="168.0" width="32.2" height="1.0" fill="#16a34a"><title>PID 10 site2 離群測項 0</title></rect><rect x="366.2" y="168.0" width="32.2" height="1.0" fill="#16a34a"><title>PID 11 site3 離群測項 0</title></rect><rect x="399.4" y="168.0" width="32.2" height="1.0" fill="#16a34a"><title>PID 12 site4 離群測項 0</title></rect><rect x="432.7" y="168.0" width="32.2" height="1.0" fill="#16a34a"><title>PID 13 site1 離群測項 0</title></rect><rect x="465.9" y="165.4" width="32.2" height="2.6" fill="#16a34a"><title>PID 14 site2 離群測項 1</title></rect><rect x="499.1" y="155.0" width="32.2" height="13.0" fill="#16a34a"><title>PID 15 site3 離群測項 5</title></rect><rect x="532.3" y="118.8" width="32.2" height="49.2" fill="#ea580c"><title>PID 16 site4 離群測項 19</title></rect><rect x="565.6" y="72.2" width="32.2" height="95.8" fill="#ea580c"><title>PID 17 site1 離群測項 37</title></rect><rect x="598.8" y="10.0" width="32.2" height="158.0" fill="#ea580c"><title>PID 18 site2 離群測項 61</title></rect><line x1="34" x2="632" y1="142.1" y2="142.1" stroke="#374151" stroke-dasharray="4 3"/><text x="2" y="146.1" font-size="10" fill="#374151">10</text><text x="333.0" y="184" font-size="10" fill="#6b7280">10</text></svg>
+      <div class="legend">
+        <span><i style="background:#16a34a"></i>正常 die</span>
+        <span><i style="background:#f87171"></i>一般 bin-fail（背景良率損失）</span>
+        <span><i style="background:#ea580c"></i>離群 die（異常）</span>
+      </div>
+    </section>
+    <section class="card">
+      <h4 style="margin-top:0">受影響的 die（3 顆）</h4>
+      <table>
+        <thead><tr><th>PID</th><th>Site</th><th>X</th><th>Y</th><th>SBin</th><th>離群測項數</th><th>主要離群測項 (z)</th></tr></thead>
+        <tbody><tr><td>16</td><td>4</td><td>7</td><td>5</td><td>1</td><td>19</td><td>13240#CP(+6.6), 12740#CP(+6.6)</td></tr><tr><td>17</td><td>1</td><td>5</td><td>1</td><td>1</td><td>37</td><td>13600#CP(+7.0), 12720#CP(+6.7)</td></tr><tr><td>18</td><td>2</td><td>10</td><td>4</td><td>1</td><td>61</td><td>14180#CP(+7.3), 12740#CP(+7.2)</td></tr></tbody>
+      </table>
+    </section>
+
+  <div class="grid">
+    <div class="map-cell">
+      <div class="map-title">Wafer Map（綠=Pass，紅=一般 Fail，橘色+編號=離群 die）</div>
+      <svg viewBox="0 0 360 360" width="100%" height="360" role="img"><rect x="0" y="0" width="360" height="360" fill="#f9fafb" rx="8"/><circle cx="197.8" cy="248.6" r="10.0" fill="#16a34a" stroke="none" stroke-width="0" opacity="0.9"><title>PID1 site1 X6.0 Y6.0 SBin1 PASS</title></circle><circle cx="126.7" cy="248.6" r="10.0" fill="#16a34a" stroke="none" stroke-width="0" opacity="0.9"><title>PID2 site2 X4.0 Y6.0 SBin1 PASS</title></circle><circle cx="91.1" cy="65.7" r="10.0" fill="#16a34a" stroke="none" stroke-width="0" opacity="0.9"><title>PID3 site3 X3.0 Y2.0 SBin1 PASS</title></circle><circle cx="55.6" cy="248.6" r="10.0" fill="#16a34a" stroke="none" stroke-width="0" opacity="0.9"><title>PID4 site4 X2.0 Y6.0 SBin1 PASS</title></circle><circle cx="304.4" cy="111.4" r="10.0" fill="#dc2626" stroke="none" stroke-width="0" opacity="0.9"><title>PID5 site1 X9.0 Y3.0 SBin6 FAIL</title></circle><circle cx="268.9" cy="294.3" r="10.0" fill="#16a34a" stroke="none" stroke-width="0" opacity="0.9"><title>PID6 site2 X8.0 Y7.0 SBin1 PASS</title></circle><circle cx="268.9" cy="20.0" r="10.0" fill="#16a34a" stroke="none" stroke-width="0" opacity="0.9"><title>PID7 site3 X8.0 Y1.0 SBin1 PASS</title></circle><circle cx="91.1" cy="248.6" r="10.0" fill="#16a34a" stroke="none" stroke-width="0" opacity="0.9"><title>PID8 site4 X3.0 Y6.0 SBin1 PASS</title></circle><circle cx="20.0" cy="248.6" r="10.0" fill="#16a34a" stroke="none" stroke-width="0" opacity="0.9"><title>PID9 site1 X1.0 Y6.0 SBin1 PASS</title></circle><circle cx="126.7" cy="65.7" r="10.0" fill="#16a34a" stroke="none" stroke-width="0" opacity="0.9"><title>PID10 site2 X4.0 Y2.0 SBin1 PASS</title></circle><circle cx="340.0" cy="202.9" r="10.0" fill="#16a34a" stroke="none" stroke-width="0" opacity="0.9"><title>PID11 site3 X10.0 Y5.0 SBin1 PASS</title></circle><circle cx="126.7" cy="294.3" r="10.0" fill="#16a34a" stroke="none" stroke-width="0" opacity="0.9"><title>PID12 site4 X4.0 Y7.0 SBin1 PASS</title></circle><circle cx="126.7" cy="20.0" r="10.0" fill="#16a34a" stroke="none" stroke-width="0" opacity="0.9"><title>PID13 site1 X4.0 Y1.0 SBin1 PASS</title></circle><circle cx="197.8" cy="65.7" r="10.0" fill="#16a34a" stroke="none" stroke-width="0" opacity="0.9"><title>PID14 site2 X6.0 Y2.0 SBin1 PASS</title></circle><circle cx="126.7" cy="340.0" r="10.0" fill="#16a34a" stroke="none" stroke-width="0" opacity="0.9"><title>PID15 site3 X4.0 Y8.0 SBin1 PASS</title></circle><circle cx="233.3" cy="202.9" r="13.0" fill="#ea580c" stroke="#111827" stroke-width="2.5" opacity="0.9"><title>PID16 site4 X7.0 Y5.0 SBin1 EXCURSION</title></circle><circle cx="162.2" cy="20.0" r="13.0" fill="#ea580c" stroke="#111827" stroke-width="2.5" opacity="0.9"><title>PID17 site1 X5.0 Y1.0 SBin1 EXCURSION</title></circle><circle cx="340.0" cy="157.1" r="13.0" fill="#ea580c" stroke="#111827" stroke-width="2.5" opacity="0.9"><title>PID18 site2 X10.0 Y4.0 SBin1 EXCURSION</title></circle><text x="233.3" y="205.9" font-size="8" font-weight="700" text-anchor="middle" fill="white">16</text><text x="162.2" y="23.0" font-size="8" font-weight="700" text-anchor="middle" fill="white">17</text><text x="340.0" y="160.1" font-size="8" font-weight="700" text-anchor="middle" fill="white">18</text></svg>
+      <div class="legend">
+        <span><i style="background:#16a34a"></i>Pass</span>
+        <span><i style="background:#dc2626"></i>Fail</span>
+        <span><i style="background:#ea580c"></i>離群 die</span>
+      </div>
+    </div>
+  </div>
+
+  
+</body></html>

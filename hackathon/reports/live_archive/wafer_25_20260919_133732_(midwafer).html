@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8">
+<title>Wafer 25 異常報告</title>
+<style>
+  body { font-family: -apple-system, "Segoe UI", "Noto Sans TC", sans-serif; background:#f3f4f6; color:#111827; margin:0; padding:24px; }
+  h1 { margin:0 0 4px; font-size:22px; }
+  .meta { color:#6b7280; font-size:13px; margin-bottom:20px; }
+  .status { display:inline-block; padding:4px 12px; border-radius:999px; color:white; font-weight:600; background:#dc2626; }
+  .card { background:white; border-radius:10px; padding:16px 20px; margin-bottom:16px; box-shadow:0 1px 3px rgba(0,0,0,.08); }
+  .card h3 { margin:0 0 6px; display:flex; align-items:center; gap:8px; font-size:16px; }
+  .dot { width:10px; height:10px; border-radius:50%; display:inline-block; }
+  .badge { margin-left:auto; color:white; font-size:11px; padding:2px 8px; border-radius:6px; }
+  table { border-collapse: collapse; width:100%; font-size:12px; margin-top:8px; }
+  th, td { border-bottom:1px solid #e5e7eb; padding:4px 8px; text-align:left; }
+  th { color:#6b7280; font-weight:600; }
+  .grid { display:flex; gap:16px; flex-wrap:wrap; }
+  .map-cell { background:white; border-radius:10px; padding:12px; box-shadow:0 1px 3px rgba(0,0,0,.08); }
+  .map-title { font-size:12px; color:#6b7280; margin-bottom:6px; }
+  .legend span { display:inline-flex; align-items:center; gap:4px; margin-right:14px; font-size:12px; color:#374151; }
+  .legend i { width:10px; height:10px; border-radius:50%; display:inline-block; }
+  summary { cursor:pointer; color:#2563eb; font-size:13px; margin-top:8px; }
+</style></head>
+<body>
+  <h1>Wafer 25 即時異常報告 <span class="status">1 項異常</span></h1>
+  <div class="meta">
+    Lot A12345 ・ Tester SIM_TESTER_1 ・ 產出時間 2026-09-19 13:37:32 (mid-wafer) ・
+    已測 20 顆 ・ 良率 75.0%
+  </div>
+
+  <div class="grid">
+    <div class="map-cell">
+      <div class="map-title">Wafer Map（綠=Pass，紅=Fail）</div>
+      <svg viewBox="0 0 360 360" width="100%" height="360" role="img"><rect x="0" y="0" width="360" height="360" fill="#f9fafb" rx="8"/><circle cx="340.0" cy="157.1" r="10.0" fill="#16a34a" stroke="none" stroke-width="0" opacity="0.9"><title>site1 X11.0 Y3.0 SBin1</title></circle><circle cx="52.0" cy="157.1" r="10.0" fill="#16a34a" stroke="none" stroke-width="0" opacity="0.9"><title>site2 X2.0 Y3.0 SBin1</title></circle><circle cx="52.0" cy="111.4" r="10.0" fill="#16a34a" stroke="none" stroke-width="0" opacity="0.9"><title>site3 X2.0 Y2.0 SBin1</title></circle><circle cx="212.0" cy="248.6" r="10.0" fill="#16a34a" stroke="none" stroke-width="0" opacity="0.9"><title>site4 X7.0 Y5.0 SBin1</title></circle><circle cx="148.0" cy="20.0" r="10.0" fill="#dc2626" stroke="none" stroke-width="0" opacity="0.9"><title>site1 X5.0 Y0.0 SBin6</title></circle><circle cx="52.0" cy="248.6" r="10.0" fill="#dc2626" stroke="none" stroke-width="0" opacity="0.9"><title>site2 X2.0 Y5.0 SBin6</title></circle><circle cx="148.0" cy="157.1" r="10.0" fill="#16a34a" stroke="none" stroke-width="0" opacity="0.9"><title>site3 X5.0 Y3.0 SBin1</title></circle><circle cx="180.0" cy="202.9" r="10.0" fill="#16a34a" stroke="none" stroke-width="0" opacity="0.9"><title>site4 X6.0 Y4.0 SBin1</title></circle><circle cx="52.0" cy="65.7" r="10.0" fill="#16a34a" stroke="none" stroke-width="0" opacity="0.9"><title>site1 X2.0 Y1.0 SBin1</title></circle><circle cx="116.0" cy="294.3" r="10.0" fill="#16a34a" stroke="none" stroke-width="0" opacity="0.9"><title>site2 X4.0 Y6.0 SBin1</title></circle><circle cx="308.0" cy="248.6" r="10.0" fill="#16a34a" stroke="none" stroke-width="0" opacity="0.9"><title>site3 X10.0 Y5.0 SBin1</title></circle><circle cx="116.0" cy="20.0" r="10.0" fill="#16a34a" stroke="none" stroke-width="0" opacity="0.9"><title>site4 X4.0 Y0.0 SBin1</title></circle><circle cx="244.0" cy="20.0" r="10.0" fill="#16a34a" stroke="none" stroke-width="0" opacity="0.9"><title>site1 X8.0 Y0.0 SBin1</title></circle><circle cx="20.0" cy="248.6" r="10.0" fill="#16a34a" stroke="none" stroke-width="0" opacity="0.9"><title>site2 X1.0 Y5.0 SBin1</title></circle><circle cx="276.0" cy="248.6" r="10.0" fill="#16a34a" stroke="none" stroke-width="0" opacity="0.9"><title>site3 X9.0 Y5.0 SBin1</title></circle><circle cx="52.0" cy="294.3" r="10.0" fill="#16a34a" stroke="none" stroke-width="0" opacity="0.9"><title>site4 X2.0 Y6.0 SBin1</title></circle><circle cx="244.0" cy="248.6" r="10.0" fill="#dc2626" stroke="none" stroke-width="0" opacity="0.9"><title>site1 X8.0 Y5.0 SBin6</title></circle><circle cx="180.0" cy="340.0" r="10.0" fill="#dc2626" stroke="none" stroke-width="0" opacity="0.9"><title>site2 X6.0 Y7.0 SBin6</title></circle><circle cx="180.0" cy="157.1" r="10.0" fill="#dc2626" stroke="none" stroke-width="0" opacity="0.9"><title>site3 X6.0 Y3.0 SBin6</title></circle><circle cx="180.0" cy="111.4" r="10.0" fill="#16a34a" stroke="none" stroke-width="0" opacity="0.9"><title>site4 X6.0 Y2.0 SBin1</title></circle></svg>
+      <div class="legend">
+        <span><i style="background:#16a34a"></i>Pass</span>
+        <span><i style="background:#dc2626"></i>Fail</span>
+      </div>
+    </div>
+  </div>
+
+  
+        <section class="card" style="border-left:6px solid #dc2626">
+          <h3><span class="dot" style="background:#dc2626"></span>Site 不平衡 (Site Unbalance)
+              <span class="badge" style="background:#dc2626">CRITICAL</span></h3>
+          <p>觸發分數 (score) = 0.667 ／ 觸發測項數 = 20</p>
+          <h4>最相關測項 |z-score| 排行</h4>
+          <svg viewBox="0 0 640 430" width="100%" height="430" role="img"><text x="0" y="25.4" font-size="12" fill="#374151">6020_Main.subflow1.Flow1_Suite273#CP</text><rect x="260" y="10" width="320.0" height="22" rx="3" fill="#dc2626" opacity="0.85"/><text x="586.0" y="25.4" font-size="12" fill="#111827">+12.269</text><text x="0" y="53.4" font-size="12" fill="#374151">5060_Main.subflow1.Flow1_Suite225#CP</text><rect x="260" y="38" width="200.7" height="22" rx="3" fill="#dc2626" opacity="0.85"/><text x="466.7" y="53.4" font-size="12" fill="#111827">+7.696</text><text x="0" y="81.4" font-size="12" fill="#374151">16480_Main.subflow2.Flow2_Suite296#CP</text><rect x="260" y="66" width="186.6" height="22" rx="3" fill="#dc2626" opacity="0.85"/><text x="452.6" y="81.4" font-size="12" fill="#111827">+7.153</text><text x="0" y="109.4" font-size="12" fill="#374151">1060_Main.subflow1.Flow1_Suite25#CP</text><rect x="260" y="94" width="180.9" height="22" rx="3" fill="#dc2626" opacity="0.85"/><text x="446.9" y="109.4" font-size="12" fill="#111827">+6.936</text><text x="0" y="137.4" font-size="12" fill="#374151">5720_Main.subflow1.Flow1_Suite258#CP</text><rect x="260" y="122" width="165.2" height="22" rx="3" fill="#dc2626" opacity="0.85"/><text x="431.2" y="137.4" font-size="12" fill="#111827">+6.333</text><text x="0" y="165.4" font-size="12" fill="#374151">45200_Main.subflow5.Flow5_Suite232#CP</text><rect x="260" y="150" width="162.6" height="22" rx="3" fill="#dc2626" opacity="0.85"/><text x="428.6" y="165.4" font-size="12" fill="#111827">+6.232</text><text x="0" y="193.4" font-size="12" fill="#374151">6200_Main.subflow1.Flow1_Suite282#CP</text><rect x="260" y="178" width="149.4" height="22" rx="3" fill="#dc2626" opacity="0.85"/><text x="415.4" y="193.4" font-size="12" fill="#111827">+5.730</text><text x="0" y="221.4" font-size="12" fill="#374151">6340_Main.subflow1.Flow1_Suite289#CP</text><rect x="260" y="206" width="140.5" height="22" rx="3" fill="#dc2626" opacity="0.85"/><text x="406.5" y="221.4" font-size="12" fill="#111827">+5.386</text><text x="0" y="249.4" font-size="12" fill="#374151">4800_Main.subflow1.Flow1_Suite212#CP</text><rect x="260" y="234" width="135.2" height="22" rx="3" fill="#dc2626" opacity="0.85"/><text x="401.2" y="249.4" font-size="12" fill="#111827">+5.183</text><text x="0" y="277.4" font-size="12" fill="#374151">4820_Main.subflow1.Flow1_Suite213#CP</text><rect x="260" y="262" width="127.5" height="22" rx="3" fill="#dc2626" opacity="0.85"/><text x="393.5" y="277.4" font-size="12" fill="#111827">+4.890</text><text x="0" y="305.4" font-size="12" fill="#374151">4760_Main.subflow1.Flow1_Suite210#CP</text><rect x="260" y="290" width="124.2" height="22" rx="3" fill="#dc2626" opacity="0.85"/><text x="390.2" y="305.4" font-size="12" fill="#111827">+4.763</text><text x="0" y="333.4" font-size="12" fill="#374151">4860_Main.subflow1.Flow1_Suite215#CP</text><rect x="260" y="318" width="100.1" height="22" rx="3" fill="#dc2626" opacity="0.85"/><text x="366.1" y="333.4" font-size="12" fill="#111827">+3.839</text><text x="0" y="361.4" font-size="12" fill="#374151">5520_Main.subflow1.Flow1_Suite248#CP</text><rect x="260" y="346" width="97.6" height="22" rx="3" fill="#dc2626" opacity="0.85"/><text x="363.6" y="361.4" font-size="12" fill="#111827">+3.744</text><text x="0" y="389.4" font-size="12" fill="#374151">1080_Main.subflow1.Flow1_Suite26#CP</text><rect x="260" y="374" width="97.4" height="22" rx="3" fill="#dc2626" opacity="0.85"/><text x="363.4" y="389.4" font-size="12" fill="#111827">+3.735</text><text x="0" y="417.4" font-size="12" fill="#374151">5700_Main.subflow1.Flow1_Suite257#CP</text><rect x="260" y="402" width="97.2" height="22" rx="3" fill="#dc2626" opacity="0.85"/><text x="363.2" y="417.4" font-size="12" fill="#111827">+3.725</text></svg>
+          
+          <details>
+            <summary>詳細數據（前 15 項）</summary>
+            <table>
+              <thead><tr><th>測項</th><th>z</th><th>目前值</th><th>正常基準 (mu ± sigma)</th></tr></thead>
+              <tbody><tr><td>6020_Main.subflow1.Flow1_Suite273#CP</td><td>+12.27</td><td>0.7095</td><td>0.1746 ± 0.0436</td></tr><tr><td>5060_Main.subflow1.Flow1_Suite225#CP</td><td>+7.70</td><td>0.5897</td><td>0.1756 ± 0.0538</td></tr><tr><td>16480_Main.subflow2.Flow2_Suite296#CP</td><td>+7.15</td><td>0.6108</td><td>0.1379 ± 0.0661</td></tr><tr><td>1060_Main.subflow1.Flow1_Suite25#CP</td><td>+6.94</td><td>0.5369</td><td>0.1844 ± 0.0508</td></tr><tr><td>5720_Main.subflow1.Flow1_Suite258#CP</td><td>+6.33</td><td>0.5361</td><td>0.1813 ± 0.0560</td></tr><tr><td>45200_Main.subflow5.Flow5_Suite232#CP</td><td>+6.23</td><td>0.4852</td><td>0.1492 ± 0.0539</td></tr><tr><td>6200_Main.subflow1.Flow1_Suite282#CP</td><td>+5.73</td><td>0.5062</td><td>0.1364 ± 0.0645</td></tr><tr><td>6340_Main.subflow1.Flow1_Suite289#CP</td><td>+5.39</td><td>0.5396</td><td>0.2030 ± 0.0625</td></tr><tr><td>4800_Main.subflow1.Flow1_Suite212#CP</td><td>+5.18</td><td>0.5017</td><td>0.1584 ± 0.0662</td></tr><tr><td>4820_Main.subflow1.Flow1_Suite213#CP</td><td>+4.89</td><td>0.4138</td><td>0.1615 ± 0.0516</td></tr><tr><td>4760_Main.subflow1.Flow1_Suite210#CP</td><td>+4.76</td><td>0.4276</td><td>0.1581 ± 0.0566</td></tr><tr><td>4860_Main.subflow1.Flow1_Suite215#CP</td><td>+3.84</td><td>0.4033</td><td>0.1863 ± 0.0565</td></tr><tr><td>5520_Main.subflow1.Flow1_Suite248#CP</td><td>+3.74</td><td>0.3886</td><td>0.1809 ± 0.0555</td></tr><tr><td>1080_Main.subflow1.Flow1_Suite26#CP</td><td>+3.74</td><td>0.3623</td><td>0.1326 ± 0.0615</td></tr><tr><td>5700_Main.subflow1.Flow1_Suite257#CP</td><td>+3.73</td><td>0.3951</td><td>0.1848 ± 0.0564</td></tr></tbody>
+            </table>
+          </details>
+        </section>
+        
+</body></html>

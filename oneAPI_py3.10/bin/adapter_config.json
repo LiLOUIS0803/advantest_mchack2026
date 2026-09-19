@@ -1,0 +1,10 @@
+{
+  "result_mode": "sdk_value",
+  "valid_test_flags": [0, 128],
+  "part_flag_passed": {"0": true, "8": false},
+  "measurement_aliases": {
+    "560|Main.Suite14|Main.Suite14.measurement|0": "560_Main.Suite14#CP",
+    "560|Main.Suite14|Main.Suite14.measurement|1": "560_Main.Suite14#MR"
+  },
+  "queue_capacity": 4096
+}

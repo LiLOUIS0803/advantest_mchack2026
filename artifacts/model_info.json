@@ -1,0 +1,60 @@
+{
+  "model": "label_aligned_mean_std_v2",
+  "training_wafers": [
+    4,
+    5,
+    8,
+    10,
+    11,
+    12,
+    13,
+    15,
+    20,
+    21,
+    22,
+    24
+  ],
+  "training_devices": 960,
+  "measurement_count": 3036,
+  "active_measurements": 3035,
+  "excluded_wafers": [
+    2
+  ],
+  "window_devices": 16,
+  "minimum_affected_tests": 5,
+  "consecutive_windows": 2,
+  "recovery_gate": "Moving away from first8 baseline; stdev also requires mean below change threshold.",
+  "formal_labels": {
+    "low_yield": "Low yield which yield is low than 80",
+    "mean_trend_up": "Mean Trend Up",
+    "mean_trend_down": "Mean Trend Down",
+    "stdev_trend_up": "Stdev Trend Up",
+    "stdev_trend_down": "Stdev Trend Down"
+  },
+  "unsupported_labels": [
+    "Site unbalance"
+  ],
+  "auxiliary_only": [
+    "point_outlier"
+  ],
+  "mean_metric": "(mean(last8)-mean(previous8))/training_scale",
+  "stdev_metric": "sample_std(last8)/sample_std(previous8), ddof=1",
+  "development_note": "Definitions revised after inspecting validation; not an untouched test set.",
+  "confidence": "Evidence heuristic, not calibrated probability",
+  "normal_label_does_not_imply_all_devices_pass": true,
+  "threshold_source": "training only; observed envelopes with fixed safety margins",
+  "source_sha256": {
+    "data/splits/train_normal/A12345_W04_RawResult.csv": "0e278fa7b4ce270c215c8267a3d0f5f9ac3640226af07a3a87ec702860886231",
+    "data/splits/train_normal/A12345_W05_RawResult.csv": "ae7da867da419fb1c606f7475f830b87b7bb92ff8ff1ff9ab27fa1f2d85701bf",
+    "data/splits/train_normal/A12345_W08_RawResult.csv": "a4e294e340ab840e13cc73724924d41afc5267ee103e15cb40df165e59f682cf",
+    "data/splits/train_normal/A12345_W10_RawResult.csv": "bd711fe941b09de3d51f4089e87811b1a77684ff2aa26df595e127cc611504df",
+    "data/splits/train_normal/A12345_W11_RawResult.csv": "765d6632773285da6a495c64e8c0282a41f4d06727aca844f4fe0d958a452688",
+    "data/splits/train_normal/A12345_W12_RawResult.csv": "4b7aa3d3c43f57374a27bf10a52a50c91ed15bf46c2ccacb50a92b62744aaac5",
+    "data/splits/train_normal/A12345_W13_RawResult.csv": "f1d359d20b13f0d9a35abd70a13c0828b0e6db41c01725a0eb5bf952d905a989",
+    "data/splits/train_normal/A12345_W15_RawResult.csv": "d2ba6c285b77bdc5f0eb110a834d840dba75efe376310d86fa05a57ead975838",
+    "data/splits/train_normal/A12345_W20_RawResult.csv": "8a5aa6fc6a4dc2acf9d2b7e355d50bba61cfdbe7d99b93414cd521c7604eb344",
+    "data/splits/train_normal/A12345_W21_RawResult.csv": "75e7c0ebd8ede4c003cfcaf3290b6518c7d886d08ac420ab0aee80214a165895",
+    "data/splits/train_normal/A12345_W22_RawResult.csv": "40378b231a287e01341571b0119c7bea4d2999743c0b46d11c8c6a70a14fdb7a",
+    "data/splits/train_normal/A12345_W24_RawResult.csv": "238a0af2634e1448753af2ffad516136427ac353af457a681987a5a59ded4374"
+  }
+}

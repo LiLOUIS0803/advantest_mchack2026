@@ -1,0 +1,4 @@
+#!/bin/bash
+export V93000_MODEL=./model_Smt8
+/opt/hp93000/soc/prod_env/bin/HPSmarTest -o&
+

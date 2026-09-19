@@ -1,0 +1,448 @@
+﻿python : 2026-09-19 12:17:23,860 [INFO] WAFERSTART wafer=1 lot=A12345
+At line:1 char:357
++ ... YCU\hackathon\app; python replay.py *> ..\reports\replay_full_log.txt
++                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-09-19 12:1...er=1 lot=A12345:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-09-19 12:17:51,167 [WARNING] wafer=1 ANOMALY findings=['site_unbalance']
+2026-09-19 12:18:14,124 [WARNING] wafer=1 ANOMALY findings=['site_unbalance']
+2026-09-19 12:18:35,554 [WARNING] wafer=1 ANOMALY findings=['site_unbalance']
+2026-09-19 12:18:56,344 [WARNING] wafer=1 ANOMALY findings=['site_unbalance']
+2026-09-19 12:18:56,359 [WARNING] wafer=1 ANOMALY findings=['site_unbalance']
+2026-09-19 12:18:56,359 [INFO] WAFEREND wafer=1 n_devices=80 yield=85.0%
+2026-09-19 12:18:56,374 [INFO] WAFERSTART wafer=2 lot=A12345
+2026-09-19 12:20:17,001 [INFO] wafer=2 normal, report saved to C:\Users\henry\OneDrive\Desktop\NYCU\hackath
+on\reports\live\wafer_02_20260919_122016.html
+2026-09-19 12:20:17,001 [INFO] WAFEREND wafer=2 n_devices=80 yield=53.8%
+2026-09-19 12:20:17,013 [INFO] WAFERSTART wafer=3 lot=A12345
+2026-09-19 12:20:37,514 [WARNING] wafer=3 ANOMALY findings=['site_unbalance', 'low_yield']
+2026-09-19 12:20:59,524 [WARNING] wafer=3 ANOMALY findings=['low_yield']
+2026-09-19 12:21:21,045 [WARNING] wafer=3 ANOMALY findings=['low_yield']
+2026-09-19 12:21:43,552 [WARNING] wafer=3 ANOMALY findings=['low_yield']
+2026-09-19 12:21:43,570 [WARNING] wafer=3 ANOMALY findings=['low_yield', 'stdev_trend_down']
+2026-09-19 12:21:43,571 [INFO] WAFEREND wafer=3 n_devices=80 yield=67.5%
+2026-09-19 12:21:43,585 [INFO] WAFERSTART wafer=4 lot=A12345
+2026-09-19 12:22:03,000 [WARNING] wafer=4 ANOMALY findings=['site_unbalance']
+2026-09-19 12:23:09,057 [INFO] wafer=4 normal, report saved to C:\Users\henry\OneDrive\Desktop\NYCU\hackath
+on\reports\live\wafer_04_20260919_122309.html
+2026-09-19 12:23:09,057 [INFO] WAFEREND wafer=4 n_devices=80 yield=96.2%
+2026-09-19 12:23:09,075 [INFO] WAFERSTART wafer=5 lot=A12345
+2026-09-19 12:23:29,159 [WARNING] wafer=5 ANOMALY findings=['site_unbalance']
+2026-09-19 12:24:33,197 [INFO] wafer=5 normal, report saved to C:\Users\henry\OneDrive\Desktop\NYCU\hackath
+on\reports\live\wafer_05_20260919_122433.html
+2026-09-19 12:24:33,197 [INFO] WAFEREND wafer=5 n_devices=80 yield=87.5%
+2026-09-19 12:24:33,215 [INFO] WAFERSTART wafer=6 lot=A12345
+2026-09-19 12:24:54,243 [WARNING] wafer=6 ANOMALY findings=['site_unbalance']
+2026-09-19 12:25:58,733 [INFO] wafer=6 normal, report saved to C:\Users\henry\OneDrive\Desktop\NYCU\hackath
+on\reports\live\wafer_06_20260919_122558.html
+2026-09-19 12:25:58,733 [INFO] WAFEREND wafer=6 n_devices=80 yield=92.5%
+2026-09-19 12:25:58,754 [INFO] WAFERSTART wafer=7 lot=A12345
+2026-09-19 12:26:18,860 [WARNING] wafer=7 ANOMALY findings=['site_unbalance']
+2026-09-19 12:27:22,712 [INFO] wafer=7 normal, report saved to C:\Users\henry\OneDrive\Desktop\NYCU\hackath
+on\reports\live\wafer_07_20260919_122722.html
+2026-09-19 12:27:22,713 [INFO] WAFEREND wafer=7 n_devices=80 yield=86.2%
+2026-09-19 12:27:22,736 [INFO] WAFERSTART wafer=8 lot=A12345
+2026-09-19 12:27:42,607 [WARNING] wafer=8 ANOMALY findings=['site_unbalance']
+2026-09-19 12:28:48,291 [INFO] wafer=8 normal, report saved to C:\Users\henry\OneDrive\Desktop\NYCU\hackath
+on\reports\live\wafer_08_20260919_122848.html
+2026-09-19 12:28:48,292 [INFO] WAFEREND wafer=8 n_devices=80 yield=96.2%
+2026-09-19 12:28:48,311 [INFO] WAFERSTART wafer=9 lot=A12345
+2026-09-19 12:29:08,718 [WARNING] wafer=9 ANOMALY findings=['site_unbalance']
+2026-09-19 12:29:29,810 [WARNING] wafer=9 ANOMALY findings=['low_yield']
+2026-09-19 12:29:51,364 [WARNING] wafer=9 ANOMALY findings=['low_yield']
+2026-09-19 12:30:12,831 [WARNING] wafer=9 ANOMALY findings=['low_yield']
+2026-09-19 12:30:12,847 [WARNING] wafer=9 ANOMALY findings=['low_yield']
+2026-09-19 12:30:12,847 [INFO] WAFEREND wafer=9 n_devices=80 yield=68.8%
+2026-09-19 12:30:12,866 [INFO] WAFERSTART wafer=10 lot=A12345
+2026-09-19 12:30:32,753 [WARNING] wafer=10 ANOMALY findings=['site_unbalance']
+2026-09-19 13:18:07,128 [INFO] wafer=10 normal, report saved to C:\Users\henry\OneDrive\Desktop\NYCU\hackat
+hon\reports\live\wafer_10_20260919_131807.html
+2026-09-19 13:18:07,128 [INFO] WAFEREND wafer=10 n_devices=80 yield=95.0%
+2026-09-19 13:18:07,145 [INFO] WAFERSTART wafer=11 lot=A12345
+2026-09-19 13:18:26,326 [WARNING] wafer=11 ANOMALY findings=['site_unbalance']
+2026-09-19 13:19:26,864 [INFO] wafer=11 normal, report saved to C:\Users\henry\OneDrive\Desktop\NYCU\hackat
+hon\reports\live\wafer_11_20260919_131926.html
+2026-09-19 13:19:26,865 [INFO] WAFEREND wafer=11 n_devices=80 yield=91.2%
+2026-09-19 13:19:26,881 [INFO] WAFERSTART wafer=12 lot=A12345
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 1] 偵測到 1 項異常：
+  - Site 不平衡 (Site Unbalance) [critical] score=0.967 （主因測項：6020_Main.subflow1.Flow1_Suite273#CP, z=+16.23）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_01_20260919_121751_(midwafer).html
+
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 1] 偵測到 1 項異常：
+  - Site 不平衡 (Site Unbalance) [critical] score=0.900 （主因測項：6020_Main.subflow1.Flow1_Suite273#CP, z=+10.31）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_01_20260919_121814_(midwafer).html
+
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 1] 偵測到 1 項異常：
+  - Site 不平衡 (Site Unbalance) [critical] score=1.000 （主因測項：11080_Main.subflow2.Flow2_Suite26#CP, z=+7.95）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_01_20260919_121835_(midwafer).html
+
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 1] 偵測到 1 項異常：
+  - Site 不平衡 (Site Unbalance) [critical] score=1.000 （主因測項：11080_Main.subflow2.Flow2_Suite26#CP, z=+6.72）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_01_20260919_121856_(midwafer).html
+
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 1] 偵測到 1 項異常：
+  - Site 不平衡 (Site Unbalance) [critical] score=1.000 （主因測項：11080_Main.subflow2.Flow2_Suite26#CP, z=+6.72）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_01_20260919_121856.html
+
+wafer  1 [Site unbalance  ] -> alerted=True
+wafer  2 [Normal          ] -> alerted=False
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 3] 偵測到 2 項異常：
+  - Site 不平衡 (Site Unbalance) [critical] score=0.733 （主因測項：4860_Main.subflow1.Flow1_Suite215#CP, z=+10.59）
+  - 低良率 (Low Yield) [critical] score=0.600 （主因測項：4680_Main.subflow1.Flow1_Suite206#CP, z=+33.71）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_03_20260919_122037_(midwafer).html
+
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 3] 偵測到 1 項異常：
+  - 低良率 (Low Yield) [critical] score=0.600 （主因測項：4680_Main.subflow1.Flow1_Suite206#CP, z=+16.73）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_03_20260919_122059_(midwafer).html
+
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 3] 偵測到 1 項異常：
+  - 低良率 (Low Yield) [critical] score=0.667 （主因測項：5400_Main.subflow1.Flow1_Suite242#CP, z=+16.73）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_03_20260919_122121_(midwafer).html
+
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 3] 偵測到 1 項異常：
+  - 低良率 (Low Yield) [critical] score=0.600 （主因測項：5400_Main.subflow1.Flow1_Suite242#CP, z=+12.49）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_03_20260919_122143_(midwafer).html
+
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 3] 偵測到 2 項異常：
+  - 低良率 (Low Yield) [critical] score=0.600 （主因測項：5400_Main.subflow1.Flow1_Suite242#CP, z=+12.49）
+  - 變異數下降趨勢 (Stdev Trend Down) [warning] score=0.200 （主因測項：5900_Main.subflow1.Flow1_Suite267#CP, z=-15.19）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_03_20260919_122143.html
+
+wafer  3 [Low yield       ] -> alerted=True
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 4] 偵測到 1 項異常：
+  - Site 不平衡 (Site Unbalance) [critical] score=0.533 （主因測項：16480_Main.subflow2.Flow2_Suite296#CP, z=+9.08）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_04_20260919_122202_(midwafer).html
+
+wafer  4 [Normal          ] -> alerted=True
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 5] 偵測到 1 項異常：
+  - Site 不平衡 (Site Unbalance) [critical] score=0.600 （主因測項：45200_Main.subflow5.Flow5_Suite232#CP, z=+9.41）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_05_20260919_122329_(midwafer).html
+
+wafer  5 [Normal          ] -> alerted=True
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 6] 偵測到 1 項異常：
+  - Site 不平衡 (Site Unbalance) [critical] score=0.733 （主因測項：4860_Main.subflow1.Flow1_Suite215#CP, z=+9.13）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_06_20260919_122454_(midwafer).html
+
+wafer  6 [Normal          ] -> alerted=True
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 7] 偵測到 1 項異常：
+  - Site 不平衡 (Site Unbalance) [critical] score=0.600 （主因測項：5060_Main.subflow1.Flow1_Suite225#CP, z=+8.53）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_07_20260919_122618_(midwafer).html
+
+wafer  7 [Normal          ] -> alerted=True
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 8] 偵測到 1 項異常：
+  - Site 不平衡 (Site Unbalance) [critical] score=0.633 （主因測項：4960_Main.subflow1.Flow1_Suite220#CP, z=+7.03）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_08_20260919_122742_(midwafer).html
+
+wafer  8 [Normal          ] -> alerted=True
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 9] 偵測到 1 項異常：
+  - Site 不平衡 (Site Unbalance) [critical] score=0.767 （主因測項：11080_Main.subflow2.Flow2_Suite26#CP, z=+10.21）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_09_20260919_122908_(midwafer).html
+
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 9] 偵測到 1 項異常：
+  - 低良率 (Low Yield) [critical] score=0.500 （主因測項：4680_Main.subflow1.Flow1_Suite206#CP, z=+25.22）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_09_20260919_122929_(midwafer).html
+
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 9] 偵測到 1 項異常：
+  - 低良率 (Low Yield) [critical] score=0.600 （主因測項：4680_Main.subflow1.Flow1_Suite206#CP, z=+16.73）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_09_20260919_122951_(midwafer).html
+
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 9] 偵測到 1 項異常：
+  - 低良率 (Low Yield) [critical] score=0.600 （主因測項：4680_Main.subflow1.Flow1_Suite206#CP, z=+12.49）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_09_20260919_123012_(midwafer).html
+
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 9] 偵測到 1 項異常：
+  - 低良率 (Low Yield) [critical] score=0.600 （主因測項：4680_Main.subflow1.Flow1_Suite206#CP, z=+12.49）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_09_20260919_123012.html
+
+wafer  9 [Low yield       ] -> alerted=True
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 10] 偵測到 1 項異常：
+  - Site 不平衡 (Site Unbalance) [critical] score=0.533 （主因測項：11080_Main.subflow2.Flow2_Suite26#CP, z=+9.70）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_10_20260919_123032_(midwafer).html
+
+wafer 10 [Normal          ] -> alerted=True
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 11] 偵測到 1 項異常：
+  - Site 不平衡 (Site Unbalance) [critical] score=0.600 （主因測項：11080_Main.subflow2.Flow2_Suite26#CP, z=+11.02）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_11_20260919_131826_(midwafer).html
+
+wafer 11 [Normal          ] -> alerted=True
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 12] 偵測到 1 項異常：
+  - Site 不平衡 (Site Unbalance) [critical] score=0.567 （主因測項：45200_Main.subflow5.Flow5_Suite232#CP, z=+8.17）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_12_20260919_131944_(midwafer).html
+2026-09-19 13:19:44,909 [WARNING] wafer=12 ANOMALY findings=['site_unbalance']
+2026-09-19 13:20:47,386 [INFO] wafer=12 normal, report saved to C:\Users\henry\OneDrive\Desktop\NYCU\hackat
+hon\reports\live\wafer_12_20260919_132047.html
+2026-09-19 13:20:47,386 [INFO] WAFEREND wafer=12 n_devices=80 yield=97.5%
+2026-09-19 13:20:47,407 [INFO] WAFERSTART wafer=13 lot=A12345
+2026-09-19 13:21:08,531 [WARNING] wafer=13 ANOMALY findings=['site_unbalance']
+2026-09-19 13:22:13,181 [INFO] wafer=13 normal, report saved to C:\Users\henry\OneDrive\Desktop\NYCU\hackat
+hon\reports\live\wafer_13_20260919_132213.html
+2026-09-19 13:22:13,182 [INFO] WAFEREND wafer=13 n_devices=80 yield=92.5%
+2026-09-19 13:22:13,204 [INFO] WAFERSTART wafer=14 lot=A12345
+2026-09-19 13:22:33,344 [WARNING] wafer=14 ANOMALY findings=['site_unbalance']
+2026-09-19 13:22:56,430 [WARNING] wafer=14 ANOMALY findings=['site_unbalance']
+2026-09-19 13:23:17,995 [WARNING] wafer=14 ANOMALY findings=['mean_trend_up']
+2026-09-19 13:23:39,637 [WARNING] wafer=14 ANOMALY findings=['mean_trend_up']
+2026-09-19 13:23:39,656 [WARNING] wafer=14 ANOMALY findings=['mean_trend_up']
+2026-09-19 13:23:39,656 [INFO] WAFEREND wafer=14 n_devices=80 yield=83.8%
+2026-09-19 13:23:39,671 [INFO] WAFERSTART wafer=15 lot=A12345
+2026-09-19 13:23:59,383 [WARNING] wafer=15 ANOMALY findings=['site_unbalance']
+2026-09-19 13:25:02,516 [INFO] wafer=15 normal, report saved to C:\Users\henry\OneDrive\Desktop\NYCU\hackat
+hon\reports\live\wafer_15_20260919_132502.html
+2026-09-19 13:25:02,517 [INFO] WAFEREND wafer=15 n_devices=80 yield=92.5%
+2026-09-19 13:25:02,534 [INFO] WAFERSTART wafer=16 lot=A12345
+2026-09-19 13:25:21,948 [WARNING] wafer=16 ANOMALY findings=['site_unbalance']
+2026-09-19 13:26:25,800 [INFO] wafer=16 normal, report saved to C:\Users\henry\OneDrive\Desktop\NYCU\hackat
+hon\reports\live\wafer_16_20260919_132625.html
+2026-09-19 13:26:25,801 [INFO] WAFEREND wafer=16 n_devices=80 yield=96.2%
+2026-09-19 13:26:25,820 [INFO] WAFERSTART wafer=17 lot=A12345
+2026-09-19 13:26:45,305 [WARNING] wafer=17 ANOMALY findings=['site_unbalance']
+2026-09-19 13:27:50,167 [INFO] wafer=17 normal, report saved to C:\Users\henry\OneDrive\Desktop\NYCU\hackat
+hon\reports\live\wafer_17_20260919_132750.html
+2026-09-19 13:27:50,167 [INFO] WAFEREND wafer=17 n_devices=80 yield=93.8%
+2026-09-19 13:27:50,185 [INFO] WAFERSTART wafer=18 lot=A12345
+2026-09-19 13:28:08,877 [WARNING] wafer=18 ANOMALY findings=['site_unbalance']
+2026-09-19 13:28:48,739 [WARNING] wafer=18 ANOMALY findings=['mean_trend_down']
+2026-09-19 13:29:08,472 [WARNING] wafer=18 ANOMALY findings=['mean_trend_down']
+2026-09-19 13:29:08,493 [WARNING] wafer=18 ANOMALY findings=['mean_trend_down']
+2026-09-19 13:29:08,493 [INFO] WAFEREND wafer=18 n_devices=80 yield=86.2%
+2026-09-19 13:29:08,509 [INFO] WAFERSTART wafer=19 lot=A12345
+2026-09-19 13:29:26,830 [WARNING] wafer=19 ANOMALY findings=['site_unbalance']
+2026-09-19 13:30:26,503 [INFO] wafer=19 normal, report saved to C:\Users\henry\OneDrive\Desktop\NYCU\hackat
+hon\reports\live\wafer_19_20260919_133026.html
+2026-09-19 13:30:26,503 [INFO] WAFEREND wafer=19 n_devices=80 yield=91.2%
+2026-09-19 13:30:26,522 [INFO] WAFERSTART wafer=20 lot=A12345
+2026-09-19 13:30:44,915 [WARNING] wafer=20 ANOMALY findings=['site_unbalance']
+2026-09-19 13:31:47,025 [INFO] wafer=20 normal, report saved to C:\Users\henry\OneDrive\Desktop\NYCU\hackat
+hon\reports\live\wafer_20_20260919_133147.html
+2026-09-19 13:31:47,025 [INFO] WAFEREND wafer=20 n_devices=80 yield=98.8%
+2026-09-19 13:31:47,042 [INFO] WAFERSTART wafer=21 lot=A12345
+2026-09-19 13:32:05,236 [WARNING] wafer=21 ANOMALY findings=['site_unbalance']
+2026-09-19 13:33:06,039 [INFO] wafer=21 normal, report saved to C:\Users\henry\OneDrive\Desktop\NYCU\hackat
+hon\reports\live\wafer_21_20260919_133306.html
+2026-09-19 13:33:06,039 [INFO] WAFEREND wafer=21 n_devices=80 yield=96.2%
+2026-09-19 13:33:06,060 [INFO] WAFERSTART wafer=22 lot=A12345
+2026-09-19 13:33:24,704 [WARNING] wafer=22 ANOMALY findings=['site_unbalance']
+2026-09-19 13:34:24,854 [INFO] wafer=22 normal, report saved to C:\Users\henry\OneDrive\Desktop\NYCU\hackat
+hon\reports\live\wafer_22_20260919_133424.html
+2026-09-19 13:34:24,854 [INFO] WAFEREND wafer=22 n_devices=80 yield=93.8%
+2026-09-19 13:34:24,874 [INFO] WAFERSTART wafer=23 lot=A12345
+2026-09-19 13:34:42,791 [WARNING] wafer=23 ANOMALY findings=['site_unbalance']
+2026-09-19 13:35:23,627 [WARNING] wafer=23 ANOMALY findings=['stdev_trend_up']
+2026-09-19 13:35:45,573 [WARNING] wafer=23 ANOMALY findings=['stdev_trend_up']
+2026-09-19 13:35:45,628 [WARNING] wafer=23 ANOMALY findings=['stdev_trend_up']
+2026-09-19 13:35:45,628 [INFO] WAFEREND wafer=23 n_devices=80 yield=83.8%
+2026-09-19 13:35:45,650 [INFO] WAFERSTART wafer=24 lot=A12345
+2026-09-19 13:36:05,355 [WARNING] wafer=24 ANOMALY findings=['site_unbalance']
+2026-09-19 13:37:12,733 [INFO] wafer=24 normal, report saved to C:\Users\henry\OneDrive\Desktop\NYCU\hackat
+hon\reports\live\wafer_24_20260919_133712.html
+2026-09-19 13:37:12,733 [INFO] WAFEREND wafer=24 n_devices=80 yield=81.2%
+2026-09-19 13:37:12,752 [INFO] WAFERSTART wafer=25 lot=A12345
+
+wafer 12 [Normal          ] -> alerted=True
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 13] 偵測到 1 項異常：
+  - Site 不平衡 (Site Unbalance) [critical] score=0.600 （主因測項：11080_Main.subflow2.Flow2_Suite26#CP, z=+11.05）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_13_20260919_132108_(midwafer).html
+
+wafer 13 [Normal          ] -> alerted=True
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 14] 偵測到 1 項異常：
+  - Site 不平衡 (Site Unbalance) [critical] score=0.633 （主因測項：34820_Main.subflow4.Flow4_Suite213#CP, z=+8.82）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_14_20260919_132233_(midwafer).html
+
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 14] 偵測到 1 項異常：
+  - Site 不平衡 (Site Unbalance) [critical] score=0.433 （主因測項：34820_Main.subflow4.Flow4_Suite213#CP, z=+5.82）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_14_20260919_132256_(midwafer).html
+
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 14] 偵測到 1 項異常：
+  - 均值上升趨勢 (Mean Trend Up) [critical] score=0.900 （主因測項：14240_Main.subflow2.Flow2_Suite184#CP, z=-4.67）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_14_20260919_132317_(midwafer).html
+
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 14] 偵測到 1 項異常：
+  - 均值上升趨勢 (Mean Trend Up) [critical] score=1.000 （主因測項：14240_Main.subflow2.Flow2_Suite184#CP, z=-6.10）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_14_20260919_132339_(midwafer).html
+
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 14] 偵測到 1 項異常：
+  - 均值上升趨勢 (Mean Trend Up) [critical] score=1.000 （主因測項：14240_Main.subflow2.Flow2_Suite184#CP, z=-6.10）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_14_20260919_132339.html
+
+wafer 14 [Mean Trend Up   ] -> alerted=True
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 15] 偵測到 1 項異常：
+  - Site 不平衡 (Site Unbalance) [critical] score=0.600 （主因測項：11080_Main.subflow2.Flow2_Suite26#CP, z=+8.78）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_15_20260919_132359_(midwafer).html
+
+wafer 15 [Normal          ] -> alerted=True
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 16] 偵測到 1 項異常：
+  - Site 不平衡 (Site Unbalance) [critical] score=0.667 （主因測項：5720_Main.subflow1.Flow1_Suite258#CP, z=+7.35）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_16_20260919_132521_(midwafer).html
+
+wafer 16 [Normal          ] -> alerted=True
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 17] 偵測到 1 項異常：
+  - Site 不平衡 (Site Unbalance) [critical] score=0.500 （主因測項：5720_Main.subflow1.Flow1_Suite258#CP, z=+9.71）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_17_20260919_132645_(midwafer).html
+
+wafer 17 [Normal          ] -> alerted=True
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 18] 偵測到 1 項異常：
+  - Site 不平衡 (Site Unbalance) [critical] score=0.533 （主因測項：1080_Main.subflow1.Flow1_Suite26#CP, z=+8.64）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_18_20260919_132808_(midwafer).html
+
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 18] 偵測到 1 項異常：
+  - 均值下降趨勢 (Mean Trend Down) [critical] score=0.433 （主因測項：18500_Main.subflow2.Flow2_Suite397#CP, z=-4.09）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_18_20260919_132848_(midwafer).html
+
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 18] 偵測到 1 項異常：
+  - 均值下降趨勢 (Mean Trend Down) [critical] score=1.000 （主因測項：89000_Main.IDDQ_flow.IDDQ_A10#IO10, z=+4.48）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_18_20260919_132908_(midwafer).html
+
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 18] 偵測到 1 項異常：
+  - 均值下降趨勢 (Mean Trend Down) [critical] score=1.000 （主因測項：89000_Main.IDDQ_flow.IDDQ_A10#IO10, z=+4.48）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_18_20260919_132908.html
+
+wafer 18 [Mean Trend Down ] -> alerted=True
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 19] 偵測到 1 項異常：
+  - Site 不平衡 (Site Unbalance) [critical] score=0.567 （主因測項：35440_Main.subflow4.Flow4_Suite244#CP, z=+8.29）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_19_20260919_132926_(midwafer).html
+
+wafer 19 [Normal          ] -> alerted=True
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 20] 偵測到 1 項異常：
+  - Site 不平衡 (Site Unbalance) [critical] score=0.567 （主因測項：34820_Main.subflow4.Flow4_Suite213#CP, z=+8.12）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_20_20260919_133044_(midwafer).html
+
+wafer 20 [Normal          ] -> alerted=True
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 21] 偵測到 1 項異常：
+  - Site 不平衡 (Site Unbalance) [critical] score=0.600 （主因測項：45200_Main.subflow5.Flow5_Suite232#CP, z=+9.93）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_21_20260919_133205_(midwafer).html
+
+wafer 21 [Normal          ] -> alerted=True
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 22] 偵測到 1 項異常：
+  - Site 不平衡 (Site Unbalance) [critical] score=0.667 （主因測項：5520_Main.subflow1.Flow1_Suite248#CP, z=+9.37）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_22_20260919_133324_(midwafer).html
+
+wafer 22 [Normal          ] -> alerted=True
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 23] 偵測到 1 項異常：
+  - Site 不平衡 (Site Unbalance) [critical] score=0.733 （主因測項：6020_Main.subflow1.Flow1_Suite273#CP, z=+10.38）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_23_20260919_133442_(midwafer).html
+
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 23] 偵測到 1 項異常：
+  - 變異數上升趨勢 (Stdev Trend Up) [critical] score=0.800 （主因測項：5280_Main.subflow1.Flow1_Suite236#CP, z=-25.71）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_23_20260919_133523_(midwafer).html
+
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 23] 偵測到 1 項異常：
+  - 變異數上升趨勢 (Stdev Trend Up) [critical] score=1.000 （主因測項：5280_Main.subflow1.Flow1_Suite236#CP, z=-25.05）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_23_20260919_133545_(midwafer).html
+
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 23] 偵測到 1 項異常：
+  - 變異數上升趨勢 (Stdev Trend Up) [critical] score=1.000 （主因測項：5280_Main.subflow1.Flow1_Suite236#CP, z=-25.05）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_23_20260919_133545.html
+
+wafer 23 [Stdev Trend Up  ] -> alerted=True
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 24] 偵測到 1 項異常：
+  - Site 不平衡 (Site Unbalance) [critical] score=0.567 （主因測項：34820_Main.subflow4.Flow4_Suite213#CP, z=+8.93）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_24_20260919_133605_(midwafer).html
+
+wafer 24 [Normal          ] -> alerted=True
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 25] 偵測到 1 項異常：
+  - Site 不平衡 (Site Unbalance) [critical] score=0.667 （主因測項：6020_Main.subflow1.Flow1_Suite273#CP, z=+12.27）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_25_20260919_133732_(midwafer).html
+2026-09-19 13:37:32,478 [WARNING] wafer=25 ANOMALY findings=['site_unbalance']
+2026-09-19 13:38:33,821 [WARNING] wafer=25 ANOMALY findings=['stdev_trend_down']
+2026-09-19 13:38:33,841 [WARNING] wafer=25 ANOMALY findings=['stdev_trend_down']
+2026-09-19 13:38:33,842 [INFO] WAFEREND wafer=25 n_devices=80 yield=90.0%
+
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 25] 偵測到 1 項異常：
+  - 變異數下降趨勢 (Stdev Trend Down) [critical] score=1.000 （主因測項：5900_Main.subflow1.Flow1_Suite267#CP, z=-18.06）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_25_20260919_133833_(midwafer).html
+
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 25] 偵測到 1 項異常：
+  - 變異數下降趨勢 (Stdev Trend Down) [critical] score=1.000 （主因測項：5900_Main.subflow1.Flow1_Suite267#CP, z=-18.06）
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_25_20260919_133833.html
+
+wafer 25 [Stdev Trend Down] -> alerted=True
+
+=== 場景二：線上（causally-safe）預測誤差，依 stage ===
+           mean    max  count
+stage                        
+1      0.005184  0.180   2000
+2      0.003166  0.068   2000
+3      0.004351  0.170   2000
+4      0.002687  0.037   2000
+5      0.002750  0.077   2000
+6      0.002652  0.066   2000
+
+saved C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\replay_predictions.csv
+
+=== 場景一：異常偵測 vs. 已知 ground truth ===
+  W01: status=Site unbalance   alerted=True OK
+  W02: status=Normal           alerted=False OK
+  W03: status=Low yield        alerted=True OK
+  W04: status=Normal           alerted=True MISS
+  W05: status=Normal           alerted=True MISS
+  W06: status=Normal           alerted=True MISS
+  W07: status=Normal           alerted=True MISS
+  W08: status=Normal           alerted=True MISS
+  W09: status=Low yield        alerted=True OK
+  W10: status=Normal           alerted=True MISS
+  W11: status=Normal           alerted=True MISS
+  W12: status=Normal           alerted=True MISS
+  W13: status=Normal           alerted=True MISS
+  W14: status=Mean Trend Up    alerted=True OK
+  W15: status=Normal           alerted=True MISS
+  W16: status=Normal           alerted=True MISS
+  W17: status=Normal           alerted=True MISS
+  W18: status=Mean Trend Down  alerted=True OK
+  W19: status=Normal           alerted=True MISS
+  W20: status=Normal           alerted=True MISS
+  W21: status=Normal           alerted=True MISS
+  W22: status=Normal           alerted=True MISS
+  W23: status=Stdev Trend Up   alerted=True OK
+  W24: status=Normal           alerted=True MISS
+  W25: status=Stdev Trend Down alerted=True OK
+
+8/25 wafers 判斷正確（alert vs. no-alert 二元對照）

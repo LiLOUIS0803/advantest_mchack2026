@@ -1,0 +1,6 @@
+{
+  "prefixes_compared": 408,
+  "max_probability_error": 0.0,
+  "labels_identical": true,
+  "note": "Local numerical parity; native ONEAPI and Linux Python 3.10 require target verification."
+}

@@ -1,0 +1,25 @@
+W1: Site unbalance
+W2: Normal 
+W3: Low yield which yield is low than 80
+W4: Normal
+W5: Normal
+W6: Normal
+W7: Normal
+W8: Normal
+W9: Low yield which yield is low than 80
+W10: Normal
+W11: Normal
+W12: Normal
+W13: Normal
+W14: Mean Trend Up
+W15: Normal
+W16: Normal
+W17: Normal
+W18: Mean Trend Down
+W19: Normal
+W20: Normal
+W21: Normal
+W22: Normal
+W23: Stdev Trend Up
+W24: Normal
+W25: Stdev Trend Down

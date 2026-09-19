@@ -1,0 +1,51 @@
+2026-09-19 15:10:45,392 [INFO] WAFERSTART wafer=14 lot=A12345
+2026-09-19 15:11:11,316 [WARNING] wafer=14 die PID=16 site=4 (X=7.0,Y=5.0) 判定為離群 die：19 個測項離群
+2026-09-19 15:11:12,766 [WARNING] wafer=14 die PID=17 site=1 (X=5.0,Y=1.0) 判定為離群 die：37 個測項離群
+2026-09-19 15:11:14,172 [WARNING] wafer=14 die PID=18 site=2 (X=10.0,Y=4.0) 判定為離群 die：61 個測項離群
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 14] ABNORMAL → 原因：均值上升趨勢 (Mean Trend Up)
+  - 3 顆離群 die 橫跨 3 個 site，PID 16~18，離群方向為正的比例 100%
+  - 離群測項數隨測試順序 19 → 61（最大 61）
+  問題 die：PID16(site4,X7,Y5); PID17(site1,X5,Y1); PID18(site2,X10,Y4)
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_14_20260919_151114_(midwafer).html
+
+2026-09-19 15:11:14,215 [WARNING] wafer=14 ABNORMAL cause=mean_trend_up final=False
+2026-09-19 15:11:15,683 [WARNING] wafer=14 die PID=19 site=3 (X=7.0,Y=6.0) 判定為離群 die：73 個測項離群
+2026-09-19 15:11:17,161 [WARNING] wafer=14 die PID=20 site=4 (X=4.0,Y=4.0) 判定為離群 die：93 個測項離群
+2026-09-19 15:11:18,600 [WARNING] wafer=14 die PID=21 site=1 (X=8.0,Y=3.0) 判定為離群 die：102 個測項離群
+2026-09-19 15:11:20,043 [WARNING] wafer=14 die PID=22 site=2 (X=10.0,Y=2.0) 判定為離群 die：106 個測項離群
+2026-09-19 15:11:21,463 [WARNING] wafer=14 die PID=23 site=3 (X=5.0,Y=7.0) 判定為離群 die：108 個測項離群
+2026-09-19 15:11:22,903 [WARNING] wafer=14 die PID=24 site=4 (X=6.0,Y=4.0) 判定為離群 die：110 個測項離群
+2026-09-19 15:11:24,439 [WARNING] wafer=14 die PID=25 site=1 (X=1.0,Y=4.0) 判定為離群 die：115 個測項離群
+2026-09-19 15:11:25,882 [WARNING] wafer=14 die PID=26 site=2 (X=6.0,Y=3.0) 判定為離群 die：110 個測項離群
+2026-09-19 15:11:27,297 [WARNING] wafer=14 die PID=27 site=3 (X=9.0,Y=7.0) 判定為離群 die：110 個測項離群
+2026-09-19 15:11:28,770 [WARNING] wafer=14 die PID=28 site=4 (X=5.0,Y=3.0) 判定為離群 die：110 個測項離群
+[ActionManager.set_message] tester=SIM_TESTER_1
+[Wafer 14] ABNORMAL → 原因：均值上升趨勢 (Mean Trend Up)
+  - 13 顆離群 die 橫跨 4 個 site，PID 16~28，離群方向為正的比例 100%
+  - 離群測項數隨測試順序 19 → 110（最大 115）
+  問題 die：PID16(site4,X7,Y5); PID17(site1,X5,Y1); PID18(site2,X10,Y4); PID19(site3,X7,Y6); PID20(site4,X4,Y4); PID21(site1,X8,Y3); PID22(site2,X10,Y2); PID23(site3,X5,Y7); PID24(site4,X6,Y4); PID25(site1,X1,Y4); PID26(site2,X6,Y3); PID27(site3,X9,Y7) …共 13 顆
+完整視覺化報告：C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\live\wafer_14_20260919_151243.html
+
+2026-09-19 15:12:43,865 [WARNING] wafer=14 ABNORMAL cause=mean_trend_up final=True
+2026-09-19 15:12:43,866 [INFO] WAFEREND wafer=14 n_devices=80 yield=83.8%
+wafer 14 [Mean Trend Up   ] -> final_alerted=True (any_alerted=True)
+
+=== 場景二：線上（causally-safe）預測誤差，依 stage ===
+           mean    max  count
+stage                        
+1      0.005637  0.017     80
+2      0.002950  0.013     80
+3      0.003288  0.014     80
+4      0.003050  0.037     80
+5      0.002763  0.006     80
+6      0.002375  0.007     80
+
+saved C:\Users\henry\OneDrive\Desktop\NYCU\hackathon\reports\replay_predictions_h2.csv
+
+=== 場景一：異常偵測 vs. 已知 ground truth ===
+（final_alerted 是 WAFEREND 當下的最終結論；any_alerted 連同測到一半的早期預警也算，僅供參考）
+  W14: status=Mean Trend Up    final=OK  (any=OK)
+
+最終判斷：1/1 正確
+含早期預警在內：1/1 正確

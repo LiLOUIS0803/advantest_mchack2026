@@ -1,0 +1,14 @@
+{
+ "container":[
+    {
+      "timing": "OnPostBin",
+      "loc": "edge",
+      "name": "py-app",
+      "cmd": "{\"key\":\"prod_action\",\"data\":\"\"}",
+      "timeout": 2
+   } 
+ ]
+  
+}
+
+

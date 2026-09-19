@@ -1,0 +1,12 @@
+
+burstable sequence BurstSeqB14 {
+
+    parallel
+    {
+         sequential
+         {
+             patternCall patterns.PatB1;
+             patternCall patterns.PatB4;
+         }
+     }
+}

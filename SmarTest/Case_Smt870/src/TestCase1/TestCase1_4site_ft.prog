@@ -1,0 +1,25 @@
+testprogram TestCase1_4site_ft
+{
+    var wait_enable= false;
+    var run_ore= true;
+    var runAdaptive= true;
+    var wait_time = 3;
+    var Boolean pause_eot= false;
+    var sim_result= 100;
+    var fail_rate=0;
+    var lotid= "";
+    var waferid= "";
+    var stage="ft";
+    var eng= 1;
+    dutboard = common.Pins;
+
+    testflow PreBind{
+        flow= TestCase1.TestCase1_Prebind;
+    }
+    testflow PreRun{
+        flow= TestCase1.TestCase1_PreRun;
+    }
+    testflow Main {
+        flow = TestCase1.Main;
+    }
+}

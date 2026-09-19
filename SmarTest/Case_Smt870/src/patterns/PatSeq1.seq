@@ -1,0 +1,46 @@
+
+sequence PatSeq1 {
+
+   bypassable parallel patGrp1
+   {
+        sequential seq_1
+        {
+           patternCall patterns.PatAll1;
+           parallel patGrp1_1
+           {
+
+             sequential patA1_2
+             {
+                patternCall patterns.PatA1;
+                patternCall patterns.PatA2;
+             }
+             sequential patB1_2
+             {
+                patternCall patterns.PatB1;
+                patternCall patterns.PatB2;
+             }
+             sequential patC1_2
+             {
+                parallel PatC1
+                {
+                   sequential SeqC1
+                   {
+                     patternCall patterns.PatC1;
+                   }
+                }
+                parallel PatC2
+                {
+                   sequential SeqC2
+                   {
+                     patternCall patterns.PatC2;
+                   }
+                }
+             }
+
+           }
+           patternCall patterns.PatAll2;
+        }
+
+   }
+
+}

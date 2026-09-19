@@ -1,0 +1,11 @@
+
+sequence PatBRun {
+
+    patternCall patterns.PatB1;
+    patternCall patterns.PatB2;
+    patternCall patterns.PatB3;
+    patternCall patterns.PatB4;
+    patternCall patterns.PatB5;
+    patternCall patterns.PatB6;
+
+}

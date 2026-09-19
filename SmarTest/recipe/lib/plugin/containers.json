@@ -1,0 +1,16 @@
+{
+ "path_log" : "/tmp/acs_tcct",
+ "loglevel" : "debug",
+ "container":[
+    {
+      "timing": "On_POSTBIN",
+      "loc": "edge",
+      "name": "py-app",
+      "cmd": "{\"key\":\"prod_action\",\"data\":\"\"}",
+      "timeout": 2
+   } 
+ ]
+  
+}
+
+

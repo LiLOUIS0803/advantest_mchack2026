@@ -1,0 +1,23 @@
+{
+  "version": "1",
+  "name": "py-app",
+  "edge": {
+    "containers": [
+      {
+        "image": "grp4/py-app:tasks-v2",
+        "metrics": {},
+        "name": "py-app",
+        "requirements": {
+          "gpu": false
+        },
+        "environment": {
+          "ONEAPI_DEBUG": "6",
+          "REPORT_DIR": "/var/lib/wafer-watch"
+        }
+      }
+    ]
+  },
+  "selector": {
+    "device_name": "all"
+  }
+}

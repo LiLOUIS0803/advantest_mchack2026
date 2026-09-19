@@ -8,6 +8,10 @@ nohup.out
 SmarTest/
 oneAPI_py3.10/
 data_blank/
+data/*
+!data/.gitkeep
+data_gemini/*
+!data_gemini/.gitkeep
 scene2/report/
 scene2/report_demo/
 scene2/report_blank/

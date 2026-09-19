@@ -1,7 +1,0 @@
-prefix=/home/rainlin/nycu-3/hackathon2026/rtdi/.py310
-includedir=${prefix}/include
-
-Name: InputProto
-Description: Input extension headers
-Version: 2.3.99.2
-Cflags: -I${includedir}

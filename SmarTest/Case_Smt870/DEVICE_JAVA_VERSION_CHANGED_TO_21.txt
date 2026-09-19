@@ -1,1 +1,0 @@
-JRE version of the device project: Case_Smt8 is changed from 11 to 21. Which is the JRE version of the execution JVM/Custom Stex JRE.

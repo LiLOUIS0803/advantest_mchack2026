@@ -1,9 +1,0 @@
-
-burst sequence BurstAll {
-
-     operatingSequenceCall patterns.BurstSeqA13;
-     operatingSequenceCall patterns.BurstSeqA24;
-     operatingSequenceCall patterns.BurstSeqA56;
-     operatingSequenceCall patterns.BurstSeqB14;
-
-}

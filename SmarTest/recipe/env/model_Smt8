@@ -1,0 +1,654 @@
+
+# Example for a model file, see detailed syntax description below:
+
+GLOBAL
+  testhead = TH_8CC                          # TH_1CC | TH_2CC | TH_4CC | TH_8CC
+  dut_interface = SOC_8GROUP                 # SOC_4GROUP | SOC_8GROUP | HSM
+# hpib_interface = sicl/hpib
+# hpib_interface = vxi11/192.168.0.101/gpib0 # for RF calibration only
+  hpib_interface = vxi11/e5810a/192.168.0.100/gpib0
+  timing_bundle = w256-d8-r8
+#  operator_console = 192.168.0.101
+#  memory_stacker = ON
+   xpressdata = ON
+#  device_maintenance = ON
+#  apg_speed = 800 Mbps
+#  memorytest = ON
+#  psrf_pa_library = ON
+#  psrf_4xFE = ON
+#  triage = ON
+#  s&s_value_package = ON
+#  protocol_aware = ON
+#  enhanced_edge_clock = ON
+#  memory_pooling = ON
+#  ppRF = ON
+#  vectorCache = OFF  # default ON
+#  utility_lines = 64, type=static, pogo_size=16
+#  mux_boards = 8, type=PMUX01, pogoblocks=866,868,870,872,881,883,885,887 
+utility_lines = 256, type = sequencer_controlled, pogo_size = 32
+
+
+POGOCABLING      
+  103: pogoblocks = "217-224"
+  104: pogoblocks = "125-132"  
+  110: pogoblocks = "117-124"  
+  111: pogoblocks = "101-108"
+  116: pogoblocks = "201-208"
+  203: pogoblocks = "303,304,307,308,225,425,229,429"
+  206: pogoblocks = "209-216"
+  211: pogoblocks = "109-116"
+  212: pogoblocks = "230, 430"   
+  213: pogoblocks = "226, 426"   
+  215: pogoblocks = "231" 
+  
+
+
+
+
+
+
+   
+  
+
+
+
+
+
+
+   
+   
+   
+   
+   
+IOCHANNEL
+# SOC System
+  10101-10105 : HW = PS1600, speed =  100Mbps, smem = 16M  
+  10106 : HW = PS1600, speed =  100Mbps, smem = 16M 
+  10107 : HW = PS1600, speed =  100Mbps, smem = 16M
+  10108 : HW = PS1600, speed =  100Mbps, smem = 16M 
+  10109-10113 : HW = PS1600, speed =  100Mbps, smem = 16M
+  10114 : HW = PS1600, speed =  200Mbps, smem = 16M , tmu
+  10115 : HW = PS1600, speed =  100Mbps, smem = 16M
+  10116 : HW = PS1600, speed =  200Mbps, smem = 16M , tmu
+  
+  10201-10205 : HW = PS1600, speed =  100Mbps, smem = 16M    
+  10206 : HW = PS1600, speed =  200Mbps, smem = 16M , tmu
+  10207 : HW = PS1600, speed =  100Mbps, smem = 16M
+  10208 : HW = PS1600, speed =  200Mbps, smem = 16M , tmu
+  10209 - 10213 : HW = PS1600, speed =  100Mbps, smem = 16M
+  10214 : HW = PS1600, speed =  100Mbps, smem = 16M 
+  10215 : HW = PS1600, speed =  100Mbps, smem = 16M
+  10216 : HW = PS1600, speed =  100Mbps, smem = 16M  
+  
+  10301-10305 : HW = PS1600, speed =  100Mbps, smem = 16M    
+  10306 : HW = PS1600, speed =  100Mbps, smem = 16M 
+  10307 : HW = PS1600, speed =  100Mbps, smem = 16M
+  10308 : HW = PS1600, speed =  100Mbps, smem = 16M 
+  10309 - 10313 : HW = PS1600, speed =  100Mbps, smem = 16M
+  10314 : HW = PS1600, speed =  200Mbps, smem = 16M , tmu
+  10315 : HW = PS1600, speed =  100Mbps, smem = 16M
+  10316 : HW = PS1600, speed =  200Mbps, smem = 16M , tmu   
+  
+  10401-10405 : HW = PS1600, speed =  100Mbps, smem = 16M    
+  10406 : HW = PS1600, speed =  200Mbps, smem = 16M , tmu
+  10407 : HW = PS1600, speed =  100Mbps, smem = 16M
+  10408 : HW = PS1600, speed =  200Mbps, smem = 16M , tmu
+  10409 -10413 : HW = PS1600, speed =  100Mbps, smem = 16M
+  10414 : HW = PS1600, speed =  100Mbps, smem = 16M 
+  10415 : HW = PS1600, speed =  100Mbps, smem = 16M
+  10416 : HW = PS1600, speed =  100Mbps, smem = 16M  
+  
+  10501-11616 : HW = PS1600, speed =  100Mbps, smem = 16M
+
+  11701-11705 : HW = PS1600, speed =  100Mbps, smem = 16M  
+  11706 : HW = PS1600, speed =  200Mbps, smem = 16M ,tmu 
+  11707 : HW = PS1600, speed =  100Mbps, smem = 16M
+  11708 : HW = PS1600, speed =  200Mbps, smem = 16M ,tmu
+  11709-11713 : HW = PS1600, speed =  100Mbps, smem = 16M
+  11714 : HW = PS1600, speed =  100Mbps, smem = 16M 
+  11715 : HW = PS1600, speed =  100Mbps, smem = 16M
+  11716 : HW = PS1600, speed =  100Mbps, smem = 16M 
+
+  11801-11805 : HW = PS1600, speed =  100Mbps, smem = 16M    
+  11806 : HW = PS1600, speed =  100Mbps, smem = 16M 
+  11807 : HW = PS1600, speed =  100Mbps, smem = 16M
+  11808 : HW = PS1600, speed =  100Mbps, smem = 16M 
+  11809 -11813 : HW = PS1600, speed =  100Mbps, smem = 16M
+  11814 : HW = PS1600, speed =  200Mbps, smem = 16M , tmu
+  11815 : HW = PS1600, speed =  100Mbps, smem = 16M
+  11816 : HW = PS1600, speed =  200Mbps, smem = 16M , tmu    
+
+  11901-11916 : HW = PS1600, speed =  100Mbps, smem = 16M   
+ 
+  12001-12005 : HW = PS1600, speed =  100Mbps, smem = 16M    
+  12006 : HW = PS1600, speed =  100Mbps, smem = 16M 
+  12007 : HW = PS1600, speed =  100Mbps, smem = 16M
+  12008 : HW = PS1600, speed =  100Mbps, smem = 16M 
+  12009 -12013 : HW = PS1600, speed =  100Mbps, smem = 16M
+  12014 : HW = PS1600, speed =  200Mbps, smem = 16M , tmu
+  12015 : HW = PS1600, speed =  100Mbps, smem = 16M
+  12016 : HW = PS1600, speed =  200Mbps, smem = 16M , tmu   
+  12101-12105 : HW = PS1600, speed =  100Mbps, smem = 16M    
+  12106 : HW = PS1600, speed =  100Mbps, smem = 16M 
+  12107 : HW = PS1600, speed =  100Mbps, smem = 16M
+  12108 : HW = PS1600, speed =  100Mbps, smem = 16M 
+  12109 -12113 : HW = PS1600, speed =  100Mbps, smem = 16M
+  12114 : HW = PS1600, speed =  200Mbps, smem = 16M , tmu
+  12115 : HW = PS1600, speed =  100Mbps, smem = 16M
+  12116 : HW = PS1600, speed =  200Mbps, smem = 16M , tmu      
+  
+  12201-13216 : HW = PS1600, speed =  100Mbps, smem = 16M
+  
+  20101-22416 : HW = PS1600, speed =  100Mbps, smem = 16M
+
+ETC
+#  REFERENCECLOCK : input = INTERNAL, output_at_rf_connector = ON
+
+DPS
+#  1:   type = GPDPS
+#  2-3: type = HVDPS
+#  4: type = HCDPS
+#  5: type = XCPS
+#  4: type = HP6624A, address = 10
+#  5: type = MSDPS
+#  6: type = MSDPS, channels = 4
+#  7: type = MSDPS, channels = 8
+# 10101-10216: type = DCS-DPS32
+# 10501-10616: type = DCS-VI32
+# 20101-20104: type = DCS-UHC4
+# 20201-20204: type = DCS-UHC4T
+# 20301-20616: type = DCS-DPS128HV
+  22501-22516: type = DCS-DPS128HC
+  22901-22916: type = DCS-DPS128HC  
+  30301-30416: type = DCS-DPS128HC    
+  30701-30816: type = DCS-DPS128HC   
+  42501-42516: type = DCS-DPS128HC
+  42901-42916: type = DCS-DPS128HC   
+  
+
+DMM
+#1: cardcage=1,type=HP3458A,address=18
+#2: cardcage=2,type=HP3458A,address=19
+#3: cardcage=3,type=HP3458A,address=24
+#4: cardcage=4,type=HP3458A,address=25
+#5: cardcage=5,type=HP3458A,address=26
+#6: cardcage=6,type=HP3458A,address=27
+#7: cardcage=7,type=HP3458A,address=28
+#8: cardcage=8,type=HP3458A,address=29
+
+OPENNESSBOARD
+#comment: Supported HW types are all variants developed by 3rd parties. The 3rd party must 
+#         provide the corresponding hardware driver.
+#101: type = VariantA 
+#101-102: type = VariantB
+
+#End of example model file
+###################################################################################################
+
+
+
+####################################################################################################
+#
+# PinScale definition of the model file:
+# Tester model used in offline mode. In online mode, the tester configuration is determined via the
+# actually detected hardware configuration, the requested configuration in the model file and the
+# license. All of them have to be compatible. The minimum compatible configuration is used and
+# overwrites the model file definition.
+#
+####################################################################################################
+#
+# Syntax definition
+# =================
+# Text after a '#' until end of line is ignored.
+#
+# In the following syntax diagram, keywords are shown in upper case
+# although the actual case is ignored.
+#
+#
+#  ,--------.       ,----------.                  ,--------.
+#  | GLOBAL |-+--+->| TESTER = |----------------->| tester |------------------.
+#  `--------' ^  |  `----------'                  `--------'                  |
+#             |  |  ,------------.                ,----------.                v
+#             |  +->| TESTHEAD = |--------------->| testhead |--------------->+
+#             |  |  `------------'                `----------'                |
+#             |  |  ,-----------------.           ,---------------.           v
+#             |  +->| DUT_INTERFACE = |---------->| dut_interface |---------->+
+#             |  |  `-----------------'           `---------------'           |
+#             |  |  ,-----------------.           ,----------------.          v
+#             |  +->| HPIB_INTERFACE = |--------->| hpib_interface |--------->+
+#             |  |  `-----------------'           `----------------'          |
+#             |  |  ,--------------------.        ,------------------.        v
+#             |  +->| OPERATOR_CONSOLE = |------->| operator_console |------->+
+#             |  |  `--------------------'        `------------------'        |
+#             |  |  ,----------------------.      ,--------------------.      v
+#             |  +->| DEVICE_MAINTENANCE = |----->| device_maintenance |----->+
+#             |  |  `----------------------'      `--------------------'      |
+#             |  |  ,-----------------------.     ,---------------------.     v
+#             |  +->| ENHANCED_EDGE_CLOCK = |---->| enhanced_edge_clock |---->+
+#             |  |  `-----------------------'     `---------------------'     |
+#             |  |  ,------------------.          ,----------------.          v
+#             |  +->| MEMORY_POOLING = |--------->| memory_pooling |--------->+
+#             |  |  `------------------'          `----------------'          |
+#             |  |  ,------------------.          ,----------------.          v
+#             |  +->| MEMORY_STACKER = |--------->| memory_stacker |--------->+
+#             |  |  `------------------'          `----------------'          |
+#             |  |  ,-----------------.           ,------------.              v
+#             |  +->| TIMING_BUNDLE = |---------->| tim_bunlde |------------->+
+#             |  |  `-----------------'           `------------'              |
+#             |  |  ,-------------.               ,------------.              v
+#             |  +->| MEMORYTEST =|-------------->| memorytest |------------->+
+#             |  |  `-------------'               `------------'              |
+#             |  |  ,-----------------.           ,----------------.          v
+#             |  +->| PROTOCOL_AWARE =|---------->| protocol_aware |--------->+
+#             |  |  `-----------------'           `----------------'          |
+#             |  |  ,-------------.               ,-----------.               v
+#             |  +->| APG_SPEED = |-------------->| apg_speed |-------------->+
+#             |  |  `-------------'               `-----------'               |
+#             |  |  ,----------.                  ,--------.                  v
+#             |  `->| TRIAGE = |----------------->| triage |----------------->+
+#             |  |  `----------'                  `--------'                  |
+#             |  |  ,----------------.            ,-------------.             v
+#             |  `->| VECTOR_CACHE = |----------->| vectorCache |------------>+
+#             |  |  `----------------'            `-------------'             |
+#             |  |  ,--------------------.        ,------------.              v
+#             |  +->| XPRESS_DATA_MODE = |------->| xpressdata |------------->+
+#             |  |  `--------------------'        `------------'              |
+#             |  |  ,---------------------.       ,-------------------.       v
+#             |  +->| S&S_VALUE_PACKAGE = |------>| s&s_value_package |------>+
+#             |  |  `---------------------'       `-------------------'       |
+#             |  |  ,-------------------.         ,-----------------.         v
+#             |  +->| PSRF_PA_LIBRARY = |-------->| psrf_pa_library |-------->+
+#             |  |  `-------------------'         `-----------------'         |
+#             |  |  ,--------.                    ,------.                    v
+#             |  +->| PPRF = |------------------->| ppRF |------------------->+
+#             |  |  `--------'                    `------'                    |
+#             |  |  ,-------------.               ,-----------.               v
+#             |  `->| PSRF_4xFE = |-------------->| psrf_4xfe |-------------->+
+#             |     `-------------'               `-----------'               |
+#             |                                                               |
+#  ,----------+<--------------------------------------------------------------'
+#  |
+#  +-------------------------------------------------------------------------------------------------.
+#  |                                                                                                 |
+#  v     ,-------------.                                                                             |
+#  +--+->| POGOCABLING |-+-------------------------------------------------------------------------->+
+#  ^  |  `-------------' |  ,------.    ,---.    ,---------------------.                             v
+#  |  |                  +->| slot |--->| : |-+->| pogocabling_feature |----.----------------------->+
+#  |  |                  ^  `------'    `---' |  `---------------------'    |                        v
+#  |  |                  |                    |         ,---.               |                        |
+#  |  |                  |                    `---------| , |<--------------'                        |
+#  |  |                  |                              `---'                                        |
+#  |  |                  `---------------------------------------------------------------------------+
+#  |  |                                                                                              |
+#  |  |  ,-----------.                                                                               v
+#  |  +->| IOCHANNEL |-+---------------------------------------------------------------------------->+
+#  |  |  `-----------' |                                                                             |
+#  |  |                v  ,------.                                                                   |
+#  |  |                +->| ch_1 |-+------------------.                                              |
+#  |  |                ^  `------' |  ,---.  ,------. v  ,---.                                       |
+#  |  |                |           `->| - |->| ch_2 |-+->| : |-+------------------------.            |
+#  |  |                |              `---'  `------'    `---' |    ,--------------.    |            |
+#  |  |                |                                       `-+->| ioch_feature |-.  |            |
+#  |  |                |                                         ^  `--------------' |  |            |
+#  |  |                |                                         |       ,---.       v  v            |
+#  |  |                |                                         `-------| , |<------+->+            |
+#  |  |                |                                                 `---'          v            v
+#  |  |                `----------------------------------------------------------------+----------->+
+#  |  |                                                                                              |
+#  |  |  ,-------------.                                                                             v
+#  |  +->| ANALOGBOARD |-+-------------------------------------------------------------------------->+
+#  |  |  `-------------' |                                                                           |
+#  |  |                  v  ,------.                                                                 |
+#  |  |                  +->| bd_1 |-+------------------.                                            |
+#  |  |                  ^  `------' |  ,---.  ,------. v  ,---.       ,--------.  ,------------.    |
+#  |  |                  |           `->| - |->| bd_2 |-+->| : |-+---->| TYPE = |->| anabd_type |-.  |
+#  |  |                  |              `---'  `------'    `---' |     `--------'  `------------' |  |
+#  |  |                  |                                       `-+-.    ,---------------.       |  |
+#  |  |                  |                                         ^ `--->| anabd_feature |---.   |  |
+#  |  |                  |                                         | |    `---------------'   |   |  |
+#  |  |                  |                                         | |    ,---------------.   v   |  |
+#  |  |                  |                                         | +--->|     core      |---+   |  |
+#  |  |                  |                                         | |    `---------------'   |   |  |
+#  |  |                  |                                         | |    ,---------------.   v   |  |
+#  |  |                  |                                         | +--->|    config     |---+   |  |
+#  |  |                  |                                         | |    `---------------'   |   |  |
+#  |  |                  |                                         | |    ,---------------.   v   |  |
+#  |  |                  |                                         | `--->|     mode      |---+   |  |
+#  |  |                  |                                         | |    ,---------------.   v   |  |
+#  |  |                  |                                         | |    `---------------'   |   |  |
+#  |  |                  |                                         | `--->|     psrf      |---+   |  |
+#  |  |                  |                                         |      `---------------'   |   |  |
+#  |  |                  |                                         |           ,---.          v   v  |
+#  |  |                  |                                         `-----------| , |<---------+---+  |
+#  |  |                  |                                                     `---'              v  |
+#  |  |                  `------------------------------------------------------------------------+->+
+#  |  |                                                                                              |
+#  |  |  ,-----------.                                                                               v
+#  |  +->| BOARDCONF |-+---------------------------------------------------------------------------->+
+#  |  |  `-----------' |                                                                             |
+#  |  |                v  ,-------.                                                                  |
+#  |  |                +->| mod_1 |-+-------------------.                                            |
+#  |  |                ^  `-------' |  ,---.  ,-------. v  ,---.       ,--------.  ,------------.    |
+#  |  |                  |          `->| - |->| mod_2 |-+->| : |-+---->| TYPE = |->| anabd_type |-.  |
+#  |  |                  |             `---'  `-------'    `---' |     `--------'  `------------' |  |
+#  |  |                  |                                       `-+-.    ,---------------.       |  |
+#  |  |                  |                                         ^ `--->| board_feature |---.   |  |
+#  |  |                  |                                         |      `---------------'   |   |  |
+#  |  |                  |                                         |           ,---.          v   v  |
+#  |  |                  |                                         `-----------| , |<-------------+  |
+#  |  |                  |                                                     `---'              v  |
+#  |  |                  `------------------------------------------------------------------------+->+
+#  |  |                                                                                              |
+#  |  |  ,-----.                                                                                     v
+#  |  +->| ETC |-+---------------------------------------------------------------------------------->+
+#  |  |  `-----' |                                                                                   |
+#  |  |          |  ,----------------.  ,---.      ,-----------.    ,------------.              |    |
+#  |  |          +->| REFERENCECLOCK |->| : |-+-+->|  input =  |-+->|  INTERNAL  |----------.   |    |
+#  |  |          ^  `----------------'  `---' ^ |  `-----------' |  `------------'          |   |    |
+#  |  |          |                            | |                |  ,------------.          v   |    |
+#  |  |          |                            | |                `->|  EXTERNAL  |->------- +   |    |
+#  |  |          |                            | |                   `------------'          |   |    |
+#  |  |          |                            | |  ,--------------------------.    ,-----.  v   |    |
+#  |  |          |                            | +->| output_at_rf_connector = |-+->| OFF |--+   |    |
+#  |  |          |                            |    `--------------------------' |  `-----'  |   |    |
+#  |  |          |                            |                                 |  ,----.   v   |    |
+#  |  |          |                            |                                 `->| ON |-- +   |    |
+#  |  |          |                            |                                    `----'   |   |    |
+#  |  |          |                            |                 ,---.                       v   |    |
+#  |  |          |                            `-----------------| , |-----------------------+   |    |
+#  |  |          |                                              `---'                       v   v    |
+#  |  |          `--------------------------------------------------------------------------+---+--->+
+#  |  |                                                                                              |
+#  |  |  ,-----.                                                                                     v
+#  |  +->| DPS |-+---------------------------------------------------------------------------------->+
+#  |  |  `-----' |                                                                                   |
+#  |  |          v  ,-------.                                                                        |
+#  |  |          +->| dps_1 |-+-------------------.                                                  |
+#  |  |          ^  `-------' |  ,---.  ,-------. v  ,---.      ,--------.     ,----------.          |
+#  |  |          |            `->| - |->| dps_2 |-+->| : |-+-+->| TYPE = |->---| dps_type |---.      |
+#  |  |          |               `---'  `-------'    `---' ^ |  `--------'     `----------'   |      |
+#  |  |          |                                         | |  ,------------.  ,---------.   |      |
+#  |  |          |                                         | +->| CHANNELS = |->| dps_ch  |-->+      |
+#  |  |          |                                         | |  `------------'  `---------'   |      |
+#  |  |          |                                         | |  ,-----------.  ,-----------.  v      |
+#  |  |          |                                         | `->| ADDRESS = |->| gpib_addr |->+      |
+#  |  |          |                                         |    `-----------'  `-----------'  |      |
+#  |  |          |                                         |            ,---.                 v      |
+#  |  |          |                                         `------------| , |<----------------+      |
+#  |  |          |                                                      `---'                 v      |
+#  |  |          `----------------------------------------------------------------------------+----->+
+#  |  |                                                                                              |
+#  |  |  ,-----.                                                                                     v
+#  |  +->| DMM |-+---------------------------------------------------------------------------------->+
+#  |  |  `-----' |                                                                                   |
+#  |  |          |  ,------,   ,---.      ,------------.  ,-----------.                              |
+#  |  |          +->| unit |-->| : |-+-+->| CARDCAGE = |->| card_cage |---.                          |
+#  |  |          ^  `------`   `---' ^ |  `------------'  `-----------'   |                          |
+#  |  |          |                   | |  ,------------.  ,-----------.   |                          |
+#  |  |          |                   | +->| TYPE =     |->| dmm_type  |-->+                          |
+#  |  |          |                   | |  `------------'  `-----------'   |                          |
+#  |  |          |                   | |  ,------------.  ,-----------.   v                          |
+#  |  |          |                   | `->| ADDRESS =  |->| gpib_addr |-->+                          |
+#  |  |          |                   |    `------------'  `-----------'   |                          |
+#  |  |          |                   |            ,---.                   v                          |
+#  |  |          |                   `------------| , |<------------------+                          |
+#  |  |          |                                `---'                   v                          |
+#  |  |          `--------------------------------------------------------+------------------------->+
+#  |  |  ,--------------.                                                                            v
+#  |  +->|OPENNESSBOARD |-+------------------------------------------------------------------------->+
+#  |     `--------------' |                                                                          |
+#  |                      v  ,------.                                                                |
+#  |                      +->| bd_1 |-+------------------.                                           |
+#  |                      ^  `------' |  ,---.  ,------. v  ,---.     ,--------.  ,-------------.    |
+#  |                      |           `->| - |->| bd_2 |-+->| : |---->| TYPE = |->| openbd_type |-.  |
+#  |                      |              `---'  `------'    `---'     `--------'  `-------------' |  |
+#  |                      `-----------------------------------------------------------------------+->+
+#  |                                                                                                 |
+#  |                                                                                                 v
+#  `-------------------------------------------------------------------------------------------------+->
+#
+### GLOBAL
+#
+# <testhead>          ::= TH_1CC | TH_2CC | TH_4CC | TH_8CC
+#
+# <dut_interface>     ::= SOC_4GROUP | SOC_8GROUP | HSM
+#
+# <hpib_interface>    ::= <interface_addr>
+#
+# * The <hpib_interface> identifies the interface used for Tracecal.
+#
+#
+# <operator_console>    ::= <ip_address>
+#                           IP Address of the operator console
+#
+# <ip_address>          ::= <number>.<number>.<number>.<number>
+# 
+# <device_maintenance>  ::= ON | OFF
+#                           Enabling or disabling the device maintenance (refresh) feature.
+#                           If it is not specified it will be automatically disabled.
+#
+# <memory_stacker>    ::= ON | OFF
+#                         enable / disable memory stacker feature
+#
+# <xpressdata>        ::= ON | OFF
+#                         enable / disable xpress data mode. Default is OFF
+#
+# <enhanced_edge_clock>::= ON | OFF
+#                         enable / disable enhanced edge clock mode for HSM only. Default is OFF
+#
+# <memory_pooling>     ::= ON | OFF
+#                         enable / disable memory pooling. Default is OFF
+#
+# <memorytest>        ::= ON | OFF
+#                         enable / disable memory test software. Default is OFF
+#
+# <protocol_aware>    ::= ON | OFF
+#                         enable / disable the protocol aware software. Default is OFF
+#
+# <psrf_pa_library>   ::= ON | OFF
+#                         enable / disable PSRF Power Amplifier Library. Default is OFF
+#
+# <ppRF>               ::= ON | OFF
+#                         enable / disable per pin RF feature. Default is OFF
+#
+# <psrf_4xFE>          ::= ON | OFF
+#                         enable / disable PSRF 4x FrontEnds. Default is OFF
+#
+# <triage>            ::= ON | OFF
+#                         enable / disable triage software. Default is OFF
+#
+# <s&s_value_package> ::= ON | OFF
+#                         enable / disable S&S value package software. Default is ON
+#
+# <ore>               ::= ON | OFF
+#                         enable / disable Offline Result Emulation feature. Default is ON
+#
+# <vectorCache>       ::= ON | OFF
+#                         enable / disable the vector cache. Default is ON
+#
+#
+# <tim_bundle>        ::= timing_bundle = <t_bundle>
+# <t_bundle>          ::= w32-d8-r6 | w256-d8-r8
+#
+# <apg_speed>         ::= <apg_speed_value> <unit>
+# <apg_speed_value>   ::= 400 | 800 | 1800 | 2200 | 3600 | 4600 | 6800 | 8000
+# <unit>              ::= Mbps
+#
+#
+# <utility_lines>     ::= (64|128|256) [, type=(static|sequencer_controlled)]
+#                                      [, pogo_size=(16|32)]
+#
+# <mux_boards>        ::= <mux_nr_of_boards>, type=<mux_board_type>, pogoblocks=<mux_pogoblocks>
+#
+# <mux_nr_of_boards>  ::= the number of mux boards installed in tester [1..16]
+# <mux_board_type>    ::= the type of the installed mux boards (PMUX01)
+# <mux_pogoblocks>    ::= the mux board pogo numbers
+#                         allowed pogoblocks: 866,868,870,872,874,876,878,880,881,883,885,887,889,891,893,895
+
+### POGOCABLING
+#
+# <slot>              ::= 101..118, 201..218, 301..318, 401..418
+#                         Format of the number is CSS, whereas C the number of the control segment 
+#                         and SS the number of the Slot represents. 
+#                         Note: the clockboard slot is not counted.
+#
+# <pogocabling_feature> ::= <pogoblocks> | <pogocable_type> | <pogocable_subtype> | <pogocable_config>
+#
+# <pogoblocks>        ::= double quoted string, defining ordered list of pogoblocks.
+#                         - allowed pogoblocks: 101..132, 201..232,
+#                                301..332, 401..432, 501..532,
+#                                601..632, 701..732, 801..832
+#                         - list is specified with character ','. E.g.: "101, 103"
+#                         - ranges are specified with character '-'. E.g.: "228-232"
+#                         - ranges and list specifications can be mixed.
+#                           E.g. "101, 210-212"
+#                         NOTE:
+#                         To find out how many pogoblocks are used for a specific HW type, 
+#                         you can run the script:
+#                         /opt/hp93000/soc/system/config/xoc.hw.cor.detection.ZSIoCardFactory/getDensityForVariants
+#
+# <pogocable_type>    ::= type=<allowed_pogocable_type>
+#
+# <allowed_pogocable_type> ::= SD | HD1x256 | HD2x32 | HD4x32 | VHD1x128 | redirect
+#                              HD1x256 restrictions:
+#                                  4 pogoblock numbers with predefined order:
+#                                  "a, a+400, a-200, a+200" 
+#                                  with a = 301..332 or 401..432.
+#                              HD2x32 restrictions:
+#                                  4 pogoblock numbers with predefined order:
+#                                  "a, a+400, b, b+400"     
+#                                  with a, b = 3 digit numbers of format [1..4][01..32]
+#                              HD4x32 restrictions:
+#                                  8 pogoblock numbers with predefined order:
+#                                  "a, b, c, d, a+400, b+400, c+400, d+400"
+#                                  with a, b, c, d = 3 digit numbers of format [1..4][01..32]
+#                              VHD1x128 restrictions:
+#                                   8 pogoblock numbers with predefined order:
+#                                   "x, x+400, x+32, x+432, x+1, x+401, x+33, x+433"
+#                                   with x = yzz; y = [1..4] z = [01..32]
+#                              HD4x32DPS restrictions:
+#                                  8 pogoblock numbers with predefined order:
+#                                  "a, a+400, b, b+400, c, c+400, d, d+400"
+#                                  with a, b, c, d = 3 digit numbers of format [1..4][01..32]
+#                              VHD4x32 restrictions:
+#                                   8 pogoblock numbers with predefined order:
+#                                   "a, a+432, b, b+432, c, c+432, d, d+432"
+#                                   with a, b, c, d = 3 digit numbers of format [1..4][01..32]
+# <pogocable_subtype> ::= subtype=E8013GUL | subtype=E8013QUL | subtype=E8023PC | subtype=E8023PD | subtype=E8023PE | subtype=E8023PF
+#
+# <pogocable_config>  ::= config="<some_data>"
+#                         config string description is depending on subtype
+#
+### IOCHANNEL
+#
+# <ch_1>,<ch_2>       ::= <board><channel>
+# <board>             ::= 101..132, 201..232, 301..332, 401..432,
+#                         501..532, 601..632, 701..732, 801..832
+# <channel>           ::= 01..16
+#
+# <ioch_feature>      ::= <HW> | <speed> |  <seq_mem_len> | <para_mem_len>  | <apg_mem_len>  |<diff> | <tia> | <tmu> | <loopback>
+# <HW>                ::= HW = <HW_type>
+# <HW_type>	      ::= PS800 | PS3600 | PS400 | PS9G | PS1600 | HSM3600 | HSM2200 | HSM3G | HSM4G | HSM6800 | HSM8G
+#
+# <speed>	      ::= speed = <frequency> [<freq_unit>]
+#                         | speed = max-rate
+# <frequency>	      ::= <integer>
+# <freq_unit>	      ::= Mbps | Gbps
+#
+# <sequencer_mem_len> ::= smem = <size> [<mem_unit>]
+# <para_mem_len>      ::= paramem = <size> [<mem_unit>]
+# <apg_mem_len>       ::= apgmem = <size> [<mem_unit>]
+# <size>              ::= <integer>
+# <mem_unit>          ::= K | M | G
+#
+# <timing_bundle>     ::= tim = <t_bundle>
+# <t_bundle>          ::= w32-d8-r6 | w256-d8-r8
+#
+# <diff>              ::= diff
+#
+# <tia>               ::= tia
+#
+# <tmu>               ::= tmu
+#
+# <loopback>          ::= loopback = <frequency> [<freq_unit>]
+#                         | loopback
+#
+### ANALOGBOARD
+#
+# <bd_1>,<bd_2>       ::= <board>
+# <anabd_type>        ::= HXA | MC[A-C] | MCE | MCL | RF[A-D] | LPN
+# <anabd_feature>     ::= <core> | <speed> | <loopback> | <pattern>
+# <core>              ::= Total number of cores you want to use
+# <config>            ::= Extra info about the board such as options etc.
+#                         (ex. STD | MINI_ME | MULT | ...)
+# <speed>             ::= speed = <frequency> [<freq_unit>]
+# <frequency>	      ::= <integer>
+# <freq_unit>	      ::= Mbps| Gbps
+#
+# <loopback>          ::= loopback
+# <pattern>           ::= pattern
+# <mode>              ::= MCA | MCB
+# <psrf>              ::= psrf
+#
+#
+# * <config> information is/(is not) required based on <anabd_type>.
+# * <core>   information is optional.
+# * <loopback> entry is only valid for HXA boards
+# * <pattern>  entry is only valid for HXA boards
+# * <speed>    entry is only valid for HXA boards
+#
+### BOARDCONF
+#
+# <mod_1>,<mod_2>      ::= <board><module>
+# <board>              ::= 101..132,201..232, ... , 801..832
+# <module>             ::= 1..9
+# <anabd_type>         ::= MC[A-C] | MCE | MCL | HXA
+# <board_feature>      ::= <MCX_features>[, <MCX_speed>]  | <HXA_features> 
+# <MCX_features>       ::= mytpe = <module_type>
+# <module_type>        ::= SRC[A-B]| SRCE | SRCL | MES[A-C] | MESE | MESL
+# <MCX_speed>          ::= speed = 100 | 110 | 200 | 500 Msps
+# <HXA_features>       ::= <type> = <list>
+# <type>               ::= muxd | termd | clkd | muxr | clkr | loopback
+# <list>               ::= <ch> | <ch>/<ch> | <ch>/<ch>/<ch>/<ch>
+# <ch>                 ::= <board><channel>
+# <channel>            ::= 01..16
+#
+### ETC
+#
+# REFERENCECLOCK
+#  <input>                  ::= INTERNAL | EXTERNAL
+#
+# * INTERNAL: Select internal source for 10 MHz reference clock signal.
+#
+# * EXTERNAL: Select external (RF) source for 10 MHz reference clock signal.
+#             (External clock generator must be connected.)
+#
+#  <output_at_rf_connector> ::= ON | OFF
+#
+# * ON :      The reference clock signal is output at the RF connector ring
+#
+# * OFF:      The reference clock signal is not output at the RF connector ring
+#
+### DPS
+#
+# <dps_1>,<dps_2>     ::= 1..8 | 10101..83216
+# <dps_type>          ::= GPDPS | HVDPS | HCDPS | MSDPS | XCPS | SE-UDPS | DCS-DPS32 | DCS-VI32 | DCS-UHC4 | DCS-UHC4T | DCS-DPS128HC | DCS-DPS128HV | DCS-PVI8 | DCS-AVI64
+# <dps_ch>            ::= 4|8
+#
+# * The <dps_ch> is used only for MSDPS to define the channel mode.
+#
+#
+### DMM (Digital Multimeter)
+#
+# <unit>              ::= 1..8
+# <card_cage>         ::= 1..8
+# <dmm_type>          ::= 3458A
+# <gpib_addr>         ::= 0..30
+#
+### OPENNESSBOARD
+#
+# <bd_1>,<bd_2>       ::= <board>
+# <openbd_type>       ::= Supported HW types are all variants developed by 3rd parties. The 3rd 
+#                         party must provide the corresponding hardware driver.
+# 
+####################################################################################################

@@ -1,0 +1,212 @@
+
+!ENTRY org.eclipse.core.resources 4 2 2026-09-17 22:31:42.053
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
+!STACK 1
+org.eclipse.core.runtime.CoreException: Problems while saving variables and containers
+	at org.eclipse.jdt.internal.core.JavaModelManager.saveVariablesAndContainers(JavaModelManager.java:4569)
+	at org.eclipse.jdt.internal.core.JavaModelManager.savingTimed(JavaModelManager.java:4838)
+	at org.eclipse.jdt.internal.core.JavaModelManager.saving(JavaModelManager.java:4824)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:453)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:269)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:272)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1226)
+	at org.eclipse.core.internal.resources.Workspace.save(Workspace.java:2494)
+	at org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor.lambda$1(IDEWorkbenchAdvisor.java:553)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:122)
+Caused by: java.io.FileNotFoundException: /home/user/Case_Event/SmarTest/workspace/.metadata/.plugins/org.eclipse.jdt.core/variablesAndContainers.dat (No such file or directory)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:289)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:230)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:179)
+	at org.eclipse.jdt.internal.core.JavaModelManager.saveVariablesAndContainers(JavaModelManager.java:4564)
+	... 10 more
+!SUBENTRY 1 org.eclipse.jdt.core 4 4 2026-09-17 22:31:42.054
+!MESSAGE Problems while saving variables and containers
+!STACK 0
+java.io.FileNotFoundException: /home/user/Case_Event/SmarTest/workspace/.metadata/.plugins/org.eclipse.jdt.core/variablesAndContainers.dat (No such file or directory)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:289)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:230)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:179)
+	at org.eclipse.jdt.internal.core.JavaModelManager.saveVariablesAndContainers(JavaModelManager.java:4564)
+	at org.eclipse.jdt.internal.core.JavaModelManager.savingTimed(JavaModelManager.java:4838)
+	at org.eclipse.jdt.internal.core.JavaModelManager.saving(JavaModelManager.java:4824)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:453)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:269)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:272)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1226)
+	at org.eclipse.core.internal.resources.Workspace.save(Workspace.java:2494)
+	at org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor.lambda$1(IDEWorkbenchAdvisor.java:553)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:122)
+!SUBENTRY 1 org.eclipse.jdt.core 4 4 2026-09-17 22:31:42.054
+!MESSAGE Problems while saving variables and containers
+!STACK 0
+java.io.FileNotFoundException: /home/user/Case_Event/SmarTest/workspace/.metadata/.plugins/org.eclipse.jdt.core/variablesAndContainers.dat (No such file or directory)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:289)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:230)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:179)
+	at org.eclipse.jdt.internal.core.JavaModelManager.saveVariablesAndContainers(JavaModelManager.java:4564)
+	at org.eclipse.jdt.internal.core.JavaModelManager.savingTimed(JavaModelManager.java:4838)
+	at org.eclipse.jdt.internal.core.JavaModelManager.saving(JavaModelManager.java:4824)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:453)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:269)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:272)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1226)
+	at org.eclipse.core.internal.resources.Workspace.save(Workspace.java:2494)
+	at org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor.lambda$1(IDEWorkbenchAdvisor.java:553)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:122)
+
+!ENTRY com.advantest.itee.ate.ui 4 0 2026-09-17 22:31:42.368
+!MESSAGE Error while persisting  resource descriptions to builder state artifacts
+!STACK 0
+java.io.FileNotFoundException: /home/user/Case_Event/SmarTest/workspace/.metadata/.plugins/org.eclipse.xtext.builder/builder.state (No such file or directory)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:289)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:230)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:118)
+	at com.advantest.itee.ate.ui.services.internal.XtextBuilderStateManager.save(XtextBuilderStateManager.java:323)
+	at com.advantest.itee.tpl.ui.build.GlobalEMFBasedPersister.save(GlobalEMFBasedPersister.java:59)
+	at org.eclipse.xtext.builder.builderState.EMFBasedPersister$1.saving(EMFBasedPersister.java:112)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:453)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:269)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:272)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1226)
+	at org.eclipse.core.internal.resources.Workspace.save(Workspace.java:2494)
+	at org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor.lambda$1(IDEWorkbenchAdvisor.java:553)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:122)
+
+!ENTRY org.eclipse.jdt.launching 4 4 2026-09-17 22:31:42.372
+!MESSAGE No such file or directory
+!STACK 0
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively0(Native Method)
+	at java.base/java.io.UnixFileSystem.createFileExclusively(UnixFileSystem.java:258)
+	at java.base/java.io.File.createNewFile(File.java:1045)
+	at org.eclipse.jdt.internal.launching.LaunchingPlugin.writeInstallInfo(LaunchingPlugin.java:1110)
+	at org.eclipse.jdt.internal.launching.LaunchingPlugin$1.saving(LaunchingPlugin.java:576)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:453)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:269)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:272)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1226)
+	at org.eclipse.core.internal.resources.Workspace.save(Workspace.java:2494)
+	at org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor.lambda$1(IDEWorkbenchAdvisor.java:553)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:122)
+
+!ENTRY com.advantest.itee.licensing 4 0 2026-09-17 22:31:45.578
+!MESSAGE Error while reading from system manager service.
+!STACK 1
+com.verigy.itee.core.CoreException93k: Could not create instance of service xoc.ate.cor.lic.ZSStates
+	at com.verigy.itee.svc.unoaccess.internal.services.UnoServiceManager.createError(UnoServiceManager.java:366)
+	at com.verigy.itee.svc.unoaccess.internal.services.UnoServiceManager.internalGetInstance(UnoServiceManager.java:214)
+	at com.verigy.itee.svc.unoaccess.internal.services.UnoServiceManager.getUnoService(UnoServiceManager.java:185)
+	at com.verigy.itee.svc.unoaccess.internal.services.UnoServiceManager.getUnoService(UnoServiceManager.java:320)
+	at com.verigy.itee.svc.unoaccess.UnoServices.getUniqueService(UnoServices.java:211)
+	at com.verigy.itee.svc.unoaccess.UnoServices.getService(UnoServices.java:159)
+	at com.advantest.itee.licensing.checker.TplicUpdateCheckListener.handle(TplicUpdateCheckListener.java:46)
+	at com.advantest.itee.contextdebugger.core.services.internal.ExecutionService$3.run(ExecutionService.java:469)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at com.advantest.itee.contextdebugger.core.services.internal.ExecutionService.fireEvent(ExecutionService.java:465)
+	at com.advantest.itee.contextdebugger.core.services.internal.ExecutionService$ExecutionEventJob.dispatch(ExecutionService.java:185)
+	at com.advantest.itee.contextdebugger.core.services.internal.ExecutionService$ExecutionEventJob.dispatch(ExecutionService.java:1)
+	at com.verigy.itee.core.concurrent.TaskDispatcherJob.run(TaskDispatcherJob.java:178)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: xoc.exc.ZNotAvailable_v2: Service 'xoc.ate.cor.lic.ZSStates' cannot be requested: Measurement-Server is not ready.
+	at com.verigy.itee.svc.unoaccess.internal.services.UnoServiceQueryGuard.check(UnoServiceQueryGuard.java:96)
+	at xoc.svc.session.internal.SessionServiceManager.getInstanceWithArgs(SessionServiceManager.java:970)
+	at xoc.svc.session.internal.SessionServiceManager.getInstance(SessionServiceManager.java:912)
+	at com.verigy.itee.svc.unoaccess.internal.services.UnoServiceManager.internalGetInstance(UnoServiceManager.java:209)
+	... 12 more
+!SUBENTRY 1 com.verigy.itee.svc.unoaccess 4 0 2026-09-17 22:31:45.579
+!MESSAGE Could not create instance of service xoc.ate.cor.lic.ZSStates
+!STACK 0
+xoc.exc.ZNotAvailable_v2: Service 'xoc.ate.cor.lic.ZSStates' cannot be requested: Measurement-Server is not ready.
+	at com.verigy.itee.svc.unoaccess.internal.services.UnoServiceQueryGuard.check(UnoServiceQueryGuard.java:96)
+	at xoc.svc.session.internal.SessionServiceManager.getInstanceWithArgs(SessionServiceManager.java:970)
+	at xoc.svc.session.internal.SessionServiceManager.getInstance(SessionServiceManager.java:912)
+	at com.verigy.itee.svc.unoaccess.internal.services.UnoServiceManager.internalGetInstance(UnoServiceManager.java:209)
+	at com.verigy.itee.svc.unoaccess.internal.services.UnoServiceManager.getUnoService(UnoServiceManager.java:185)
+	at com.verigy.itee.svc.unoaccess.internal.services.UnoServiceManager.getUnoService(UnoServiceManager.java:320)
+	at com.verigy.itee.svc.unoaccess.UnoServices.getUniqueService(UnoServices.java:211)
+	at com.verigy.itee.svc.unoaccess.UnoServices.getService(UnoServices.java:159)
+	at com.advantest.itee.licensing.checker.TplicUpdateCheckListener.handle(TplicUpdateCheckListener.java:46)
+	at com.advantest.itee.contextdebugger.core.services.internal.ExecutionService$3.run(ExecutionService.java:469)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at com.advantest.itee.contextdebugger.core.services.internal.ExecutionService.fireEvent(ExecutionService.java:465)
+	at com.advantest.itee.contextdebugger.core.services.internal.ExecutionService$ExecutionEventJob.dispatch(ExecutionService.java:185)
+	at com.advantest.itee.contextdebugger.core.services.internal.ExecutionService$ExecutionEventJob.dispatch(ExecutionService.java:1)
+	at com.verigy.itee.core.concurrent.TaskDispatcherJob.run(TaskDispatcherJob.java:178)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY com.advantest.itee.ate 0 0 2026-09-17 22:31:45.768
+!MESSAGE AteStateService.AteProcessListener.notifyProcessGone(ATE-server-process, false)
+
+!ENTRY com.verigy.itee.svc.unoaccess 1 0 2026-09-17 22:31:45.780
+!MESSAGE Successfully detached from session
+
+!ENTRY com.verigy.itee.ui 4 0 2026-09-17 22:31:45.781
+!MESSAGE Workbench has no open windows
+!STACK 0
+java.lang.IllegalStateException: Workbench has no open windows
+	at com.verigy.itee.ui.UIPlugin.getActiveWorkbenchWindow(UIPlugin.java:179)
+	at com.verigy.itee.ui.UIPlugin.getActiveShell(UIPlugin.java:213)
+	at com.verigy.itee.ui.UIPlugin$1.run(UIPlugin.java:268)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:132)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:5039)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:4519)
+	at org.eclipse.jface.window.Window.runEventLoop(Window.java:823)
+	at org.eclipse.jface.window.Window.open(Window.java:799)
+	at org.eclipse.jface.dialogs.ErrorDialog.open(ErrorDialog.java:349)
+	at org.eclipse.jface.dialogs.ErrorDialog.openError(ErrorDialog.java:406)
+	at org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor.disconnectFromWorkspace(IDEWorkbenchAdvisor.java:572)
+	at org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor$2.run(IDEWorkbenchAdvisor.java:366)
+	at org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor.postShutdown(IDEWorkbenchAdvisor.java:387)
+	at com.verigy.itee.ui.SmarTestIdeApplication$SmartestWorkbenchAdvisor.postShutdown(SmarTestIdeApplication.java:582)
+	at org.eclipse.ui.internal.Workbench.shutdown(Workbench.java:3037)
+	at org.eclipse.ui.internal.Workbench.busyClose(Workbench.java:1150)
+	at org.eclipse.ui.internal.Workbench.lambda$4(Workbench.java:1418)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:67)
+	at org.eclipse.ui.internal.Workbench.close(Workbench.java:1418)
+	at org.eclipse.ui.internal.Workbench.close(Workbench.java:1394)
+	at com.verigy.itee.ui.internal.events.QuitEclipseExecutor$1.run(QuitEclipseExecutor.java:79)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:132)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:5039)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:4519)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.block(ModalContext.java:166)
+	at org.eclipse.jface.operation.ModalContext.run(ModalContext.java:368)
+	at org.eclipse.jface.dialogs.ProgressMonitorDialog.run(ProgressMonitorDialog.java:470)
+	at org.eclipse.ui.internal.progress.ProgressMonitorJobsDialog.run(ProgressMonitorJobsDialog.java:230)
+	at org.eclipse.ui.internal.progress.ProgressManager.run(ProgressManager.java:999)
+	at com.advantest.itee.ate.ui.services.internal.AteShutdownHandler$2.runInUIThread(AteShutdownHandler.java:84)
+	at org.eclipse.ui.progress.UIJob.lambda$0(UIJob.java:148)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:132)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:5039)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:4519)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1155)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:342)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:648)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:342)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:555)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:173)
+	at com.verigy.itee.ui.SmarTestIdeApplication.start(SmarTestIdeApplication.java:171)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:208)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:136)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:402)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:651)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:588)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1459)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1432)

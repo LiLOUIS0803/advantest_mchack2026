@@ -1,0 +1,11 @@
+flask
+matplotlib
+numpy
+pandas
+paramiko
+pillow
+pytz==2023.3
+requests
+scikit-learn
+jsonschema
+

@@ -1,0 +1,15 @@
+{
+  "path_log" : "/tmp/acs_tcct",
+  "MessUtil" : "MessUI/MessUI",
+  "OutputUI" : 1,
+  "loglevel" : "debug",
+  "app_deploy":"/opt/acs/nexus/bin/AppDeployer",
+  "deploy_start" :"start",
+  "deploy_stop" :"stop",
+  "app_query" : "/opt/acs/nexus/bin/QueryAppDescriptor",
+  "deploy_timeout": 300,
+  "sync_deploy": 1,
+  "force_remove_app":0
+}
+
+

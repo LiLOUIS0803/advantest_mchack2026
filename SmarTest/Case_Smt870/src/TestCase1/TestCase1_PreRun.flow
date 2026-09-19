@@ -1,0 +1,32 @@
+flow TestCase1_PreRun {
+
+    setup {
+        suite AdaptiveTestStep calls ACSTML.AdaptiveTest
+        {
+            debugLevel= 0;
+            AppName= "py-app";
+            AppLoc= "edge";
+        }
+        suite PreparOre calls ACSTML.T_ORE_Build
+        {
+        }
+        suite SimData calls ACSTML.SetSimResult
+        {
+            MaxVal= 100;
+            VarName = "sim_result";
+        }
+    }
+    execute {
+        if(testProgramVariables.getBooleanOrElse("run_ore",true) == true)
+        {
+          PreparOre.execute();
+        }
+//        if(testProgramVariables.getBooleanOrElse("runAdaptive",true)==true)
+//        {
+//          AdaptiveTestStep.execute();
+//        }
+        SimData.execute();
+
+
+    }
+}

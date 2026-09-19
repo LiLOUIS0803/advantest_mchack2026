@@ -1,0 +1,10 @@
+
+  [
+     {"action":"pause","timing":"On_SOT"}
+    ,{"action":"clean","timing":"On_POSTBIN"}
+    ,{"action":"rebin","timing":"On_PREBIN"}  
+    ,{"action":"msg","timing":"On_POSTBIN"}  
+  ] 
+
+
+

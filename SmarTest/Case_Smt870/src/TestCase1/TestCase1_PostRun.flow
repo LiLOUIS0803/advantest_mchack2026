@@ -1,0 +1,18 @@
+flow TestCase1_PostRun {
+
+    setup {
+        suite displayAction calls ACSTML.ShowAction
+        {
+
+        }
+
+    }
+
+
+    execute {
+//        if(testProgramVariables.getBooleanOrElse("pause_eot",false) == true)
+//        {
+//             displayAction.execute();
+//        }
+    }
+}

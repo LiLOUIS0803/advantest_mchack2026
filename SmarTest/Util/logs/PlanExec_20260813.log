@@ -1,0 +1,7 @@
+2026-08-13 00:45:05,094 - INFO - workspace: /home/vincent/Case_Event/SmarTest/workspace
+2026-08-13 00:50:09,493 - INFO - workspace: /home/vincent/Case_Event/SmarTest/workspace
+2026-08-13 00:50:28,519 - INFO - workspace: /home/vincent/Case_Event/SmarTest/workspace
+2026-08-13 00:50:47,790 - INFO - workspace: /home/vincent/Case_Event/SmarTest/workspace
+2026-08-13 01:04:38,750 - INFO - run cmd: /opt/hp93000/testcell/bin/tcct -m -r /home/vincent/Case_Event/SmarTest/recipe/acs_tcct_4site_ft.xml Success
+2026-08-13 01:24:18,009 - INFO - workspace: /home/vincent/Case_Event/SmarTest/workspace
+2026-08-13 01:28:40,925 - INFO - run cmd: /opt/hp93000/testcell/bin/tcct -m -r /home/vincent/Case_Event/SmarTest/recipe/acs_tcct_4site_ft.xml Success

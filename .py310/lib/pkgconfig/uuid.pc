@@ -1,0 +1,11 @@
+prefix=/home/rainlin/nycu-3/hackathon2026/rtdi/.py310
+exec_prefix=/home/rainlin/nycu-3/hackathon2026/rtdi/.py310
+libdir=/home/rainlin/nycu-3/hackathon2026/rtdi/.py310/lib
+includedir=/home/rainlin/nycu-3/hackathon2026/rtdi/.py310/include
+
+Name: uuid
+Description: Universally unique id library
+Version: 2.32.1
+Requires:
+Cflags: -I${includedir}/uuid
+Libs: -L${libdir} -luuid

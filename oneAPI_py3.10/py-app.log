@@ -1,0 +1,2542 @@
+[2026-08-12 07:33:07,873]   [INFO]   [configuration.cpp:135]  ============ ACS ONEAPI 3.3.0.rc2 ====================
+[2026-08-12 07:33:07,873]   [INFO]   [configuration.cpp:35]  load configuration...
+[2026-08-12 07:33:07,873]   [INFO]   [configuration.cpp:36]    [Configuration] ONEAPI_DEBUG                 : 6
+[2026-08-12 07:33:07,873]   [INFO]   [configuration.cpp:200]    [Configuration] ONEAPI_LOCATION              : EDGE
+[2026-08-12 07:33:07,873]   [INFO]   [configuration.cpp:201]    [Configuration] ONEAPI_CONTAINER_NAME        : py-app
+[2026-08-12 07:33:07,873]   [INFO]   [configuration.cpp:202]    [Configuration] ONEAPI_DATA_PROTOCOL         : KAFKA
+[2026-08-12 07:33:07,873]   [INFO]   [configuration.cpp:203]    [Configuration] ONEAPI_DATA_KAFKA_URL        : nexus-broker:19092
+[2026-08-12 07:33:07,873]   [INFO]   [configuration.cpp:204]    [Configuration] ONEAPI_CONTROL_PROTOCOL      : ZMQ
+[2026-08-12 07:33:07,873]   [INFO]   [configuration.cpp:205]    [Configuration] ONEAPI_CONTROL_ZMQ_IP        : 180.3.5.29
+[2026-08-12 07:33:07,873]   [INFO]   [configuration.cpp:206]    [Configuration] ONEAPI_CONTROL_ZMQ_PORT      : 7001
+[2026-08-12 07:33:07,873]   [INFO]   [configuration.cpp:207]    [Configuration] ONEAPI_TPSERVICE_PORT        : 21122
+[2026-08-12 07:33:07,873]   [INFO]   [configuration.cpp:208]    [Configuration] ONEAPI_DFF_SCHEMA_TMPL_URL   : https://unifiedserver.local/subjects/<subject-name>/versions?normalize=true
+[2026-08-12 07:33:07,873]   [INFO]   [configuration.cpp:209]    [Configuration] ONEAPI_DFF_WRITE_TOPIC       : dffCustomData
+[2026-08-12 07:33:07,873]   [INFO]   [configuration.cpp:210]    [Configuration] ONEAPI_DFF_WRITE_RETRY       : 2
+[2026-08-12 07:33:07,873]   [INFO]   [configuration.cpp:211]    [Configuration] ONEAPI_DFF_WRITE_BROKER_LIST : unifiedserver.local:29092,unifiedserver.local:39092,unifiedserver.local:49092
+[2026-08-12 07:33:07,873]   [INFO]   [configuration.cpp:212]    [Configuration] ONEAPI_DFF_WRITE_TIMEOUT     : 300
+[2026-08-12 07:33:07,873]   [INFO]   [configuration.cpp:213]    [Configuration] ONEAPI_DFF_READ_BASE_URL     : https://unifiedserver.local/query/v1/jobs
+Library loaded!
+2026-08-12 07:33:08,268 - INFO - main.py(31): log level: INFO
+[2026-08-12 07:33:08,274]   [INFO]   [kafka_consume_session.cpp:42]  Connect to Event Port Success!
+[2026-08-12 07:33:08,275]   [INFO]   [zmq_dealer_client.cpp:53]  DealerClient starts connection...
+[2026-08-12 07:33:08,275]   [INFO]   [zmq_command_session.cpp:29]  Connect to Commnad Port Success!
+[2026-08-12 07:33:08,275]   [INFO]   [kafka_consumer.cpp:78]  KafkaConsumer starts consuming messages...
+2026-08-12 07:33:08,275 - INFO - main.py(53): Connection request initiated successfully.
+[2026-08-12 07:33:08,277]   [INFO]   [zmq_dealer_client.cpp:109]  Communication state changes: enable
+====== consume data from: testerId = host1 =======
+consumeTestFlowStart
+get_TimeStamp = 1786548793738762
+get_TestFlowName = PreBind
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548793739128
+get_TestSuite = PreBind.ReadOreDef
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548793862167
+get_TestSuite = PreBind.ReadOreDef
+get_ReleaseTesterTimeStamp = 1786548793862167
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548793862542
+get_TestSuite = PreBind.importtest
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548793985821
+get_TestSuite = PreBind.importtest
+get_ReleaseTesterTimeStamp = 1786548793985821
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548793986238
+get_TestSuite = PreBind.defineBins
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548793986484
+get_TestSuite = PreBind.defineBins
+get_ReleaseTesterTimeStamp = 1786548793986484
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548793986765
+get_TestSuite = PreBind.InitStdfDef
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548793986907
+get_TestSuite = PreBind.InitStdfDef
+get_ReleaseTesterTimeStamp = 1786548793986907
+====== consume data from: testerId = host1 =======
+consumeTestFlowEnd
+get_TimeStamp = 1786548793987752
+get_TestFlowName = PreBind
+====== consume data from: testerId = host1 =======
+====== consume data from: testerId = host1 =======
+====== consume data from: testerId = host1 =======
+====== consume data from: testerId = host1 =======
+consumeDeviceData
+get_TestProgramDir = /home/vincent/Case_Event/Case_Smt870/src/TestCase1
+get_TestProgramName = TestCase1.TestCase1_4site_ft
+get_TestProgramPath = /home/vincent/Case_Event/Case_Smt870/src/TestCase1/TestCase1_4site_ft.prog
+get_PinConfig = common.Pins
+get_ChannelAttribute = common.Pins
+get_BinInfoCount = 33
+SBin(0) Name(DEFAULT) Type(1) HBin(0) Name(DEFAULT) Type(1)
+SBin(1) Name(passed) Type(0) HBin(1) Name(passed) Type(0)
+SBin(2) Name(bin2) Type(1) HBin(2) Name(bin2) Type(1)
+SBin(3) Name(bin3) Type(1) HBin(3) Name(bin3) Type(1)
+SBin(4) Name(bin4) Type(1) HBin(4) Name(bin4) Type(1)
+SBin(5) Name(bin5) Type(1) HBin(5) Name(bin5) Type(1)
+SBin(6) Name(bin6) Type(1) HBin(6) Name(bin6) Type(1)
+SBin(7) Name(bin7) Type(1) HBin(7) Name(bin7) Type(1)
+SBin(8) Name(bin8) Type(1) HBin(8) Name(bin8) Type(1)
+SBin(9) Name(bin9) Type(1) HBin(9) Name(bin9) Type(1)
+SBin(10) Name(bin10) Type(1) HBin(10) Name(bin10) Type(1)
+SBin(11) Name(bin11) Type(1) HBin(11) Name(bin11) Type(1)
+SBin(12) Name(bin12) Type(1) HBin(12) Name(bin12) Type(1)
+SBin(13) Name(bin13) Type(1) HBin(13) Name(bin13) Type(1)
+SBin(14) Name(bin14) Type(1) HBin(14) Name(bin14) Type(1)
+SBin(15) Name(bin15) Type(1) HBin(15) Name(bin15) Type(1)
+SBin(16) Name(bin16) Type(1) HBin(16) Name(bin16) Type(1)
+SBin(17) Name(bin17) Type(1) HBin(17) Name(bin17) Type(1)
+SBin(18) Name(bin18) Type(1) HBin(18) Name(bin18) Type(1)
+SBin(19) Name(bin19) Type(1) HBin(19) Name(bin19) Type(1)
+SBin(20) Name(bin20) Type(1) HBin(20) Name(bin20) Type(1)
+SBin(21) Name(bin21) Type(1) HBin(21) Name(bin21) Type(1)
+SBin(22) Name(bin22) Type(1) HBin(22) Name(bin22) Type(1)
+SBin(23) Name(bin23) Type(1) HBin(23) Name(bin23) Type(1)
+SBin(24) Name(bin24) Type(1) HBin(24) Name(bin24) Type(1)
+SBin(25) Name(bin25) Type(1) HBin(25) Name(bin25) Type(1)
+SBin(26) Name(bin26) Type(1) HBin(26) Name(bin26) Type(1)
+SBin(27) Name(bin27) Type(1) HBin(27) Name(bin27) Type(1)
+SBin(28) Name(bin28) Type(1) HBin(28) Name(bin28) Type(1)
+SBin(29) Name(bin29) Type(1) HBin(29) Name(bin29) Type(1)
+SBin(30) Name(bin30) Type(1) HBin(30) Name(bin30) Type(1)
+SBin(31) Name(bin31) Type(1) HBin(31) Name(bin31) Type(1)
+SBin(32) Name(bin32) Type(1) HBin(32) Name(bin32) Type(1)
+====== consume data from: testerId = host1 =======
+consumeLotStart
+get_Timezone = 28800
+get_SetupTime = 1786548794296597
+get_TimeStamp = 1786548794316134
+get_StationNumber = 0
+get_ModeCode =  
+get_RetestCode =  
+get_ProtectionCode =  
+get_BurnTimeMinutes = 65535
+get_CommandCode =  
+get_LotId = A3847573
+get_PartType = F12345
+get_NodeName = host1
+get_TesterType = 93000-SOC
+get_JobName = TestCase_Smt870/src/TestCase1/TestCase1_4site_ft.prog
+get_JobRevision = v1.0.0
+get_SublotId = 
+get_OperatorName = testUser
+get_TesterosType = SmarTest
+get_TesterosVersion = s/w rev. 8.7.0.0 (T) , Fri, 10 May 2024 14:13:50 +0200
+get_TestType = PACKAGE_TEST
+get_TestStepCode = FT
+get_TestTemperature = 
+get_UserText = 
+get_AuxiliaryFile = 
+get_PackageType = 
+get_FamilyId = 
+get_DateCode = 
+get_FacilityId = 
+get_FloorId = 
+get_ProcessId = 
+get_OperationFreq = 
+get_SpecName = 
+get_SpecVersion = 
+get_FlowId = 
+get_SetupId = 
+get_DesignRevision = 
+get_EngineeringLotId = 
+get_RomCode = 
+get_SerialNumber = Offline
+get_SupervisorName = 
+get_HeadNumber = 1
+get_SiteGroupNumber = 0
+get_TotalHeadSiteList: 1 2 3 4
+get_ProberHandlerType = 
+get_ProberHandlerId = 
+get_ProbecardType = 
+get_ProbecardId = 
+get_LoadboardType = 
+get_LoadboardId = B123566
+get_DibType = 
+get_DibId = 
+get_CableType = 
+get_CableId = 
+get_ContactorType = 
+get_ContactorId = 
+get_LaserType = 
+get_LaserId = 
+get_ExtraEquipType = 
+get_ExtraEquipId = 
+====== consume data from: testerId = host1 =======
+consumeTestStart
+get_TimeStamp = 1786548794316134
+get_ResultCount = 4
+Head = 1 Site = 1
+query_XCoord = -32768
+query_YCoord = -32768
+Head = 1 Site = 2
+query_XCoord = -32768
+query_YCoord = -32768
+Head = 1 Site = 3
+query_XCoord = -32768
+query_YCoord = -32768
+Head = 1 Site = 4
+query_XCoord = -32768
+query_YCoord = -32768
+====== consume data from: testerId = host1 =======
+consumeTestFlowStart
+get_TimeStamp = 1786548794324070
+get_TestFlowName = PreRun
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794324415
+get_TestSuite = PreRun.PreparOre
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794662304
+get_TestSuite = PreRun.PreparOre
+get_ReleaseTesterTimeStamp = 1786548794662304
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794662569
+get_TestSuite = PreRun.SimData
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794662699
+get_TestSuite = PreRun.SimData
+get_ReleaseTesterTimeStamp = 1786548794662699
+====== consume data from: testerId = host1 =======
+consumeTestFlowEnd
+get_TimeStamp = 1786548794662779
+get_TestFlowName = PreRun
+====== consume data from: testerId = host1 =======
+consumeTestFlowStart
+get_TimeStamp = 1786548794663600
+get_TestFlowName = Main
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794663929
+get_TestSuite = Main.lotidTest
+====== consume data from: testerId = host1 =======
+consumeParametricTest
+get_ResultCount = 4
+Head = 1 Site = 1
+query_TestNumber = 20
+query_TestText = Lotid
+query_LowLimit = 10.0
+query_HighLimit = 9.000000202358129e+18
+query_Unit = 
+query_TestFlag = 0x0
+query_Result = 3355701.0
+query_ResultScaling = 0
+query_LowLimitScaling = 0
+query_HighLimitScaling = 0
+query_ParamFlag = 0xC0
+query_TestSuite = Main.lotidTest
+query_MeasurementName = 
+Head = 1 Site = 2
+query_TestNumber = 20
+query_TestText = Lotid
+query_LowLimit = 10.0
+query_HighLimit = 9.000000202358129e+18
+query_Unit = 
+query_TestFlag = 0x0
+query_Result = 3355701.0
+query_ResultScaling = 0
+query_LowLimitScaling = 0
+query_HighLimitScaling = 0
+query_ParamFlag = 0xC0
+query_TestSuite = Main.lotidTest
+query_MeasurementName = 
+Head = 1 Site = 3
+query_TestNumber = 20
+query_TestText = Lotid
+query_LowLimit = 10.0
+query_HighLimit = 9.000000202358129e+18
+query_Unit = 
+query_TestFlag = 0x0
+query_Result = 3355701.0
+query_ResultScaling = 0
+query_LowLimitScaling = 0
+query_HighLimitScaling = 0
+query_ParamFlag = 0xC0
+query_TestSuite = Main.lotidTest
+query_MeasurementName = 
+Head = 1 Site = 4
+query_TestNumber = 20
+query_TestText = Lotid
+query_LowLimit = 10.0
+query_HighLimit = 9.000000202358129e+18
+query_Unit = 
+query_TestFlag = 0x0
+query_Result = 3355701.0
+query_ResultScaling = 0
+query_LowLimitScaling = 0
+query_HighLimitScaling = 0
+query_ParamFlag = 0xC0
+query_TestSuite = Main.lotidTest
+query_MeasurementName = 
+====== consume data from: testerId = host1 =======
+consumeParametricTest
+get_ResultCount = 4
+Head = 1 Site = 1
+query_TestNumber = 21
+query_TestText = Lotid
+query_LowLimit = 10.0
+query_HighLimit = 9.000000202358129e+18
+query_Unit = 
+query_TestFlag = 0x0
+query_Result = 4272434.0
+query_ResultScaling = 0
+query_LowLimitScaling = 0
+query_HighLimitScaling = 0
+query_ParamFlag = 0xC0
+query_TestSuite = Main.lotidTest
+query_MeasurementName = 
+Head = 1 Site = 2
+query_TestNumber = 21
+query_TestText = Lotid
+query_LowLimit = 10.0
+query_HighLimit = 9.000000202358129e+18
+query_Unit = 
+query_TestFlag = 0x0
+query_Result = 4272434.0
+query_ResultScaling = 0
+query_LowLimitScaling = 0
+query_HighLimitScaling = 0
+query_ParamFlag = 0xC0
+query_TestSuite = Main.lotidTest
+query_MeasurementName = 
+Head = 1 Site = 3
+query_TestNumber = 21
+query_TestText = Lotid
+query_LowLimit = 10.0
+query_HighLimit = 9.000000202358129e+18
+query_Unit = 
+query_TestFlag = 0x0
+query_Result = 4272434.0
+query_ResultScaling = 0
+query_LowLimitScaling = 0
+query_HighLimitScaling = 0
+query_ParamFlag = 0xC0
+query_TestSuite = Main.lotidTest
+query_MeasurementName = 
+Head = 1 Site = 4
+query_TestNumber = 21
+query_TestText = Lotid
+query_LowLimit = 10.0
+query_HighLimit = 9.000000202358129e+18
+query_Unit = 
+query_TestFlag = 0x0
+query_Result = 4272434.0
+query_ResultScaling = 0
+query_LowLimitScaling = 0
+query_HighLimitScaling = 0
+query_ParamFlag = 0xC0
+query_TestSuite = Main.lotidTest
+query_MeasurementName = 
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794664119
+get_TestSuite = Main.lotidTest
+get_ReleaseTesterTimeStamp = 1786548794664119
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794664697
+get_TestSuite = Main.waferidTest
+====== consume data from: testerId = host1 =======
+consumeParametricTest
+get_ResultCount = 4
+Head = 1 Site = 1
+query_TestNumber = 25
+query_TestText = waferid
+query_LowLimit = 0.0
+query_HighLimit = 60000.0
+query_Unit = 
+query_TestFlag = 0x0
+query_Result = 12337.0
+query_ResultScaling = 0
+query_LowLimitScaling = 0
+query_HighLimitScaling = 0
+query_ParamFlag = 0xC0
+query_TestSuite = Main.waferidTest
+query_MeasurementName = 
+Head = 1 Site = 2
+query_TestNumber = 25
+query_TestText = waferid
+query_LowLimit = 0.0
+query_HighLimit = 60000.0
+query_Unit = 
+query_TestFlag = 0x0
+query_Result = 12337.0
+query_ResultScaling = 0
+query_LowLimitScaling = 0
+query_HighLimitScaling = 0
+query_ParamFlag = 0xC0
+query_TestSuite = Main.waferidTest
+query_MeasurementName = 
+Head = 1 Site = 3
+query_TestNumber = 25
+query_TestText = waferid
+query_LowLimit = 0.0
+query_HighLimit = 60000.0
+query_Unit = 
+query_TestFlag = 0x0
+query_Result = 12337.0
+query_ResultScaling = 0
+query_LowLimitScaling = 0
+query_HighLimitScaling = 0
+query_ParamFlag = 0xC0
+query_TestSuite = Main.waferidTest
+query_MeasurementName = 
+Head = 1 Site = 4
+query_TestNumber = 25
+query_TestText = waferid
+query_LowLimit = 0.0
+query_HighLimit = 60000.0
+query_Unit = 
+query_TestFlag = 0x0
+query_Result = 12337.0
+query_ResultScaling = 0
+query_LowLimitScaling = 0
+query_HighLimitScaling = 0
+query_ParamFlag = 0xC0
+query_TestSuite = Main.waferidTest
+query_MeasurementName = 
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794664826
+get_TestSuite = Main.waferidTest
+get_ReleaseTesterTimeStamp = 1786548794664826
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794665051
+get_TestSuite = Main.Suite1
+====== consume data from: testerId = host1 =======
+consumeMeasurementData
+get_MeasurementName = Main.Suite1.measurement
+get_GroupCount = 0
+get_SequenceCount = 0
+====== consume data from: testerId = host1 =======
+consumeMultiParametric
+get_ResultCount = 4
+Head = 1 Site = 1
+query_TestNumber = 220
+query_TestText = CP
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite1
+query_MeasurementName = Main.Suite1.measurement
+query_Results: Cnt(1) 1.1440000534057617query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 37
+query_PinName = CP
+Head = 1 Site = 2
+query_TestNumber = 220
+query_TestText = CP
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite1
+query_MeasurementName = Main.Suite1.measurement
+query_Results: Cnt(1) 1.1490000486373901query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 38
+query_PinName = CP
+Head = 1 Site = 3
+query_TestNumber = 220
+query_TestText = CP
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite1
+query_MeasurementName = Main.Suite1.measurement
+query_Results: Cnt(1) 1.1399999856948853query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 39
+query_PinName = CP
+Head = 1 Site = 4
+query_TestNumber = 220
+query_TestText = CP
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite1
+query_MeasurementName = Main.Suite1.measurement
+query_Results: Cnt(1) 1.1430000066757202query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 40
+query_PinName = CP
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794669133
+get_TestSuite = Main.Suite1
+get_ReleaseTesterTimeStamp = 1786548794668165
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794668363
+get_TestSuite = Main.Suite2
+====== consume data from: testerId = host1 =======
+consumeMeasurementData
+get_MeasurementName = Main.Suite2.measurement
+get_GroupCount = 0
+get_SequenceCount = 0
+====== consume data from: testerId = host1 =======
+consumeMultiParametric
+get_ResultCount = 4
+Head = 1 Site = 1
+query_TestNumber = 260
+query_TestText = IO1
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite2
+query_MeasurementName = Main.Suite2.measurement
+query_Results: Cnt(1) 1.065999984741211query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 25
+query_PinName = IO1
+Head = 1 Site = 2
+query_TestNumber = 260
+query_TestText = IO1
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite2
+query_MeasurementName = Main.Suite2.measurement
+query_Results: Cnt(1) 1.1100000143051147query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 26
+query_PinName = IO1
+Head = 1 Site = 3
+query_TestNumber = 260
+query_TestText = IO1
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite2
+query_MeasurementName = Main.Suite2.measurement
+query_Results: Cnt(1) 1.0809999704360962query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 27
+query_PinName = IO1
+Head = 1 Site = 4
+query_TestNumber = 260
+query_TestText = IO1
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite2
+query_MeasurementName = Main.Suite2.measurement
+query_Results: Cnt(1) 1.1019999980926514query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 28
+query_PinName = IO1
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794672164
+get_TestSuite = Main.Suite2
+get_ReleaseTesterTimeStamp = 1786548794671198
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794671419
+get_TestSuite = Main.Suite3
+====== consume data from: testerId = host1 =======
+consumeMeasurementData
+get_MeasurementName = Main.Suite3.measurement
+get_GroupCount = 0
+get_SequenceCount = 0
+====== consume data from: testerId = host1 =======
+consumeMultiParametric
+get_ResultCount = 4
+Head = 1 Site = 1
+query_TestNumber = 280
+query_TestText = IO1
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite3
+query_MeasurementName = Main.Suite3.measurement
+query_Results: Cnt(1) 1.194000005722046query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 41
+query_PinName = IO2
+Head = 1 Site = 2
+query_TestNumber = 280
+query_TestText = IO1
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite3
+query_MeasurementName = Main.Suite3.measurement
+query_Results: Cnt(1) 1.1749999523162842query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 42
+query_PinName = IO2
+Head = 1 Site = 3
+query_TestNumber = 280
+query_TestText = IO1
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite3
+query_MeasurementName = Main.Suite3.measurement
+query_Results: Cnt(1) 1.1740000247955322query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 43
+query_PinName = IO2
+Head = 1 Site = 4
+query_TestNumber = 280
+query_TestText = IO1
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite3
+query_MeasurementName = Main.Suite3.measurement
+query_Results: Cnt(1) 1.215999960899353query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 44
+query_PinName = IO2
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794675096
+get_TestSuite = Main.Suite3
+get_ReleaseTesterTimeStamp = 1786548794674119
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794674292
+get_TestSuite = Main.Suite4
+====== consume data from: testerId = host1 =======
+consumeMeasurementData
+get_MeasurementName = Main.Suite4.measurement
+get_GroupCount = 0
+get_SequenceCount = 0
+====== consume data from: testerId = host1 =======
+consumeMultiParametric
+get_ResultCount = 4
+Head = 1 Site = 1
+query_TestNumber = 300
+query_TestText = IO3
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite4
+query_MeasurementName = Main.Suite4.measurement
+query_Results: Cnt(1) 1.218999981880188query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 33
+query_PinName = IO3
+Head = 1 Site = 2
+query_TestNumber = 300
+query_TestText = IO3
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite4
+query_MeasurementName = Main.Suite4.measurement
+query_Results: Cnt(1) 1.2070000171661377query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 34
+query_PinName = IO3
+Head = 1 Site = 3
+query_TestNumber = 300
+query_TestText = IO3
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite4
+query_MeasurementName = Main.Suite4.measurement
+query_Results: Cnt(1) 1.2059999704360962query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 35
+query_PinName = IO3
+Head = 1 Site = 4
+query_TestNumber = 300
+query_TestText = IO3
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite4
+query_MeasurementName = Main.Suite4.measurement
+query_Results: Cnt(1) 1.215000033378601query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 36
+query_PinName = IO3
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794678192
+get_TestSuite = Main.Suite4
+get_ReleaseTesterTimeStamp = 1786548794677247
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794677441
+get_TestSuite = Main.Suite5
+====== consume data from: testerId = host1 =======
+consumeMeasurementData
+get_MeasurementName = Main.Suite5.measurement
+get_GroupCount = 0
+get_SequenceCount = 0
+====== consume data from: testerId = host1 =======
+consumeMultiParametric
+get_ResultCount = 4
+Head = 1 Site = 1
+query_TestNumber = 320
+query_TestText = IO4
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite5
+query_MeasurementName = Main.Suite5.measurement
+query_Results: Cnt(1) 0.8980000019073486query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 49
+query_PinName = IO4
+Head = 1 Site = 2
+query_TestNumber = 320
+query_TestText = IO4
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite5
+query_MeasurementName = Main.Suite5.measurement
+query_Results: Cnt(1) 0.9210000038146973query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 50
+query_PinName = IO4
+Head = 1 Site = 3
+query_TestNumber = 320
+query_TestText = IO4
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite5
+query_MeasurementName = Main.Suite5.measurement
+query_Results: Cnt(1) 0.9449999928474426query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 51
+query_PinName = IO4
+Head = 1 Site = 4
+query_TestNumber = 320
+query_TestText = IO4
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite5
+query_MeasurementName = Main.Suite5.measurement
+query_Results: Cnt(1) 0.9240000247955322query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 52
+query_PinName = IO4
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794681224
+get_TestSuite = Main.Suite5
+get_ReleaseTesterTimeStamp = 1786548794680256
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794680433
+get_TestSuite = Main.Suite6
+====== consume data from: testerId = host1 =======
+consumeMeasurementData
+get_MeasurementName = Main.Suite6.measurement
+get_GroupCount = 0
+get_SequenceCount = 0
+====== consume data from: testerId = host1 =======
+consumeMultiParametric
+get_ResultCount = 4
+Head = 1 Site = 1
+query_TestNumber = 340
+query_TestText = IO5
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite6
+query_MeasurementName = Main.Suite6.measurement
+query_Results: Cnt(1) 1.149999976158142query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 45
+query_PinName = IO5
+Head = 1 Site = 2
+query_TestNumber = 340
+query_TestText = IO5
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite6
+query_MeasurementName = Main.Suite6.measurement
+query_Results: Cnt(1) 1.1519999504089355query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 46
+query_PinName = IO5
+Head = 1 Site = 3
+query_TestNumber = 340
+query_TestText = IO5
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite6
+query_MeasurementName = Main.Suite6.measurement
+query_Results: Cnt(1) 1.1510000228881836query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 47
+query_PinName = IO5
+Head = 1 Site = 4
+query_TestNumber = 340
+query_TestText = IO5
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite6
+query_MeasurementName = Main.Suite6.measurement
+query_Results: Cnt(1) 1.1269999742507935query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 48
+query_PinName = IO5
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794684203
+get_TestSuite = Main.Suite6
+get_ReleaseTesterTimeStamp = 1786548794683234
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794683403
+get_TestSuite = Main.Suite7
+====== consume data from: testerId = host1 =======
+consumeMeasurementData
+get_MeasurementName = Main.Suite7.measurement
+get_GroupCount = 0
+get_SequenceCount = 0
+====== consume data from: testerId = host1 =======
+consumeMultiParametric
+get_ResultCount = 4
+Head = 1 Site = 1
+query_TestNumber = 360
+query_TestText = IO6
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite7
+query_MeasurementName = Main.Suite7.measurement
+query_Results: Cnt(1) 1.156000018119812query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 57
+query_PinName = IO6
+Head = 1 Site = 2
+query_TestNumber = 360
+query_TestText = IO6
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite7
+query_MeasurementName = Main.Suite7.measurement
+query_Results: Cnt(1) 1.1069999933242798query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 58
+query_PinName = IO6
+Head = 1 Site = 3
+query_TestNumber = 360
+query_TestText = IO6
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite7
+query_MeasurementName = Main.Suite7.measurement
+query_Results: Cnt(1) 1.1139999628067017query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 59
+query_PinName = IO6
+Head = 1 Site = 4
+query_TestNumber = 360
+query_TestText = IO6
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite7
+query_MeasurementName = Main.Suite7.measurement
+query_Results: Cnt(1) 1.1260000467300415query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 60
+query_PinName = IO6
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794687378
+get_TestSuite = Main.Suite7
+get_ReleaseTesterTimeStamp = 1786548794686292
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794686697
+get_TestSuite = Main.Suite8
+====== consume data from: testerId = host1 =======
+consumeMeasurementData
+get_MeasurementName = Main.Suite8.measurement
+get_GroupCount = 0
+get_SequenceCount = 0
+====== consume data from: testerId = host1 =======
+consumeMultiParametric
+get_ResultCount = 4
+Head = 1 Site = 1
+query_TestNumber = 380
+query_TestText = IO7
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite8
+query_MeasurementName = Main.Suite8.measurement
+query_Results: Cnt(1) 1.1519999504089355query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 53
+query_PinName = IO7
+Head = 1 Site = 2
+query_TestNumber = 380
+query_TestText = IO7
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite8
+query_MeasurementName = Main.Suite8.measurement
+query_Results: Cnt(1) 1.1649999618530273query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 54
+query_PinName = IO7
+Head = 1 Site = 3
+query_TestNumber = 380
+query_TestText = IO7
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite8
+query_MeasurementName = Main.Suite8.measurement
+query_Results: Cnt(1) 1.156000018119812query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 55
+query_PinName = IO7
+Head = 1 Site = 4
+query_TestNumber = 380
+query_TestText = IO7
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite8
+query_MeasurementName = Main.Suite8.measurement
+query_Results: Cnt(1) 1.194000005722046query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 56
+query_PinName = IO7
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794690490
+get_TestSuite = Main.Suite8
+get_ReleaseTesterTimeStamp = 1786548794689373
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794689613
+get_TestSuite = Main.Suite9
+====== consume data from: testerId = host1 =======
+consumeMeasurementData
+get_MeasurementName = Main.Suite9.measurement
+get_GroupCount = 0
+get_SequenceCount = 0
+====== consume data from: testerId = host1 =======
+consumeMultiParametric
+get_ResultCount = 4
+Head = 1 Site = 1
+query_TestNumber = 400
+query_TestText = Q7
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite9
+query_MeasurementName = Main.Suite9.measurement
+query_Results: Cnt(1) 0.9800000190734863query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 13
+query_PinName = Q7
+Head = 1 Site = 2
+query_TestNumber = 400
+query_TestText = Q7
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite9
+query_MeasurementName = Main.Suite9.measurement
+query_Results: Cnt(1) 0.9990000128746033query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 14
+query_PinName = Q7
+Head = 1 Site = 3
+query_TestNumber = 400
+query_TestText = Q7
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite9
+query_MeasurementName = Main.Suite9.measurement
+query_Results: Cnt(1) 1.0099999904632568query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 15
+query_PinName = Q7
+Head = 1 Site = 4
+query_TestNumber = 400
+query_TestText = Q7
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite9
+query_MeasurementName = Main.Suite9.measurement
+query_Results: Cnt(1) 1.003999948501587query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 16
+query_PinName = Q7
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794693633
+get_TestSuite = Main.Suite9
+get_ReleaseTesterTimeStamp = 1786548794692605
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794692850
+get_TestSuite = Main.Suite10
+====== consume data from: testerId = host1 =======
+consumeMeasurementData
+get_MeasurementName = Main.Suite10.measurement
+get_GroupCount = 0
+get_SequenceCount = 0
+====== consume data from: testerId = host1 =======
+consumeMultiParametric
+get_ResultCount = 4
+Head = 1 Site = 1
+query_TestNumber = 480
+query_TestText = Q0
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite10
+query_MeasurementName = Main.Suite10.measurement
+query_Results: Cnt(1) 1.0820000171661377query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 81
+query_PinName = Q0
+Head = 1 Site = 2
+query_TestNumber = 480
+query_TestText = Q0
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite10
+query_MeasurementName = Main.Suite10.measurement
+query_Results: Cnt(1) 1.0670000314712524query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 82
+query_PinName = Q0
+Head = 1 Site = 3
+query_TestNumber = 480
+query_TestText = Q0
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite10
+query_MeasurementName = Main.Suite10.measurement
+query_Results: Cnt(1) 1.0190000534057617query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 83
+query_PinName = Q0
+Head = 1 Site = 4
+query_TestNumber = 480
+query_TestText = Q0
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite10
+query_MeasurementName = Main.Suite10.measurement
+query_Results: Cnt(1) 1.0299999713897705query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 84
+query_PinName = Q0
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794696817
+get_TestSuite = Main.Suite10
+get_ReleaseTesterTimeStamp = 1786548794695718
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794695935
+get_TestSuite = Main.Suite11
+====== consume data from: testerId = host1 =======
+consumeMeasurementData
+get_MeasurementName = Main.Suite11.measurement
+get_GroupCount = 0
+get_SequenceCount = 0
+====== consume data from: testerId = host1 =======
+consumeMultiParametric
+get_ResultCount = 4
+Head = 1 Site = 1
+query_TestNumber = 500
+query_TestText = MR
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite11
+query_MeasurementName = Main.Suite11.measurement
+query_Results: Cnt(1) 1.1239999532699585query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 9
+query_PinName = MR
+Head = 1 Site = 2
+query_TestNumber = 500
+query_TestText = MR
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite11
+query_MeasurementName = Main.Suite11.measurement
+query_Results: Cnt(1) 1.1080000400543213query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 10
+query_PinName = MR
+Head = 1 Site = 3
+query_TestNumber = 500
+query_TestText = MR
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite11
+query_MeasurementName = Main.Suite11.measurement
+query_Results: Cnt(1) 1.1019999980926514query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 11
+query_PinName = MR
+Head = 1 Site = 4
+query_TestNumber = 500
+query_TestText = MR
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite11
+query_MeasurementName = Main.Suite11.measurement
+query_Results: Cnt(1) 1.1139999628067017query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 12
+query_PinName = MR
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794700087
+get_TestSuite = Main.Suite11
+get_ReleaseTesterTimeStamp = 1786548794699074
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794699266
+get_TestSuite = Main.Suite12
+====== consume data from: testerId = host1 =======
+consumeMeasurementData
+get_MeasurementName = Main.Suite12.measurement
+get_GroupCount = 0
+get_SequenceCount = 0
+====== consume data from: testerId = host1 =======
+consumeMultiParametric
+get_ResultCount = 4
+Head = 1 Site = 1
+query_TestNumber = 520
+query_TestText = CP
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite12
+query_MeasurementName = Main.Suite12.measurement
+query_Results: Cnt(1) 1.2419999837875366query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 37
+query_PinName = CP
+Head = 1 Site = 2
+query_TestNumber = 520
+query_TestText = CP
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite12
+query_MeasurementName = Main.Suite12.measurement
+query_Results: Cnt(1) 1.246000051498413query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 38
+query_PinName = CP
+Head = 1 Site = 3
+query_TestNumber = 520
+query_TestText = CP
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite12
+query_MeasurementName = Main.Suite12.measurement
+query_Results: Cnt(1) 1.24399995803833query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 39
+query_PinName = CP
+Head = 1 Site = 4
+query_TestNumber = 520
+query_TestText = CP
+query_LowLimit = 0.6000000238418579
+query_HighLimit = 1.7999999523162842
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite12
+query_MeasurementName = Main.Suite12.measurement
+query_Results: Cnt(1) 1.2599999904632568query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 40
+query_PinName = CP
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794702934
+get_TestSuite = Main.Suite12
+get_ReleaseTesterTimeStamp = 1786548794701923
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794702120
+get_TestSuite = Main.Suite13
+====== consume data from: testerId = host1 =======
+consumeMeasurementData
+get_MeasurementName = Main.Suite13.measurement
+get_GroupCount = 0
+get_SequenceCount = 0
+====== consume data from: testerId = host1 =======
+consumeFunctionalTest
+get_ResultCount = 4
+Head = 1 Site = 1
+query_TestNumber = 540
+query_TestText = AllPins
+query_TestFlag = 0x0
+query_CycleCount = 0
+query_NumberFail = 0
+query_VectNam = patterns.PatA1
+query_TestSuite = Main.Suite13
+query_MeasurementName = Main.Suite13.measurement
+Head = 1 Site = 2
+query_TestNumber = 540
+query_TestText = AllPins
+query_TestFlag = 0x0
+query_CycleCount = 0
+query_NumberFail = 0
+query_VectNam = patterns.PatA1
+query_TestSuite = Main.Suite13
+query_MeasurementName = Main.Suite13.measurement
+Head = 1 Site = 3
+query_TestNumber = 540
+query_TestText = AllPins
+query_TestFlag = 0x0
+query_CycleCount = 0
+query_NumberFail = 0
+query_VectNam = patterns.PatA1
+query_TestSuite = Main.Suite13
+query_MeasurementName = Main.Suite13.measurement
+Head = 1 Site = 4
+query_TestNumber = 540
+query_TestText = AllPins
+query_TestFlag = 0x0
+query_CycleCount = 0
+query_NumberFail = 0
+query_VectNam = patterns.PatA1
+query_TestSuite = Main.Suite13
+query_MeasurementName = Main.Suite13.measurement
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794705438
+get_TestSuite = Main.Suite13
+get_ReleaseTesterTimeStamp = 1786548794705226
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794705414
+get_TestSuite = Main.Suite14
+====== consume data from: testerId = host1 =======
+consumeMeasurementData
+get_MeasurementName = Main.Suite14.measurement
+get_GroupCount = 0
+get_SequenceCount = 0
+====== consume data from: testerId = host1 =======
+consumeMultiParametric
+get_ResultCount = 4
+Head = 1 Site = 1
+query_TestNumber = 560
+query_TestText = PinGrp
+query_LowLimit = 0.5
+query_HighLimit = 2.299999952316284
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite14
+query_MeasurementName = Main.Suite14.measurement
+query_Results: Cnt(2) 1.11899995803833 1.475000023841858query_PassFailList: Cnt(2) True True
+query_PinIndexbyID = 37
+query_PinName = CP
+query_PinIndexbyID = 9
+query_PinName = MR
+Head = 1 Site = 2
+query_TestNumber = 560
+query_TestText = PinGrp
+query_LowLimit = 0.5
+query_HighLimit = 2.299999952316284
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite14
+query_MeasurementName = Main.Suite14.measurement
+query_Results: Cnt(2) 1.0859999656677246 1.4730000495910645query_PassFailList: Cnt(2) True True
+query_PinIndexbyID = 38
+query_PinName = CP
+query_PinIndexbyID = 10
+query_PinName = MR
+Head = 1 Site = 3
+query_TestNumber = 560
+query_TestText = PinGrp
+query_LowLimit = 0.5
+query_HighLimit = 2.299999952316284
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite14
+query_MeasurementName = Main.Suite14.measurement
+query_Results: Cnt(2) 1.1629999876022339 1.4199999570846558query_PassFailList: Cnt(2) True True
+query_PinIndexbyID = 39
+query_PinName = CP
+query_PinIndexbyID = 11
+query_PinName = MR
+Head = 1 Site = 4
+query_TestNumber = 560
+query_TestText = PinGrp
+query_LowLimit = 0.5
+query_HighLimit = 2.299999952316284
+query_Unit = V
+query_TestFlag = 0x0
+query_TestSuite = Main.Suite14
+query_MeasurementName = Main.Suite14.measurement
+query_Results: Cnt(2) 1.1069999933242798 1.4819999933242798query_PassFailList: Cnt(2) True True
+query_PinIndexbyID = 40
+query_PinName = CP
+query_PinIndexbyID = 12
+query_PinName = MR
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794710526
+get_TestSuite = Main.Suite14
+get_ReleaseTesterTimeStamp = 1786548794709460
+====== consume data from: testerId = host1 =======
+consumeTestFlowStart
+get_TimeStamp = 1786548794709512
+get_TestFlowName = Main.IDDQ_flow
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794709791
+get_TestSuite = Main.IDDQ_flow.IDDQ_A1
+====== consume data from: testerId = host1 =======
+consumeMeasurementData
+get_MeasurementName = Main.IDDQ_flow.IDDQ_A1.measurement
+get_GroupCount = 0
+get_SequenceCount = 0
+====== consume data from: testerId = host1 =======
+consumeMultiParametric
+get_ResultCount = 4
+Head = 1 Site = 1
+query_TestNumber = 80000
+query_TestText = IO1
+query_LowLimit = 12.100000381469727
+query_HighLimit = 30.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A1
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A1.measurement
+query_Results: Cnt(1) 19.757999420166016query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 25
+query_PinName = IO1
+Head = 1 Site = 2
+query_TestNumber = 80000
+query_TestText = IO1
+query_LowLimit = 12.100000381469727
+query_HighLimit = 30.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A1
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A1.measurement
+query_Results: Cnt(1) 19.23200035095215query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 26
+query_PinName = IO1
+Head = 1 Site = 3
+query_TestNumber = 80000
+query_TestText = IO1
+query_LowLimit = 12.100000381469727
+query_HighLimit = 30.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A1
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A1.measurement
+query_Results: Cnt(1) 19.44700050354004query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 27
+query_PinName = IO1
+Head = 1 Site = 4
+query_TestNumber = 80000
+query_TestText = IO1
+query_LowLimit = 12.100000381469727
+query_HighLimit = 30.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A1
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A1.measurement
+query_Results: Cnt(1) 19.613000869750977query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 28
+query_PinName = IO1
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794714036
+get_TestSuite = Main.IDDQ_flow.IDDQ_A1
+get_ReleaseTesterTimeStamp = 1786548794713054
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794713236
+get_TestSuite = Main.IDDQ_flow.IDDQ_A2
+====== consume data from: testerId = host1 =======
+consumeMeasurementData
+get_MeasurementName = Main.IDDQ_flow.IDDQ_A2.measurement
+get_GroupCount = 0
+get_SequenceCount = 0
+====== consume data from: testerId = host1 =======
+consumeMultiParametric
+get_ResultCount = 4
+Head = 1 Site = 1
+query_TestNumber = 81000
+query_TestText = IO2
+query_LowLimit = 4.199999809265137
+query_HighLimit = 12.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A2
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A2.measurement
+query_Results: Cnt(1) 8.218000411987305query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 41
+query_PinName = IO2
+Head = 1 Site = 2
+query_TestNumber = 81000
+query_TestText = IO2
+query_LowLimit = 4.199999809265137
+query_HighLimit = 12.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A2
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A2.measurement
+query_Results: Cnt(1) 8.380999565124512query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 42
+query_PinName = IO2
+Head = 1 Site = 3
+query_TestNumber = 81000
+query_TestText = IO2
+query_LowLimit = 4.199999809265137
+query_HighLimit = 12.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A2
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A2.measurement
+query_Results: Cnt(1) 8.402999877929688query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 43
+query_PinName = IO2
+Head = 1 Site = 4
+query_TestNumber = 81000
+query_TestText = IO2
+query_LowLimit = 4.199999809265137
+query_HighLimit = 12.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A2
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A2.measurement
+query_Results: Cnt(1) 8.303000450134277query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 44
+query_PinName = IO2
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794717334
+get_TestSuite = Main.IDDQ_flow.IDDQ_A2
+get_ReleaseTesterTimeStamp = 1786548794716341
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794716520
+get_TestSuite = Main.IDDQ_flow.IDDQ_A3
+====== consume data from: testerId = host1 =======
+consumeMeasurementData
+get_MeasurementName = Main.IDDQ_flow.IDDQ_A3.measurement
+get_GroupCount = 0
+get_SequenceCount = 0
+====== consume data from: testerId = host1 =======
+consumeMultiParametric
+get_ResultCount = 4
+Head = 1 Site = 1
+query_TestNumber = 82000
+query_TestText = IO3
+query_LowLimit = 1.2000000476837158
+query_HighLimit = 6.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A3
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A3.measurement
+query_Results: Cnt(1) 3.372999906539917query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 33
+query_PinName = IO3
+Head = 1 Site = 2
+query_TestNumber = 82000
+query_TestText = IO3
+query_LowLimit = 1.2000000476837158
+query_HighLimit = 6.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A3
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A3.measurement
+query_Results: Cnt(1) 3.5510001182556152query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 34
+query_PinName = IO3
+Head = 1 Site = 3
+query_TestNumber = 82000
+query_TestText = IO3
+query_LowLimit = 1.2000000476837158
+query_HighLimit = 6.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A3
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A3.measurement
+query_Results: Cnt(1) 3.4509999752044678query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 35
+query_PinName = IO3
+Head = 1 Site = 4
+query_TestNumber = 82000
+query_TestText = IO3
+query_LowLimit = 1.2000000476837158
+query_HighLimit = 6.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A3
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A3.measurement
+query_Results: Cnt(1) 3.318000078201294query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 36
+query_PinName = IO3
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794720622
+get_TestSuite = Main.IDDQ_flow.IDDQ_A3
+get_ReleaseTesterTimeStamp = 1786548794719702
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794719898
+get_TestSuite = Main.IDDQ_flow.IDDQ_A4
+====== consume data from: testerId = host1 =======
+consumeMeasurementData
+get_MeasurementName = Main.IDDQ_flow.IDDQ_A4.measurement
+get_GroupCount = 0
+get_SequenceCount = 0
+====== consume data from: testerId = host1 =======
+consumeMultiParametric
+get_ResultCount = 4
+Head = 1 Site = 1
+query_TestNumber = 83000
+query_TestText = IO4
+query_LowLimit = 1.2999999523162842
+query_HighLimit = 5.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A4
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A4.measurement
+query_Results: Cnt(1) 3.0799999237060547query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 49
+query_PinName = IO4
+Head = 1 Site = 2
+query_TestNumber = 83000
+query_TestText = IO4
+query_LowLimit = 1.2999999523162842
+query_HighLimit = 5.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A4
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A4.measurement
+query_Results: Cnt(1) 3.0510001182556152query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 50
+query_PinName = IO4
+Head = 1 Site = 3
+query_TestNumber = 83000
+query_TestText = IO4
+query_LowLimit = 1.2999999523162842
+query_HighLimit = 5.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A4
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A4.measurement
+query_Results: Cnt(1) 3.0899999141693115query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 51
+query_PinName = IO4
+Head = 1 Site = 4
+query_TestNumber = 83000
+query_TestText = IO4
+query_LowLimit = 1.2999999523162842
+query_HighLimit = 5.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A4
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A4.measurement
+query_Results: Cnt(1) 3.059999942779541query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 52
+query_PinName = IO4
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794723897
+get_TestSuite = Main.IDDQ_flow.IDDQ_A4
+get_ReleaseTesterTimeStamp = 1786548794723033
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794723197
+get_TestSuite = Main.IDDQ_flow.IDDQ_A5
+====== consume data from: testerId = host1 =======
+consumeMeasurementData
+get_MeasurementName = Main.IDDQ_flow.IDDQ_A5.measurement
+get_GroupCount = 0
+get_SequenceCount = 0
+====== consume data from: testerId = host1 =======
+consumeMultiParametric
+get_ResultCount = 4
+Head = 1 Site = 1
+query_TestNumber = 84000
+query_TestText = IO5
+query_LowLimit = 1.600000023841858
+query_HighLimit = 6.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A5
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A5.measurement
+query_Results: Cnt(1) 3.2769999504089355query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 45
+query_PinName = IO5
+Head = 1 Site = 2
+query_TestNumber = 84000
+query_TestText = IO5
+query_LowLimit = 1.600000023841858
+query_HighLimit = 6.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A5
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A5.measurement
+query_Results: Cnt(1) 3.2839999198913574query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 46
+query_PinName = IO5
+Head = 1 Site = 3
+query_TestNumber = 84000
+query_TestText = IO5
+query_LowLimit = 1.600000023841858
+query_HighLimit = 6.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A5
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A5.measurement
+query_Results: Cnt(1) 3.253999948501587query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 47
+query_PinName = IO5
+Head = 1 Site = 4
+query_TestNumber = 84000
+query_TestText = IO5
+query_LowLimit = 1.600000023841858
+query_HighLimit = 6.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A5
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A5.measurement
+query_Results: Cnt(1) 3.313999891281128query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 48
+query_PinName = IO5
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794727468
+get_TestSuite = Main.IDDQ_flow.IDDQ_A5
+get_ReleaseTesterTimeStamp = 1786548794726504
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794726718
+get_TestSuite = Main.IDDQ_flow.IDDQ_A6
+====== consume data from: testerId = host1 =======
+consumeMeasurementData
+get_MeasurementName = Main.IDDQ_flow.IDDQ_A6.measurement
+get_GroupCount = 0
+get_SequenceCount = 0
+====== consume data from: testerId = host1 =======
+consumeMultiParametric
+get_ResultCount = 4
+Head = 1 Site = 1
+query_TestNumber = 85000
+query_TestText = IO6
+query_LowLimit = 3.0999999046325684
+query_HighLimit = 9.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A6
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A6.measurement
+query_Results: Cnt(1) 5.073999881744385query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 57
+query_PinName = IO6
+Head = 1 Site = 2
+query_TestNumber = 85000
+query_TestText = IO6
+query_LowLimit = 3.0999999046325684
+query_HighLimit = 9.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A6
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A6.measurement
+query_Results: Cnt(1) 5.058000087738037query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 58
+query_PinName = IO6
+Head = 1 Site = 3
+query_TestNumber = 85000
+query_TestText = IO6
+query_LowLimit = 3.0999999046325684
+query_HighLimit = 9.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A6
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A6.measurement
+query_Results: Cnt(1) 4.889999866485596query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 59
+query_PinName = IO6
+Head = 1 Site = 4
+query_TestNumber = 85000
+query_TestText = IO6
+query_LowLimit = 3.0999999046325684
+query_HighLimit = 9.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A6
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A6.measurement
+query_Results: Cnt(1) 5.014999866485596query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 60
+query_PinName = IO6
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794730577
+get_TestSuite = Main.IDDQ_flow.IDDQ_A6
+get_ReleaseTesterTimeStamp = 1786548794729628
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794729855
+get_TestSuite = Main.IDDQ_flow.IDDQ_A7
+====== consume data from: testerId = host1 =======
+consumeMeasurementData
+get_MeasurementName = Main.IDDQ_flow.IDDQ_A7.measurement
+get_GroupCount = 0
+get_SequenceCount = 0
+====== consume data from: testerId = host1 =======
+consumeMultiParametric
+get_ResultCount = 4
+Head = 1 Site = 1
+query_TestNumber = 86000
+query_TestText = IO7
+query_LowLimit = 2.5
+query_HighLimit = 7.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A7
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A7.measurement
+query_Results: Cnt(1) 5.315999984741211query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 53
+query_PinName = IO7
+Head = 1 Site = 2
+query_TestNumber = 86000
+query_TestText = IO7
+query_LowLimit = 2.5
+query_HighLimit = 7.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A7
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A7.measurement
+query_Results: Cnt(1) 5.302999973297119query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 54
+query_PinName = IO7
+Head = 1 Site = 3
+query_TestNumber = 86000
+query_TestText = IO7
+query_LowLimit = 2.5
+query_HighLimit = 7.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A7
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A7.measurement
+query_Results: Cnt(1) 5.321000099182129query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 55
+query_PinName = IO7
+Head = 1 Site = 4
+query_TestNumber = 86000
+query_TestText = IO7
+query_LowLimit = 2.5
+query_HighLimit = 7.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A7
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A7.measurement
+query_Results: Cnt(1) 5.341000080108643query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 56
+query_PinName = IO7
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794733766
+get_TestSuite = Main.IDDQ_flow.IDDQ_A7
+get_ReleaseTesterTimeStamp = 1786548794732743
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794732962
+get_TestSuite = Main.IDDQ_flow.IDDQ_A8
+====== consume data from: testerId = host1 =======
+consumeMeasurementData
+get_MeasurementName = Main.IDDQ_flow.IDDQ_A8.measurement
+get_GroupCount = 0
+get_SequenceCount = 0
+====== consume data from: testerId = host1 =======
+consumeMultiParametric
+get_ResultCount = 4
+Head = 1 Site = 1
+query_TestNumber = 87000
+query_TestText = IO8
+query_LowLimit = 7.300000190734863
+query_HighLimit = 20.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A8
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A8.measurement
+query_Results: Cnt(1) 12.739999771118164query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 65
+query_PinName = IO8
+Head = 1 Site = 2
+query_TestNumber = 87000
+query_TestText = IO8
+query_LowLimit = 7.300000190734863
+query_HighLimit = 20.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A8
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A8.measurement
+query_Results: Cnt(1) 12.407999992370605query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 66
+query_PinName = IO8
+Head = 1 Site = 3
+query_TestNumber = 87000
+query_TestText = IO8
+query_LowLimit = 7.300000190734863
+query_HighLimit = 20.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A8
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A8.measurement
+query_Results: Cnt(1) 12.404999732971191query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 67
+query_PinName = IO8
+Head = 1 Site = 4
+query_TestNumber = 87000
+query_TestText = IO8
+query_LowLimit = 7.300000190734863
+query_HighLimit = 20.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A8
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A8.measurement
+query_Results: Cnt(1) 12.128000259399414query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 68
+query_PinName = IO8
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794737035
+get_TestSuite = Main.IDDQ_flow.IDDQ_A8
+get_ReleaseTesterTimeStamp = 1786548794736005
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794736247
+get_TestSuite = Main.IDDQ_flow.IDDQ_A9
+====== consume data from: testerId = host1 =======
+consumeMeasurementData
+get_MeasurementName = Main.IDDQ_flow.IDDQ_A9.measurement
+get_GroupCount = 0
+get_SequenceCount = 0
+====== consume data from: testerId = host1 =======
+consumeMultiParametric
+get_ResultCount = 4
+Head = 1 Site = 1
+query_TestNumber = 88000
+query_TestText = IO9
+query_LowLimit = 30.200000762939453
+query_HighLimit = 60.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A9
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A9.measurement
+query_Results: Cnt(1) 43.93899917602539query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 61
+query_PinName = IO9
+Head = 1 Site = 2
+query_TestNumber = 88000
+query_TestText = IO9
+query_LowLimit = 30.200000762939453
+query_HighLimit = 60.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A9
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A9.measurement
+query_Results: Cnt(1) 44.308998107910156query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 62
+query_PinName = IO9
+Head = 1 Site = 3
+query_TestNumber = 88000
+query_TestText = IO9
+query_LowLimit = 30.200000762939453
+query_HighLimit = 60.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A9
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A9.measurement
+query_Results: Cnt(1) 44.29399871826172query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 63
+query_PinName = IO9
+Head = 1 Site = 4
+query_TestNumber = 88000
+query_TestText = IO9
+query_LowLimit = 30.200000762939453
+query_HighLimit = 60.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A9
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A9.measurement
+query_Results: Cnt(1) 43.06999969482422query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 64
+query_PinName = IO9
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794740409
+get_TestSuite = Main.IDDQ_flow.IDDQ_A9
+get_ReleaseTesterTimeStamp = 1786548794739427
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794739628
+get_TestSuite = Main.IDDQ_flow.IDDQ_A10
+====== consume data from: testerId = host1 =======
+consumeMeasurementData
+get_MeasurementName = Main.IDDQ_flow.IDDQ_A10.measurement
+get_GroupCount = 0
+get_SequenceCount = 0
+====== consume data from: testerId = host1 =======
+consumeMultiParametric
+get_ResultCount = 4
+Head = 1 Site = 1
+query_TestNumber = 89000
+query_TestText = IO10
+query_LowLimit = 0.8999999761581421
+query_HighLimit = 3.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A10
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A10.measurement
+query_Results: Cnt(1) 1.9819999933242798query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 17
+query_PinName = IO10
+Head = 1 Site = 2
+query_TestNumber = 89000
+query_TestText = IO10
+query_LowLimit = 0.8999999761581421
+query_HighLimit = 3.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A10
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A10.measurement
+query_Results: Cnt(1) 1.937999963760376query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 18
+query_PinName = IO10
+Head = 1 Site = 3
+query_TestNumber = 89000
+query_TestText = IO10
+query_LowLimit = 0.8999999761581421
+query_HighLimit = 3.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A10
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A10.measurement
+query_Results: Cnt(1) 1.9420000314712524query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 19
+query_PinName = IO10
+Head = 1 Site = 4
+query_TestNumber = 89000
+query_TestText = IO10
+query_LowLimit = 0.8999999761581421
+query_HighLimit = 3.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A10
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A10.measurement
+query_Results: Cnt(1) 2.009000062942505query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 20
+query_PinName = IO10
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794743555
+get_TestSuite = Main.IDDQ_flow.IDDQ_A10
+get_ReleaseTesterTimeStamp = 1786548794742616
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794742835
+get_TestSuite = Main.IDDQ_flow.IDDQ_A11
+====== consume data from: testerId = host1 =======
+consumeMeasurementData
+get_MeasurementName = Main.IDDQ_flow.IDDQ_A11.measurement
+get_GroupCount = 0
+get_SequenceCount = 0
+====== consume data from: testerId = host1 =======
+consumeMultiParametric
+get_ResultCount = 4
+Head = 1 Site = 1
+query_TestNumber = 90000
+query_TestText = IO11
+query_LowLimit = 0.800000011920929
+query_HighLimit = 2.5
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A11
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A11.measurement
+query_Results: Cnt(1) 1.690000057220459query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 5
+query_PinName = IO11
+Head = 1 Site = 2
+query_TestNumber = 90000
+query_TestText = IO11
+query_LowLimit = 0.800000011920929
+query_HighLimit = 2.5
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A11
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A11.measurement
+query_Results: Cnt(1) 1.6699999570846558query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 6
+query_PinName = IO11
+Head = 1 Site = 3
+query_TestNumber = 90000
+query_TestText = IO11
+query_LowLimit = 0.800000011920929
+query_HighLimit = 2.5
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A11
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A11.measurement
+query_Results: Cnt(1) 1.6369999647140503query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 7
+query_PinName = IO11
+Head = 1 Site = 4
+query_TestNumber = 90000
+query_TestText = IO11
+query_LowLimit = 0.800000011920929
+query_HighLimit = 2.5
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.IDDQ_flow.IDDQ_A11
+query_MeasurementName = Main.IDDQ_flow.IDDQ_A11.measurement
+query_Results: Cnt(1) 1.6339999437332153query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 8
+query_PinName = IO11
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794751739
+get_TestSuite = Main.IDDQ_flow.IDDQ_A11
+get_ReleaseTesterTimeStamp = 1786548794745729
+====== consume data from: testerId = host1 =======
+consumeTestFlowEnd
+get_TimeStamp = 1786548794745834
+get_TestFlowName = Main.IDDQ_flow
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794746095
+get_TestSuite = Main.receive_temp_predict1
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794746569
+get_TestSuite = Main.receive_temp_predict1
+get_ReleaseTesterTimeStamp = 1786548794746569
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794746940
+get_TestSuite = Main.sensor1
+====== consume data from: testerId = host1 =======
+consumeMeasurementData
+get_MeasurementName = Main.sensor1.measurement
+get_GroupCount = 0
+get_SequenceCount = 0
+====== consume data from: testerId = host1 =======
+consumeMultiParametric
+get_ResultCount = 4
+Head = 1 Site = 1
+query_TestNumber = 100
+query_TestText = CP
+query_LowLimit = 0.0
+query_HighLimit = 35.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.sensor1
+query_MeasurementName = Main.sensor1.measurement
+query_Results: Cnt(1) 34.0620002746582query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 37
+query_PinName = CP
+Head = 1 Site = 2
+query_TestNumber = 100
+query_TestText = CP
+query_LowLimit = 0.0
+query_HighLimit = 35.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.sensor1
+query_MeasurementName = Main.sensor1.measurement
+query_Results: Cnt(1) 34.042999267578125query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 38
+query_PinName = CP
+Head = 1 Site = 3
+query_TestNumber = 100
+query_TestText = CP
+query_LowLimit = 0.0
+query_HighLimit = 35.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.sensor1
+query_MeasurementName = Main.sensor1.measurement
+query_Results: Cnt(1) 34.06100082397461query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 39
+query_PinName = CP
+Head = 1 Site = 4
+query_TestNumber = 100
+query_TestText = CP
+query_LowLimit = 0.0
+query_HighLimit = 35.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.sensor1
+query_MeasurementName = Main.sensor1.measurement
+query_Results: Cnt(1) 34.11199951171875query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 40
+query_PinName = CP
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794750347
+get_TestSuite = Main.sensor1
+get_ReleaseTesterTimeStamp = 1786548794749311
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794749485
+get_TestSuite = Main.receive_temp_predict2
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794750019
+get_TestSuite = Main.receive_temp_predict2
+get_ReleaseTesterTimeStamp = 1786548794750019
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794750469
+get_TestSuite = Main.sensor2
+====== consume data from: testerId = host1 =======
+consumeMeasurementData
+get_MeasurementName = Main.sensor2.measurement
+get_GroupCount = 0
+get_SequenceCount = 0
+====== consume data from: testerId = host1 =======
+consumeMultiParametric
+get_ResultCount = 4
+Head = 1 Site = 1
+query_TestNumber = 120
+query_TestText = DS0
+query_LowLimit = 0.0
+query_HighLimit = 35.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.sensor2
+query_MeasurementName = Main.sensor2.measurement
+query_Results: Cnt(1) 34.17300033569336query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 1
+query_PinName = DS0
+Head = 1 Site = 2
+query_TestNumber = 120
+query_TestText = DS0
+query_LowLimit = 0.0
+query_HighLimit = 35.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.sensor2
+query_MeasurementName = Main.sensor2.measurement
+query_Results: Cnt(1) 34.625query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 2
+query_PinName = DS0
+Head = 1 Site = 3
+query_TestNumber = 120
+query_TestText = DS0
+query_LowLimit = 0.0
+query_HighLimit = 35.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.sensor2
+query_MeasurementName = Main.sensor2.measurement
+query_Results: Cnt(1) 34.13999938964844query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 3
+query_PinName = DS0
+Head = 1 Site = 4
+query_TestNumber = 120
+query_TestText = DS0
+query_LowLimit = 0.0
+query_HighLimit = 35.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.sensor2
+query_MeasurementName = Main.sensor2.measurement
+query_Results: Cnt(1) 34.220001220703125query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 4
+query_PinName = DS0
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794755792
+get_TestSuite = Main.sensor2
+get_ReleaseTesterTimeStamp = 1786548794753841
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794754024
+get_TestSuite = Main.receive_temp_predict3
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794754583
+get_TestSuite = Main.receive_temp_predict3
+get_ReleaseTesterTimeStamp = 1786548794754583
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794754846
+get_TestSuite = Main.sensor3
+====== consume data from: testerId = host1 =======
+consumeMeasurementData
+get_MeasurementName = Main.sensor3.measurement
+get_GroupCount = 0
+get_SequenceCount = 0
+====== consume data from: testerId = host1 =======
+consumeMultiParametric
+get_ResultCount = 4
+Head = 1 Site = 1
+query_TestNumber = 140
+query_TestText = IO4
+query_LowLimit = 0.0
+query_HighLimit = 35.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.sensor3
+query_MeasurementName = Main.sensor3.measurement
+query_Results: Cnt(1) 27.743000030517578query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 49
+query_PinName = IO4
+Head = 1 Site = 2
+query_TestNumber = 140
+query_TestText = IO4
+query_LowLimit = 0.0
+query_HighLimit = 35.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.sensor3
+query_MeasurementName = Main.sensor3.measurement
+query_Results: Cnt(1) 27.968000411987305query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 50
+query_PinName = IO4
+Head = 1 Site = 3
+query_TestNumber = 140
+query_TestText = IO4
+query_LowLimit = 0.0
+query_HighLimit = 35.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.sensor3
+query_MeasurementName = Main.sensor3.measurement
+query_Results: Cnt(1) 27.927000045776367query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 51
+query_PinName = IO4
+Head = 1 Site = 4
+query_TestNumber = 140
+query_TestText = IO4
+query_LowLimit = 0.0
+query_HighLimit = 35.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.sensor3
+query_MeasurementName = Main.sensor3.measurement
+query_Results: Cnt(1) 27.7549991607666query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 52
+query_PinName = IO4
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794759086
+get_TestSuite = Main.sensor3
+get_ReleaseTesterTimeStamp = 1786548794757633
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794757839
+get_TestSuite = Main.receive_temp_predict4
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794758331
+get_TestSuite = Main.receive_temp_predict4
+get_ReleaseTesterTimeStamp = 1786548794758331
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794758798
+get_TestSuite = Main.sensor4
+====== consume data from: testerId = host1 =======
+consumeMeasurementData
+get_MeasurementName = Main.sensor4.measurement
+get_GroupCount = 0
+get_SequenceCount = 0
+====== consume data from: testerId = host1 =======
+consumeMultiParametric
+get_ResultCount = 4
+Head = 1 Site = 1
+query_TestNumber = 160
+query_TestText = IO1
+query_LowLimit = 0.0
+query_HighLimit = 35.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.sensor4
+query_MeasurementName = Main.sensor4.measurement
+query_Results: Cnt(1) 34.12799835205078query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 25
+query_PinName = IO1
+Head = 1 Site = 2
+query_TestNumber = 160
+query_TestText = IO1
+query_LowLimit = 0.0
+query_HighLimit = 35.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.sensor4
+query_MeasurementName = Main.sensor4.measurement
+query_Results: Cnt(1) 34.20800018310547query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 26
+query_PinName = IO1
+Head = 1 Site = 3
+query_TestNumber = 160
+query_TestText = IO1
+query_LowLimit = 0.0
+query_HighLimit = 35.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.sensor4
+query_MeasurementName = Main.sensor4.measurement
+query_Results: Cnt(1) 34.04100036621094query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 27
+query_PinName = IO1
+Head = 1 Site = 4
+query_TestNumber = 160
+query_TestText = IO1
+query_LowLimit = 0.0
+query_HighLimit = 35.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.sensor4
+query_MeasurementName = Main.sensor4.measurement
+query_Results: Cnt(1) 34.176998138427734query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 28
+query_PinName = IO1
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794762828
+get_TestSuite = Main.sensor4
+get_ReleaseTesterTimeStamp = 1786548794761545
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794761739
+get_TestSuite = Main.receive_temp_predict5
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794762276
+get_TestSuite = Main.receive_temp_predict5
+get_ReleaseTesterTimeStamp = 1786548794762276
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794762815
+get_TestSuite = Main.sensor5
+====== consume data from: testerId = host1 =======
+consumeMeasurementData
+get_MeasurementName = Main.sensor5.measurement
+get_GroupCount = 0
+get_SequenceCount = 0
+====== consume data from: testerId = host1 =======
+consumeMultiParametric
+get_ResultCount = 4
+Head = 1 Site = 1
+query_TestNumber = 180
+query_TestText = IO2
+query_LowLimit = 0.0
+query_HighLimit = 35.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.sensor5
+query_MeasurementName = Main.sensor5.measurement
+query_Results: Cnt(1) 31.41900062561035query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 41
+query_PinName = IO2
+Head = 1 Site = 2
+query_TestNumber = 180
+query_TestText = IO2
+query_LowLimit = 0.0
+query_HighLimit = 35.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.sensor5
+query_MeasurementName = Main.sensor5.measurement
+query_Results: Cnt(1) 31.43000030517578query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 42
+query_PinName = IO2
+Head = 1 Site = 3
+query_TestNumber = 180
+query_TestText = IO2
+query_LowLimit = 0.0
+query_HighLimit = 35.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.sensor5
+query_MeasurementName = Main.sensor5.measurement
+query_Results: Cnt(1) 31.261999130249023query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 43
+query_PinName = IO2
+Head = 1 Site = 4
+query_TestNumber = 180
+query_TestText = IO2
+query_LowLimit = 0.0
+query_HighLimit = 35.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.sensor5
+query_MeasurementName = Main.sensor5.measurement
+query_Results: Cnt(1) 31.233999252319336query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 44
+query_PinName = IO2
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794766683
+get_TestSuite = Main.sensor5
+get_ReleaseTesterTimeStamp = 1786548794765475
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794765638
+get_TestSuite = Main.receive_temp_predict6
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794766137
+get_TestSuite = Main.receive_temp_predict6
+get_ReleaseTesterTimeStamp = 1786548794766137
+====== consume data from: testerId = host1 =======
+consumeTestSuiteStart
+get_TimeStamp = 1786548794766639
+get_TestSuite = Main.sensor6
+====== consume data from: testerId = host1 =======
+consumeMeasurementData
+get_MeasurementName = Main.sensor6.measurement
+get_GroupCount = 0
+get_SequenceCount = 0
+====== consume data from: testerId = host1 =======
+consumeMultiParametric
+get_ResultCount = 4
+Head = 1 Site = 1
+query_TestNumber = 200
+query_TestText = IO3
+query_LowLimit = 0.0
+query_HighLimit = 35.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.sensor6
+query_MeasurementName = Main.sensor6.measurement
+query_Results: Cnt(1) 34.987998962402344query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 33
+query_PinName = IO3
+Head = 1 Site = 2
+query_TestNumber = 200
+query_TestText = IO3
+query_LowLimit = 0.0
+query_HighLimit = 35.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.sensor6
+query_MeasurementName = Main.sensor6.measurement
+query_Results: Cnt(1) 34.834999084472656query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 34
+query_PinName = IO3
+Head = 1 Site = 3
+query_TestNumber = 200
+query_TestText = IO3
+query_LowLimit = 0.0
+query_HighLimit = 35.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.sensor6
+query_MeasurementName = Main.sensor6.measurement
+query_Results: Cnt(1) 34.99399948120117query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 35
+query_PinName = IO3
+Head = 1 Site = 4
+query_TestNumber = 200
+query_TestText = IO3
+query_LowLimit = 0.0
+query_HighLimit = 35.0
+query_Unit = 
+query_TestFlag = 0x0
+query_TestSuite = Main.sensor6
+query_MeasurementName = Main.sensor6.measurement
+query_Results: Cnt(1) 34.840999603271484query_PassFailList: Cnt(1) True
+query_PinIndexbyID = 36
+query_PinName = IO3
+====== consume data from: testerId = host1 =======
+consumeTestSuiteEnd
+get_TimeStamp = 1786548794770353
+get_TestSuite = Main.sensor6
+get_ReleaseTesterTimeStamp = 1786548794769407
+====== consume data from: testerId = host1 =======
+consumeTestFlowEnd
+get_TimeStamp = 1786548794769623
+get_TestFlowName = Main
+====== consume data from: testerId = host1 =======
+consumeTestEnd
+get_TimeStamp = 1786548794774717
+get_ResultCount = 4
+Head = 1 Site = 1
+query_PartFlag = 0x0
+query_NumOfTest = 34
+query_SBinResult = 1
+query_HBinResult = 1
+query_XCoord = 6
+query_YCoord = 0
+query_TestTime = 458583
+query_PartId = 1
+query_PartText = 
+Head = 1 Site = 2
+query_PartFlag = 0x0
+query_NumOfTest = 34
+query_SBinResult = 1
+query_HBinResult = 1
+query_XCoord = 9
+query_YCoord = 4
+query_TestTime = 458583
+query_PartId = 2
+query_PartText = 
+Head = 1 Site = 3
+query_PartFlag = 0x0
+query_NumOfTest = 34
+query_SBinResult = 1
+query_HBinResult = 1
+query_XCoord = 3
+query_YCoord = 3
+query_TestTime = 458583
+query_PartId = 3
+query_PartText = 
+Head = 1 Site = 4
+query_PartFlag = 0x0
+query_NumOfTest = 34
+query_SBinResult = 1
+query_HBinResult = 1
+query_XCoord = 3
+query_YCoord = 5
+query_TestTime = 458583
+query_PartId = 4
+query_PartText = 
+====== consume data from: testerId = host1 =======
+consumeLotEnd
+get_TimeStamp = 1786548794774717
+get_DisPositionCode =  
+get_UserDescription = 
+get_ExecDescription = 

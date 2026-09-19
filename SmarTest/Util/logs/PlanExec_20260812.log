@@ -1,0 +1,29 @@
+2026-08-12 11:14:51,277 - INFO - workspace: /home/vincent/Case_Event/SmarTest/workspace
+2026-08-12 11:14:51,601 - INFO - run cmd: ['/opt/hp93000/soc/prod_env/lbin/kill_smarTest'] Success
+2026-08-12 11:15:21,387 - INFO - 
+2026-08-12 11:15:21,388 - INFO - Found 0 running PH sessions.
+2026-08-12 11:15:21,388 - INFO - Checking remaining PH session processes.
+2026-08-12 11:15:21,388 - INFO - No remaining processes. Done!
+2026-08-12 11:15:21,388 - INFO - Errors: b'/opt/hp93000/testcell/sbin/kill_tc_sessions.sh: line 119: kill: (2566) - Operation not permitted\nSmarTest no longer running for current user. Cleaning up.\n'
+2026-08-12 11:15:21,388 - INFO - run cmd: ['/opt/hp93000/testcell/bin/killTcct.prod'] Success
+2026-08-12 11:16:22,777 - INFO - run cmd: /opt/hp93000/soc/prod_env/bin/HPSmarTest --data=/home/vincent/Case_Event/SmarTest/workspace --testprogram=TestCase_Smt870/src/TestCase1/TestCase1_4site_cp.prog -o& Success
+2026-08-12 11:53:39,931 - INFO - workspace: /home/vincent/Case_Event/SmarTest/workspace
+2026-08-12 11:53:40,252 - INFO - run cmd: ['/opt/hp93000/soc/prod_env/lbin/kill_smarTest'] Success
+2026-08-12 11:54:09,977 - INFO - 
+2026-08-12 11:54:09,977 - INFO - Found 0 running PH sessions.
+2026-08-12 11:54:09,977 - INFO - Checking remaining PH session processes.
+2026-08-12 11:54:09,977 - INFO - No remaining processes. Done!
+2026-08-12 11:54:09,977 - INFO - Errors: b'/opt/hp93000/testcell/sbin/kill_tc_sessions.sh: line 119: kill: (23987) - Operation not permitted\nSmarTest no longer running for current user. Cleaning up.\n'
+2026-08-12 11:54:09,977 - INFO - run cmd: ['/opt/hp93000/testcell/bin/killTcct.prod'] Success
+2026-08-12 11:55:11,393 - INFO - run cmd: /opt/hp93000/soc/prod_env/bin/HPSmarTest --data=/home/vincent/Case_Event/SmarTest/workspace --testprogram=TestCase_Smt870/src/TestCase1/{tpName} -o& Success
+2026-08-12 12:15:59,647 - INFO - workspace: /home/vincent/Case_Event/SmarTest/workspace
+2026-08-12 12:16:13,442 - INFO - run cmd: ['/opt/hp93000/soc/prod_env/lbin/kill_smarTest'] Success
+2026-08-12 12:16:43,171 - INFO - 
+2026-08-12 12:16:43,171 - INFO - Found 0 running PH sessions.
+2026-08-12 12:16:43,171 - INFO - Checking remaining PH session processes.
+2026-08-12 12:16:43,171 - INFO - No remaining processes. Done!
+2026-08-12 12:16:43,171 - INFO - Errors: b'/opt/hp93000/testcell/sbin/kill_tc_sessions.sh: line 119: kill: (10859) - Operation not permitted\n/opt/hp93000/testcell/sbin/kill_tc_sessions.sh: line 119: kill: (10888) - Operation not permitted\nSmarTest no longer running for current user. Cleaning up.\n'
+2026-08-12 12:16:43,171 - INFO - run cmd: ['/opt/hp93000/testcell/bin/killTcct.prod'] Success
+2026-08-12 12:17:44,548 - INFO - run cmd: /opt/hp93000/soc/prod_env/bin/HPSmarTest --data=/home/vincent/Case_Event/SmarTest/workspace --testprogram=TestCase_Smt870/src/TestCase1/TestCase1_4site_ft.prog -o& Success
+2026-08-12 12:27:07,461 - INFO - workspace: /home/vincent/Case_Event/SmarTest/workspace
+2026-08-12 12:27:08,848 - INFO - run cmd: /opt/hp93000/soc/prod_env/bin/HPSmarTest --data=/home/vincent/Case_Event/SmarTest/workspace --testprogram=TestCase_Smt870/src/TestCase1/TestCase1_4site_ft.prog -o& Success

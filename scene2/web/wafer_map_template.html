@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Temperature Prediction Monitor</title>
+<style>
+  :root {
+    color-scheme: light;
+    --surface: #fcfcfb; --surface-2: #f3f2ef; --border: #dedcd6;
+    --text: #0b0b0b; --text-2: #52514e; --text-3: #8a8985;
+    --cool: #2a78d6; --mid: #f0efec; --hot: #e34948;
+    --err-lo: #1baf7a; --err-hi: #4a3aa7;      /* error: teal = under-predicted, violet = over-predicted (distinct from blue/red temperature) */
+    --untested: #e6e5e1; --critical: #d03b3b; --good: #0ca30c;
+    --s1: #2a78d6; --s2: #eb6834;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --surface: #1a1a19; --surface-2: #242423; --border: #3a3a38;
+      --text: #ffffff; --text-2: #c3c2b7; --text-3: #8a8985;
+      --cool: #3987e5; --mid: #383835; --hot: #e66767;
+      --err-lo: #199e70; --err-hi: #9085e9;
+      --untested: #2e2e2c; --s1: #3987e5; --s2: #d95926;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --surface: #1a1a19; --surface-2: #242423; --border: #3a3a38;
+    --text: #ffffff; --text-2: #c3c2b7; --text-3: #8a8985;
+    --cool: #3987e5; --mid: #383835; --hot: #e66767;
+    --err-lo: #199e70; --err-hi: #9085e9;
+    --untested: #2e2e2c; --s1: #3987e5; --s2: #d95926;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--surface); color: var(--text);
+         font: 15px/1.45 -apple-system, "Segoe UI", "Noto Sans TC", Roboto, sans-serif; }
+  header { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center;
+           padding: 14px 16px; border-bottom: 1px solid var(--border); }
+  header h1 { font-size: 20px; margin: 0; font-weight: 700; }
+  header .sub { color: var(--text-2); font-size: 14px; font-weight: 500; }
+  .controls { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; padding: 10px 16px;
+              border-bottom: 1px solid var(--border); background: var(--surface-2); }
+  .controls label { color: var(--text); font-size: 14px; font-weight: 500; display: flex; gap: 6px; align-items: center; }
+  select, button { font: inherit; color: var(--text); background: var(--surface); border: 1px solid var(--border);
+                   border-radius: 6px; padding: 5px 10px; cursor: pointer; font-weight: 500; }
+  button.on { border-color: var(--s1); color: var(--s1); }
+  input[type=range] { width: 220px; accent-color: var(--s1); }
+  main { display: grid; grid-template-columns: minmax(320px, 1.25fr) minmax(300px, 1fr); gap: 16px; padding: 16px; }
+  @media (max-width: 860px) { main { grid-template-columns: 1fr; } }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
+  .card h2 { font-size: 14px; font-weight: 700; color: var(--text); margin: 0 0 10px; text-transform: uppercase; letter-spacing: .04em; }
+  .card h2 + h2, .sub-h { margin-top: 16px; }
+  svg text { fill: var(--text-2); font-size: 12px; font-weight: 500; }
+  .legend { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; margin-top: 8px; color: var(--text); font-size: 14px; font-weight: 500; }
+  .legend .sw { display: inline-block; width: 12px; height: 12px; border-radius: 3px; vertical-align: -2px; margin-right: 4px; }
+  .legend .ring { border: 2px solid var(--critical); background: transparent; }
+  .legend .pd { border: 1.5px dashed var(--s1); background: transparent; }
+  .legend .hatch { background: repeating-linear-gradient(45deg, var(--surface) 0 2px, var(--border) 2px 3.5px); border: 1px solid var(--border); }
+  .legend .ln { display: inline-block; width: 18px; height: 0; border-top: 2px solid; vertical-align: 3px; margin-right: 4px; }
+  .ramp { display: inline-block; width: 110px; height: 10px; border-radius: 3px; vertical-align: -1px; margin: 0 4px;
+          background: linear-gradient(90deg, var(--cool), var(--mid), var(--hot)); }
+  .ramp.err { background: linear-gradient(90deg, var(--err-lo), var(--mid), var(--err-hi)); }
+  .tip { position: fixed; pointer-events: none; background: var(--surface); border: 1px solid var(--border);
+         border-radius: 8px; padding: 8px 10px; font-size: 12px; box-shadow: 0 4px 16px rgba(0,0,0,.15); display: none; z-index: 9; }
+  .tip b { font-weight: 600; }
+  .sensors { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; margin-bottom: 12px; }
+  .stile { background: var(--surface-2); border: 1px solid transparent; border-radius: 8px; padding: 8px 6px; text-align: center; cursor: pointer; }
+  .stile.on { border-color: var(--s1); }
+  .stile .k { font-size: 13px; color: var(--text-2); font-weight: 600; }
+  .stile .v { font-size: 22px; font-weight: 700; letter-spacing: -.01em; }
+  .stile .r { font-size: 12px; color: var(--text-2); }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px; margin-bottom: 12px; }
+  .tile { background: var(--surface-2); border-radius: 8px; padding: 10px 12px; }
+  .tile .k { font-size: 13px; color: var(--text-2); font-weight: 600; }
+  .tile .v { font-size: 26px; font-weight: 700; letter-spacing: -.01em; }
+  .tile .u { font-size: 13px; color: var(--text-2); margin-left: 3px; font-weight: 500; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { text-align: right; padding: 4px 6px; border-bottom: 1px solid var(--border); }
+  th:first-child, td:first-child { text-align: left; }
+  th { color: var(--text-2); font-weight: 500; }
+  .tablewrap { max-height: 320px; overflow: auto; display: none; margin-top: 10px; }
+  .tablewrap.show { display: block; }
+  .muted { color: var(--text-2); font-size: 13px; }
+  .charts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .tdpanel { margin-top: 14px; }
+  .tdgrid { display: grid; grid-template-columns: 90px repeat(4, 1fr); gap: 5px; font-size: 15px; }
+  .tdgrid .h { color: var(--text); font-weight: 700; text-align: center; padding: 2px 0; font-size: 15px; }
+  .tdgrid .rh { color: var(--text); font-weight: 700; display: flex; align-items: center; font-size: 15px; }
+  .tdgrid .c { border-radius: 6px; padding: 8px 6px; text-align: center; line-height: 1.35; cursor: pointer; font-weight: 500; }
+  .tdgrid .c b { font-size: 18px; font-weight: 700; }
+  .tdgrid .c .e { font-size: 14px; font-weight: 600; opacity: .95; }
+  .tdgrid .c.fc { border: 1px dashed var(--border); color: var(--text-3); font-style: italic; }
+  .tdgrid .c.pd { border: 1px solid var(--border); }
+  .tdgrid .c.pd b { color: var(--s1); }
+  .tdgrid .c.no { color: var(--text-3); background: repeating-linear-gradient(45deg, var(--surface) 0 3px, var(--surface-2) 3px 6px) !important; }
+  .tdgrid .c.inv, .tdgrid .c.inv b { color: #fff; }
+  .st-fc { font-style: italic; }
+  .die-detail { margin-top: 14px; display: none; }
+  .die-detail.show { display: block; }
+  .bars { display: grid; grid-template-columns: 70px 1fr 150px; gap: 5px 10px; align-items: center; font-size: 14px; }
+  .bars .lab { color: var(--text-2); }
+  .bars .bar { height: 14px; position: relative; background: var(--surface-2); border-radius: 3px; }
+  .bars .bar i { position: absolute; top: 3px; height: 8px; border-radius: 2px; }
+  .maps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  @media (max-width: 600px) { .maps { grid-template-columns: repeat(2, 1fr); } }
+  .mapcell { border: 2px solid transparent; border-radius: 8px; padding: 4px; cursor: pointer; }
+  .mapcell.on { border-color: var(--s1); }
+  .mapcell .t { font-size: 14px; font-weight: 600; color: var(--text); display: flex; justify-content: space-between; padding: 0 4px 2px; }
+  .mapcell .t b { color: var(--text); }
+  @media (max-width: 1100px) { .charts { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Temperature Prediction Monitor</h1>
+  <span class="sub">Scene 2 · sensor1–6 prediction vs. measurement</span>
+  <span class="sub" id="status"></span>
+</header>
+<div class="controls">
+  <label>Wafer <select id="wafer"></select></label>
+  <label>Sensor <select id="sensor"></select></label>
+  <label>Map color
+    <button id="layer-err" class="on">Error</button>
+    <button id="layer-pred">Predicted temp</button>
+    <button id="layer-actual">Measured temp</button>
+  </label>
+  <label>Color scale
+    error ±<input type="number" id="errscale" step="0.05" min="0.01" value="0.3" style="width:64px">°C
+    &nbsp;temp ±<input type="number" id="tempscale" step="0.1" min="0.05" style="width:64px">°C
+    <button id="tempauto" class="on" title="min–max of the visible dies">auto</button>
+  </label>
+  <label>Progress <input type="range" id="td" min="0" max="240" value="240" style="width:260px"> <span id="tdlabel" style="display:inline-block;min-width:300px;font-variant-numeric:tabular-nums"></span></label>
+  <button id="play">▶ Play</button>
+  <button id="tablebtn">Table</button>
+  <button id="theme">☾</button>
+</div>
+<main>
+  <section class="card">
+    <h2>Wafer maps · six sensors</h2>
+    <div class="maps" id="maps"></div>
+    <div class="legend" id="maplegend"></div>
+    <div class="tdpanel">
+      <h2 id="tdtitle">Current touchdown</h2>
+      <div class="tdgrid" id="tdgrid"></div>
+      <div class="muted" style="font-size:14px;margin-top:6px">predicted / measured (°C) · <span class="st-fc">italic = initial forecast</span> · blue = prediction sent · filled = measured</div>
+    </div>
+    <div class="die-detail" id="diedetail">
+      <h2 id="dietitle">Die detail</h2>
+      <div class="bars" id="diebars"></div>
+    </div>
+    <div class="tablewrap" id="tablewrap"><table id="table"></table></div>
+  </section>
+  <section class="card">
+    <h2>MAE per sensor (°C)</h2>
+    <div class="sensors" id="sensors"></div>
+    <div class="tiles" id="tiles"></div>
+    <div class="charts">
+      <div>
+        <h2>Predicted vs. measured</h2>
+        <svg id="scatter" viewBox="0 0 300 260" width="100%" role="img" aria-label="predicted vs actual"></svg>
+      </div>
+      <div>
+        <h2>Cumulative MAE</h2>
+        <svg id="trend" viewBox="0 0 300 260" width="100%" role="img" aria-label="MAE over touchdowns"></svg>
+        <div class="legend"><span><span class="ln" style="border-color:var(--s1)"></span>with online bias correction</span>
+          <span><span class="ln" style="border-color:var(--s2)"></span>raw model output</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+<div class="tip" id="tip"></div>
+
+<script id="data" type="application/json">__DATA__</script>
+<script>
+(function () {
+  const DATA = JSON.parse(document.getElementById('data').textContent);
+  const $ = id => document.getElementById(id);
+  const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const ERR_SCALE_DEFAULT = 0.3;    // error color saturates at ±this many °C; user can change it in the controls
+  const STEPS = 12;        // 12 steps per touchdown: predict s1, measure s1, predict s2, ... predict s6, measure s6
+  const state = { wafer: Object.keys(DATA)[0], sensor: 4, layer: 'err', step: 0, playing: null, table: false, pid: null, errScale: ERR_SCALE_DEFAULT, tempScale: null };  // tempScale null = auto (min–max)
+
+  // ---------- controls
+  const wsel = $('wafer');
+  for (const w of Object.keys(DATA)) wsel.add(new Option(w, w));
+  wsel.onchange = () => { state.wafer = wsel.value; state.pid = null; setMax(); state.step = maxStep(); $('td').value = state.step; render(); };
+  const ssel = $('sensor');
+  for (let k = 1; k <= 6; k++) ssel.add(new Option('sensor' + k, k));
+  ssel.value = 4; ssel.onchange = () => { state.sensor = +ssel.value; render(); };
+  // ---------- color scales. Error: ±state.errScale °C, same for all six maps, set by the user. Temp: auto = min–max of visible dies, or ±state.tempScale around the mid-point.
+  const errScaleFor = k => state.errScale;
+  function syncScaleInputs() {
+    $('tempscale').disabled = state.tempScale == null; $('tempauto').classList.toggle('on', state.tempScale == null);
+    if (state.tempScale == null) $('tempscale').value = state._autoTemp != null ? state._autoTemp : '';
+  }
+  $('errscale').onchange = () => { const v = parseFloat($('errscale').value); if (v > 0) { state.errScale = v; render(); } };
+    $('tempscale').onchange = () => { const v = parseFloat($('tempscale').value); if (v > 0) { state.tempScale = v; render(); } };
+  $('tempauto').onclick = () => { state.tempScale = state.tempScale == null ? (state._autoTemp || 0.5) : null; render(); };
+  for (const l of ['err', 'pred', 'actual']) $('layer-' + l).onclick = () => {
+    state.layer = l; for (const m of ['err', 'pred', 'actual']) $('layer-' + m).classList.toggle('on', m === l); render();
+  };
+  $('td').oninput = () => { state.step = +$('td').value; render(); };
+  $('play').onclick = () => {
+    if (state.playing) { clearInterval(state.playing); state.playing = null; $('play').textContent = '▶ Play'; return; }
+    state.step = 0; $('play').textContent = '■ Stop';
+    state.playing = setInterval(() => {
+      state.step++; if (state.step > maxStep()) { clearInterval(state.playing); state.playing = null; $('play').textContent = '▶ Play'; return; }
+      $('td').value = state.step; render();
+    }, 140);
+  };
+  $('tablebtn').onclick = () => { state.table = !state.table; $('tablewrap').classList.toggle('show', state.table); $('tablebtn').classList.toggle('on', state.table); };
+  $('theme').onclick = () => {
+    const r = document.documentElement, dark = r.getAttribute('data-theme') === 'dark' ||
+      (!r.getAttribute('data-theme') && matchMedia('(prefers-color-scheme: dark)').matches);
+    r.setAttribute('data-theme', dark ? 'light' : 'dark'); render();
+  };
+  function cur() { return DATA[state.wafer]; }
+  function maxStep() { return cur().touchdowns_done * STEPS; }
+  function setMax() { $('td').max = maxStep(); }
+
+  // ---------- helpers
+  const f = (x, n = 2) => (x == null || isNaN(x)) ? '—' : x.toFixed(n);
+  function hexToRgb(h) { h = h.replace('#', ''); return [0, 2, 4].map(i => parseInt(h.substr(i, 2), 16)); }
+  function mix(c1, c2, t) { const a = hexToRgb(c1), b = hexToRgb(c2); return `rgb(${a.map((v, i) => Math.round(v + (b[i] - v) * t)).join(',')})`; }
+  function diverge(t) { t = Math.max(-1, Math.min(1, t)); return t < 0 ? mix(css('--mid'), css('--cool'), -t) : mix(css('--mid'), css('--hot'), t); }
+  function divergeErr(t) { t = Math.max(-1, Math.min(1, t)); return t < 0 ? mix(css('--mid'), css('--err-lo'), -t) : mix(css('--mid'), css('--err-hi'), t); }
+
+  // visible state of each sensor given how far this die has progressed
+  //   s = 12 means the die is done. states: 'none' not predicted | 'fc' initial forecast only | 'pd' prediction sent | 'ms' measured
+  function viewOf(v, s) {
+    const asked = Math.ceil(s / 2), measured = Math.floor(s / 2);
+    const out = { pred: [], actual: [], st: [] };
+    for (let k = 1; k <= 6; k++) {
+      const i = k - 1;
+      if (s === 0) { out.pred.push(null); out.actual.push(null); out.st.push('none'); continue; }
+      const hasFc = v.forecast && v.forecast[i] != null;
+      if (k <= measured) { out.pred.push(v.pred[i]); out.actual.push(v.actual[i]); out.st.push(v.actual[i] == null ? 'pd' : 'ms'); }
+      else if (k <= asked) { out.pred.push(v.pred[i]); out.actual.push(null); out.st.push('pd'); }
+      else { out.pred.push(hasFc ? v.forecast[i] : null); out.actual.push(null); out.st.push(hasFc ? 'fc' : 'none'); }
+    }
+    return out;
+  }
+  // view of every die at the current progress (finished touchdowns = 12 steps; current = s; later = none)
+  function views() {
+    const d = cur(), S = Math.max(0, Math.min(state.step, maxStep()));
+    const tdDone = Math.floor(S / STEPS), s = S % STEPS;
+    const tdCur = s === 0 ? tdDone : tdDone + 1;
+    const list = [];
+    d.devices.forEach((v, idx) => {
+      const td = Math.floor(idx / 4) + 1;
+      const sv = td <= tdDone ? STEPS : (td === tdCur ? s : 0);
+      list.push({ v, td, s: sv, view: viewOf(v, sv) });
+    });
+    return { list, tdDone, tdCur, s, S };
+  }
+  const errOfView = (vw, si) => (vw.st[si] === 'ms' && vw.pred[si] != null && vw.actual[si] != null) ? vw.pred[si] - vw.actual[si] : null;
+  function maeOf(list, si, field = 'pred') {
+    const e = list.filter(x => x.view.st[si] === 'ms' && x.v[field][si] != null && x.v.actual[si] != null).map(x => Math.abs(x.v[field][si] - x.v.actual[si]));
+    return e.length ? e.reduce((a, b) => a + b, 0) / e.length : null;
+  }
+
+  // ---------- render
+  function render() {
+    const d = cur(), V = views();
+    const stepName = V.s === 0 ? (V.tdDone ? 'done' : 'start') : (V.s % 2 ? `predict s${Math.ceil(V.s / 2)}` : `s${V.s / 2} measured`);
+    $('tdlabel').textContent = `TD ${String(V.tdCur || 1).padStart(2)}/${d.touchdowns_done} · step ${String(V.s).padStart(2)}/${STEPS} · ${stepName}`;
+    $('status').textContent = `${d.wafer_id} · ${d.status === 'done' && V.S === maxStep() ? 'complete' : 'testing'}`;
+    renderMaps(d, V);
+    renderTouchdown(d, V);
+    renderDie(d, V);
+    renderSensors(d, V);
+    renderTiles(d, V);
+    renderScatter(d, V);
+    renderTrend(d, V);
+    renderTable(d, V);
+  }
+
+  function renderMaps(d, V) {
+    const wrap = $('maps');
+    if (wrap.children.length !== 6) {
+      wrap.innerHTML = [1, 2, 3, 4, 5, 6].map(k => `<div class="mapcell" data-k="${k}"><div class="t"><span>sensor${k}</span><span id="mt${k}"></span></div><svg id="map${k}" viewBox="0 0 260 200" width="100%" role="img" aria-label="wafer map sensor${k}"></svg></div>`).join('');
+      wrap.querySelectorAll('.mapcell').forEach(el => el.onclick = () => { state.sensor = +el.dataset.k; ssel.value = state.sensor; render(); });
+    }
+    const valid = V.list.filter(x => x.v.x != null && x.v.y != null);
+    const xs = valid.map(x => x.v.x), ys = valid.map(x => x.v.y);
+    const xmin = Math.min(...xs), xmax = Math.max(...xs), ymin = Math.min(...ys), ymax = Math.max(...ys);
+    const nx = xmax - xmin + 1, ny = ymax - ymin + 1;
+    const W = 260, H = 200, pad = 12, cw = Math.min((W - 2 * pad) / nx, (H - 2 * pad) / ny), gap = 1.5;
+    const ox = (W - cw * nx) / 2, oy = (H - cw * ny) / 2;
+    let legendRange = null;
+    for (let k = 1; k <= 6; k++) {
+      const si = k - 1, base = d.sensors[String(k)];
+      wrap.querySelector(`.mapcell[data-k="${k}"]`).classList.toggle('on', k === state.sensor);
+      const m = maeOf(V.list, si);
+      $('mt' + k).innerHTML = m == null ? '' : `MAE <b>${f(m, 3)}</b>`;
+      let tmin = Infinity, tmax = -Infinity;
+      for (const x of V.list) { const t = state.layer === 'actual' ? x.view.actual[si] : x.view.pred[si]; if (t != null) { tmin = Math.min(tmin, t); tmax = Math.max(tmax, t); } }
+      if (!isFinite(tmin)) { tmin = base.mu0 - 0.5; tmax = base.mu0 + 0.5; }
+      const tmid = (tmin + tmax) / 2, thalf = state.tempScale != null ? state.tempScale : Math.max(0.05, (tmax - tmin) / 2);
+      if (k === state.sensor) { legendRange = [tmid - thalf, tmid + thalf, base]; state._autoTemp = Math.round(Math.max(0.05, (tmax - tmin) / 2) * 100) / 100; }
+      const ES = errScaleFor(k);
+      let out = `<defs><pattern id="hatch${k}" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="4" height="4" fill="${css('--surface')}"/><rect width="1.4" height="4" fill="${css('--border')}"/></pattern></defs>`;
+      const cx = ox + cw * nx / 2, cy = oy + cw * ny / 2, r = Math.max(cw * nx, cw * ny) / 2 + 5;
+      out += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${css('--border')}" stroke-width="1"/>`;
+      let sel = null;
+      for (const x of valid) {
+        const v = x.v, vw = x.view, st = vw.st[si];
+        const px = ox + (v.x - xmin) * cw + gap / 2, py = oy + (ymax - v.y) * cw + gap / 2, sz = cw - gap;
+        let fill = `url(#hatch${k})`, stroke = ` stroke="${css('--border')}" stroke-width="0.6"`;
+        if (st === 'ms') {
+          stroke = '';
+          if (state.layer === 'err') { const e = errOfView(vw, si); fill = e == null ? css('--untested') : divergeErr(e / ES); }
+          else { const val = state.layer === 'actual' ? vw.actual[si] : vw.pred[si]; fill = val == null ? css('--untested') : diverge((val - tmid) / thalf); }
+          if (v.sbin != null && v.sbin !== 1 && x.s === STEPS) stroke = ` stroke="${css('--text-3')}" stroke-width="0.8" stroke-dasharray="2 1.5"`;
+        } else if (st === 'pd' || st === 'fc') {
+          // predicted but not measured: color on the predicted-temp layer, dashed outline on the error layer
+          fill = css('--surface');
+          if (state.layer === 'pred' && vw.pred[si] != null) fill = diverge((vw.pred[si] - tmid) / thalf);
+          stroke = ` stroke="${css('--s1')}" stroke-width="1" stroke-dasharray="${st === 'fc' ? '1.5 1.5' : '3 1.5'}"`;
+        }
+        out += `<g class="die" data-pid="${v.pid}"><rect x="${px}" y="${py}" width="${sz}" height="${sz}" rx="2" fill="${fill}"${stroke}/></g>`;
+        if (v.pid === state.pid) sel = { px, py, sz };
+      }
+      // selected die: strong ring on the map of the selected sensor (matches the scatter point), thin neutral ring on the other five
+      if (sel) out += k === state.sensor
+        ? `<rect class="sel" x="${sel.px - 2}" y="${sel.py - 2}" width="${sel.sz + 4}" height="${sel.sz + 4}" rx="3" fill="none" stroke="${css('--s2')}" stroke-width="2.6" pointer-events="none"/>`
+        : `<rect class="sel" x="${sel.px - 1.5}" y="${sel.py - 1.5}" width="${sel.sz + 3}" height="${sel.sz + 3}" rx="3" fill="none" stroke="${css('--text')}" stroke-width="1.6" pointer-events="none"/>`;
+      const svg = $('map' + k);
+      svg.innerHTML = out;
+      const byPid = new Map(valid.map(x => [String(x.v.pid), x]));
+      svg.querySelectorAll('.die').forEach(g => {
+        g.addEventListener('mousemove', e => showTip(e, byPid.get(g.dataset.pid), si, base, k));
+        g.addEventListener('mouseleave', hideTip);
+        g.addEventListener('click', e => { e.stopPropagation(); const x = byPid.get(g.dataset.pid); if (x.s > 0) { state.pid = x.v.pid; render(); } });
+      });
+    }
+    const [tmin, tmax, base] = legendRange;
+    syncScaleInputs();
+    const ESs = errScaleFor(state.sensor);
+    $('maplegend').innerHTML = (state.layer === 'err'
+      ? `<span>sensor${state.sensor}: under −${ESs}°C <span class="ramp err"></span> +${ESs}°C over</span>`
+      : `<span>sensor${state.sensor}: ${f(tmin)} <span class="ramp"></span> ${f(tmax)}°C</span>`) +
+      `<span><span class="sw hatch"></span>not tested</span>` +
+      `<span><span class="sw pd"></span>predicted</span>` +
+      `<span><span class="sw" style="background:transparent;border:1px dashed var(--text-3)"></span>fail (SBin≠1)</span>`;
+  }
+
+  function showTip(e, x, si, base, k) {
+    const tip = $('tip'); k = k || state.sensor;
+    const v = x.v, vw = x.view, st = vw.st[si];
+    let html = `<b>PID ${v.pid}</b> · site ${v.site} · (${v.x}, ${v.y})`;
+    if (st === 'none') html += `<br><span class="muted">not tested yet</span>`;
+    else if (st === 'fc') html += `<br>sensor${k} initial forecast <b>${f(vw.pred[si], 3)}</b>°C <span class="muted">(not asked yet, not measured)</span>`;
+    else if (st === 'pd') html += `<br>sensor${k} predicted <b>${f(vw.pred[si], 3)}</b>°C <span class="muted">(not yet measured)</span>` + (v.forecast && v.forecast[si] != null ? `<br><span class="muted">initial forecast ${f(v.forecast[si], 3)}</span>` : '');
+    else {
+      const err = errOfView(vw, si);
+      html += `<br>sensor${k} predicted <b>${f(vw.pred[si], 3)}</b> · measured <b>${f(vw.actual[si], 3)}</b>°C` +
+              `<br>error <b>${err == null ? '—' : (err >= 0 ? '+' : '') + err.toFixed(3)}</b>°C` +
+              (v.forecast && v.forecast[si] != null ? ` <span class="muted">· initial ${f(v.forecast[si], 3)}</span>` : '') +
+              (v.raw && v.raw[si] != null ? ` <span class="muted">· raw ${f(v.raw[si], 3)}</span>` : '');
+      if (x.s === STEPS && v.sbin != null) html += `<br>SBin ${v.sbin}${v.sbin === 1 ? ' (pass)' : ' (fail)'}`;
+    }
+    tip.innerHTML = html; tip.style.display = 'block';
+    tip.style.left = (e.clientX + 14) + 'px'; tip.style.top = (e.clientY + 14) + 'px';
+  }
+  function hideTip() { $('tip').style.display = 'none'; }
+
+  function renderTouchdown(d, V) {
+    const td = V.tdCur || 1;
+    const rows = V.list.filter(x => x.td === td);
+    $('tdtitle').textContent = `Touchdown ${td} · PID ${rows[0]?.v.pid ?? '—'}–${rows[rows.length - 1]?.v.pid ?? '—'}`;
+    let html = `<div class="h"></div>` + rows.map(x => `<div class="h">site ${x.v.site}</div>`).join('');
+    for (let k = 1; k <= 6; k++) {
+      html += `<div class="rh">sensor${k}</div>`;
+      for (const x of rows) {
+        const vw = x.view, st = vw.st[k - 1], e = errOfView(vw, k - 1);
+        const on = x.v.pid === state.pid ? `outline:2px solid ${css('--s1')};` : '';
+        let cls = 'c', bg = 'transparent', body = '';
+        if (st === 'none') { cls += ' no'; body = `—<div class="e">not tested</div>`; }
+        else if (st === 'fc') { cls += ' fc'; body = `${f(vw.pred[k - 1])} / …<div class="e">initial forecast</div>`; }
+        else if (st === 'pd') { cls += ' pd'; body = `<b>${f(vw.pred[k - 1])}</b> / …<div class="e">prediction sent</div>`; }
+        else { const ES = errScaleFor(k); bg = e == null ? css('--untested') : divergeErr(e / ES); if (e != null && Math.abs(e / ES) > 0.55) cls += ' inv'; body = `<b>${f(vw.pred[k - 1])}</b> / ${f(vw.actual[k - 1])}<div class="e">${e == null ? '—' : (e >= 0 ? '+' : '') + e.toFixed(3)}</div>`; }
+        html += `<div class="${cls}" data-pid="${x.v.pid}" style="background:${bg};${on}">${body}</div>`;
+      }
+    }
+    $('tdgrid').innerHTML = html;
+    $('tdgrid').querySelectorAll('.c').forEach(el => el.onclick = () => { state.pid = +el.dataset.pid; render(); });
+  }
+
+  function renderDie(d, V) {
+    const box = $('diedetail');
+    const x = V.list.find(y => y.v.pid === state.pid && y.s > 0);
+    if (!x) { box.classList.remove('show'); return; }
+    box.classList.add('show');
+    const v = x.v, vw = x.view;
+    $('dietitle').textContent = `Die PID ${v.pid} · site ${v.site} · (${v.x}, ${v.y})${x.s === STEPS && v.sbin != null ? ' · SBin ' + v.sbin : ''}: six sensors`;
+    let html = `<div class="lab"></div><div class="muted">error (°C, bar = ±${state.errScale})</div><div class="muted">predicted / measured</div>`;
+    for (let k = 1; k <= 6; k++) {
+      const st = vw.st[k - 1], e = errOfView(vw, k - 1), t = e == null ? 0 : Math.max(-1, Math.min(1, e / errScaleFor(k)));
+      const left = t < 0 ? 50 + t * 50 : 50, width = Math.abs(t) * 50;
+      const right = st === 'ms' ? `<b>${f(vw.pred[k - 1], 3)}</b> / ${f(vw.actual[k - 1], 3)} <span class="muted">${e == null ? '' : (e >= 0 ? '+' : '') + e.toFixed(3)}</span>`
+                  : st === 'pd' ? `<b>${f(vw.pred[k - 1], 3)}</b> / … <span class="muted">not measured</span>`
+                  : st === 'fc' ? `<i class="muted">${f(vw.pred[k - 1], 3)} / … initial</i>` : `<span class="muted">—</span>`;
+      html += `<div class="lab">sensor${k}</div>` +
+              `<div class="bar"><i style="left:${left}%;width:${Math.max(width, 0.8)}%;background:${st !== 'ms' ? 'transparent' : (e >= 0 ? css('--err-hi') : css('--err-lo'))}"></i><i style="left:50%;width:1px;top:0;height:14px;background:${css('--text-3')}"></i></div>` +
+              `<div>${right}</div>`;
+    }
+    $('diebars').innerHTML = html;
+  }
+
+  function renderSensors(d, V) {
+    $('sensors').innerHTML = [1, 2, 3, 4, 5, 6].map(k => {
+      const m = maeOf(V.list, k - 1), mr = maeOf(V.list, k - 1, 'raw');
+      return `<div class="stile${k === state.sensor ? ' on' : ''}" data-k="${k}"><div class="k">sensor${k}</div><div class="v">${f(m, 3)}</div>` +
+             `<div class="r">${mr != null && m != null && Math.abs(mr - m) > 0.0005 ? 'raw ' + f(mr, 3) : '&nbsp;'}</div></div>`;
+    }).join('');
+    $('sensors').querySelectorAll('.stile').forEach(el => el.onclick = () => { state.sensor = +el.dataset.k; ssel.value = state.sensor; render(); });
+  }
+
+  function renderTiles(d, V) {
+    const si = state.sensor - 1, base = d.sensors[String(state.sensor)];
+    const ms = V.list.filter(x => x.view.st[si] === 'ms' && x.view.pred[si] != null && x.view.actual[si] != null);
+    const errs = ms.map(x => x.view.pred[si] - x.view.actual[si]);
+    const m = maeOf(V.list, si), mx = errs.length ? Math.max(...errs.map(Math.abs)) : null;
+    const bias = errs.length ? errs.reduce((a, b) => a + b, 0) / errs.length : null;
+    const nOver = ms.filter(x => x.v.over_limit_actual[si]).length;
+    const nPred = V.list.filter(x => x.view.st[si] !== 'none').length;
+    $('tiles').innerHTML = [
+      ['Measured', `${ms.length}`, `/ ${d.devices.length} dies`],
+      [`sensor${state.sensor} MAE`, f(m, 3), '°C'],
+      ['Max error', f(mx, 3), '°C'],
+      ['Mean bias', bias == null ? '—' : (bias >= 0 ? '+' : '') + bias.toFixed(3), '°C'],
+    ].map(([k, v, u]) => `<div class="tile"><div class="k">${k}</div><div class="v">${v}<span class="u">${u}</span></div></div>`).join('');
+  }
+
+  function renderScatter(d, V) {
+    const si = state.sensor - 1, base = d.sensors[String(state.sensor)];
+    const svg = $('scatter'), W = 300, H = 260, pl = 40, pr = 10, pt = 10, pb = 30;
+    const rows = V.list.filter(x => x.view.st[si] === 'ms' && x.view.pred[si] != null && x.view.actual[si] != null);
+    const all = rows.flatMap(x => [x.view.pred[si], x.view.actual[si]]);
+    let lo = all.length ? Math.min(...all) : base.mu0 - 0.5, hi = all.length ? Math.max(...all) : base.mu0 + 0.5;
+    const padv = Math.max(0.05, (hi - lo) * 0.1); lo -= padv; hi += padv;
+    const X = v => pl + (v - lo) / (hi - lo) * (W - pl - pr), Y = v => pt + (H - pt - pb) * (1 - (v - lo) / (hi - lo));
+    let out = '';
+    for (let i = 0; i <= 4; i++) {
+      const v = lo + (hi - lo) * i / 4;
+      out += `<line x1="${pl}" x2="${W - pr}" y1="${Y(v)}" y2="${Y(v)}" stroke="${css('--border')}"/>`;
+      out += `<text x="${pl - 5}" y="${Y(v) + 4}" text-anchor="end">${v.toFixed(1)}</text><text x="${X(v)}" y="${H - 12}" text-anchor="middle">${v.toFixed(1)}</text>`;
+    }
+    out += `<line x1="${X(lo)}" y1="${Y(lo)}" x2="${X(hi)}" y2="${Y(hi)}" stroke="${css('--text-3')}" stroke-dasharray="4 3"/>`;
+    out += `<text x="${(pl + W - pr) / 2}" y="${H - 1}" text-anchor="middle">measured (°C)</text>`;
+    out += `<text transform="translate(10,${(pt + H - pb) / 2}) rotate(-90)" text-anchor="middle">predicted (°C)</text>`;
+    const selRow = rows.find(x => x.v.pid === state.pid);
+    rows.forEach(x => { if (x !== selRow) out += `<circle class="pt" data-pid="${x.v.pid}" cx="${X(x.view.actual[si])}" cy="${Y(x.view.pred[si])}" r="4" fill="${css('--s1')}" fill-opacity="${selRow ? '.45' : '.75'}" stroke="${css('--surface')}" stroke-width="1"/>`; });
+    if (selRow) out += `<circle class="pt sel" data-pid="${selRow.v.pid}" cx="${X(selRow.view.actual[si])}" cy="${Y(selRow.view.pred[si])}" r="6.5" fill="${css('--s1')}" stroke="${css('--s2')}" stroke-width="2.6"/>` +
+                       `<text x="${X(selRow.view.actual[si]) + 9}" y="${Y(selRow.view.pred[si]) - 7}" font-weight="700" fill="${css('--text')}">PID ${selRow.v.pid}</text>`;
+    svg.innerHTML = out;
+    const byPid = new Map(rows.map(x => [String(x.v.pid), x]));
+    svg.querySelectorAll('.pt').forEach(c => {
+      c.addEventListener('mousemove', e => showTip(e, byPid.get(c.dataset.pid), si, base, state.sensor));
+      c.addEventListener('mouseleave', hideTip);
+      c.addEventListener('click', e => { e.stopPropagation(); const pid = +c.dataset.pid; state.pid = state.pid === pid ? null : pid; hideTip(); render(); });
+    });
+    svg.style.cursor = 'pointer';
+  }
+
+  function renderTrend(d, V) {
+    const svg = $('trend'), W = 300, H = 260, pl = 40, pr = 10, pt = 14, pb = 30;
+    const k = String(state.sensor), n = Math.max(2, d.touchdowns_done);
+    const cum = d.history.map(h => h.mae_cum ? h.mae_cum[k] : null);
+    const raw = d.history.map(h => h.mae_raw_cum ? h.mae_raw_cum[k] : null);
+    const ymax = Math.max(0.05, ...cum.filter(v => v != null), ...raw.filter(v => v != null)) * 1.15;
+    const X = i => pl + i * (W - pl - pr) / (n - 1), Y = v => pt + (H - pt - pb) * (1 - v / ymax);
+    let out = '';
+    for (let i = 0; i <= 4; i++) { const v = ymax * i / 4; out += `<line x1="${pl}" x2="${W - pr}" y1="${Y(v)}" y2="${Y(v)}" stroke="${css('--border')}"/><text x="${pl - 5}" y="${Y(v) + 4}" text-anchor="end">${v.toFixed(2)}</text>`; }
+    const upto = V.tdDone;   // only finished touchdowns
+    const path = (arr, col) => {
+      const pts = arr.slice(0, upto).map((v, i) => v == null ? null : [X(i), Y(v)]).filter(Boolean);
+      if (!pts.length) return '';
+      let s = `<path d="M${pts.map(p => p.join(',')).join('L')}" fill="none" stroke="${col}" stroke-width="2"/>`;
+      const last = pts[pts.length - 1];
+      s += `<circle cx="${last[0]}" cy="${last[1]}" r="4" fill="${col}" stroke="${css('--surface')}" stroke-width="2"/>`;
+      s += `<text x="${Math.min(last[0], W - pr)}" y="${last[1] - 8}" text-anchor="end" style="fill:${col};font-weight:600">${arr[upto - 1].toFixed(3)}</text>`;
+      return s;
+    };
+    out += path(raw, css('--s2')) + path(cum, css('--s1'));
+    for (let i = 0; i < n; i += 5) out += `<text x="${X(i)}" y="${H - 12}" text-anchor="middle">${i + 1}</text>`;
+    out += `<text x="${(pl + W - pr) / 2}" y="${H - 1}" text-anchor="middle">touchdown</text>`;
+    out += `<text transform="translate(10,${(pt + H - pb) / 2}) rotate(-90)" text-anchor="middle">MAE (°C)</text>`;
+    svg.innerHTML = out;
+  }
+
+  function renderTable(d, V) {
+    const si = state.sensor - 1;
+    $('table').innerHTML = `<tr><th>PID</th><th>site</th><th>X</th><th>Y</th><th>initial</th><th>predicted</th><th>raw</th><th>measured</th><th>error</th><th>SBin</th></tr>` +
+      V.list.filter(x => x.s > 0).map(x => { const v = x.v, vw = x.view, e = errOfView(vw, si); return `<tr><td>${v.pid}</td><td>${v.site}</td><td>${v.x ?? ''}</td><td>${v.y ?? ''}</td><td>${f(v.forecast ? v.forecast[si] : null, 3)}</td><td>${f(vw.pred[si], 3)}</td><td>${f(v.raw ? v.raw[si] : null, 3)}</td><td>${f(vw.actual[si], 3)}</td>` +
+        `<td>${e == null ? '—' : (e >= 0 ? '+' : '') + e.toFixed(3)}</td><td>${x.s === STEPS ? (v.sbin ?? '') : ''}</td></tr>`; }).join('');
+  }
+
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', render);
+  if (DATA['W99']) { state.wafer = 'W99'; wsel.value = 'W99'; }
+  if (!cur().devices.some(v => v.actual.some(a => a != null))) { state.layer = 'pred'; for (const m of ['err', 'pred', 'actual']) $('layer-' + m).classList.toggle('on', m === 'pred'); }
+  setMax(); state.step = maxStep(); $('td').value = state.step;
+  render();
+})();
+</script>
+</body>
+</html>

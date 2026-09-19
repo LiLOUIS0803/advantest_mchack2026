@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.pyc
+nohup.out
+*.stdf
+*.zip
+pkg/
+data/*
+!data/.gitkeep
+!data/README.md
+data_gemini/*
+!data_gemini/.gitkeep
+data_blank/*
+scene2/report/
+scene2/report_demo/
+scene2/web/wafer_map_demo.html

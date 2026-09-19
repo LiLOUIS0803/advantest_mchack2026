@@ -1,0 +1,29 @@
+#!/bin/bash
+action=$1
+current_path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cp ${current_path}/app_descriptor.json /opt/acs/nexus/conf/app_descriptor.json
+if [[ "$action" == "load" ]]; then
+ command=${current_path}/Util/startSmt.py
+ echo "command =${command}"
+ python3 ${command}
+ 
+elif [[ "$action" == "eng_run" ]]; then
+    if [[ $# -eq 2 ]]; then
+        loop=$2
+    else
+        loop=1
+    fi 
+    command=${current_path}/Util/tpExec
+    echo "command =${command}"
+    /opt/hp93000/testcell/bin/run ${command} ${loop}
+elif [[ "$action" == "prod_run" ]]; then
+    command="${current_path}/Util/startSmt.py prod"
+    echo "command =${command}"
+    python3 ${command}
+else
+   echo "Usage: $0 {load|eng_run|prod_run} [loop_count]"
+  exit 1
+
+fi
+
+

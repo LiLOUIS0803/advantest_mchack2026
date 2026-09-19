@@ -1,0 +1,23 @@
+{
+"version": "1",
+"name":"py-app",
+"edge":{
+         "containers":[
+          {
+            "image":"grp4/py-app:latest",            
+            "metrics":{},
+            "name":"py-app",
+            "requirements":{"gpu":false},
+            "environment": {
+                 "ONEAPI_DEBUG" : "6",
+                 "ACTIONS_FILE_PATH":"/opt/nexus/OneAPI/bin/setup.cfg"
+              }
+            }
+          ]
+        },
+         "selector":
+       {
+            "device_name":"all"
+       }
+}
+

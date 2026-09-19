@@ -1,0 +1,12 @@
+
+burstable sequence BurstSeqA56 {
+
+    parallel
+    {
+         sequential
+         {
+             patternCall patterns.PatA5;
+             patternCall patterns.PatA6;
+         }
+     }
+}

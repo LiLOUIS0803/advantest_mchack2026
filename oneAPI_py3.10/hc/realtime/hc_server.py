@@ -24,7 +24,7 @@ class Store:
 
     @contextmanager
     def db(self):
-        db=sqlite3.connect(self.path,timeout=20);db.row_factory=sqlite3.Row
+        db=sqlite3.connect(str(self.path),timeout=20);db.row_factory=sqlite3.Row
         try:
             with db:yield db
         finally:db.close()

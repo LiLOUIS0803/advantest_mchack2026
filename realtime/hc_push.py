@@ -1,5 +1,5 @@
 """Durable Edge -> HC outbox. Network work never runs in SDK callbacks."""
-import copy,json,logging,os,sqlite3,threading,time,uuid
+import copy,gzip,json,logging,os,sqlite3,threading,time,uuid
 from pathlib import Path
 from urllib.request import Request,urlopen
 import numpy as np
@@ -52,8 +52,9 @@ class PushClient:
             try:row=db.execute('SELECT id,payload FROM outbox ORDER BY rowid LIMIT 1').fetchone()
             finally:db.close()
         if row is None:return False
-        request=Request(self.url,data=row[1].encode(),headers={'Content-Type':'application/json','Authorization':'Bearer '+self.token})
-        with urlopen(request,timeout=3) as response:
+        body=gzip.compress(row[1].encode(),compresslevel=1)
+        request=Request(self.url,data=body,headers={'Content-Type':'application/json','Content-Encoding':'gzip','Authorization':'Bearer '+self.token})
+        with urlopen(request,timeout=60) as response:
             if response.status!=200:raise RuntimeError('HC rejected packet')
         with self.db_lock:
             db=sqlite3.connect(self.path)

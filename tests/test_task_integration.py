@@ -31,7 +31,9 @@ class IntegrationTests(unittest.TestCase):
         self.assertEqual(self.bridge.temperature.current[1]['x'],-1)
         row['number']=120;row['suite']='Main.sensor2';row['text']='DS0'
         self.bridge.process('tester','parametric',{'rows':[row]})
-        with self.assertRaisesRegex(ValueError,'after target'):self.predict(2)
+        frozen=self.bridge.temperature.pre_target[2][1][0]
+        self.assertIn(str(round(frozen,3)),self.predict(2))
+        self.assertEqual(self.bridge.temperature.current[1]['prediction_timing'][1],'late_request_frozen')
         self.assertIsNone(self.session.engine.predicted_label)
     def test_anomaly_failure_does_not_stop_temperature(self):
         self.bridge.process('tester','test_start',{'rows':[self.row]})
@@ -47,6 +49,18 @@ class IntegrationTests(unittest.TestCase):
         f=concurrent.futures.Future();f.cancel()
         self.bridge.process('tester','predict',{'sensor':1,'future':f})
         self.assertEqual(self.bridge.temperature.cache,{})
+    def test_late_prediction_frozen_before_target_updates(self):
+        runtime=self.bridge.temperature
+        expected=runtime.tp.predict_site(1,1)[0]
+        runtime.tp.end_all()
+        row=dict(self.row,number=100,text='CP',suite='Main.sensor1',measurement='Main.sensor1.measurement',flag=0,values=[999.],scaling=0)
+        self.bridge.process('tester','parametric',{'rows':[row]})
+        row['values']=[-999.]
+        self.bridge.process('tester','parametric',{'rows':[row]})
+        self.assertIn(str(round(expected,3)),self.predict(1))
+        self.assertEqual(runtime.current[1]['actual'][0],-999.)
+        runtime.on_event('test_end',{'rows':[dict(self.row,pid='D1',pf=0,sbin=1,hbin=1)]})
+        self.assertEqual(runtime.pre_target,{})
     def test_hc_auth_persistence_reordering_and_separate_pages(self):
         token='x'*32;server=make_server('127.0.0.1',0,self.folder/'hc.db',token)
         thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start()

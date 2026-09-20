@@ -1,5 +1,5 @@
 """HC report receiver and web host; standard library only, no model execution."""
-import argparse,hashlib,hmac,json,math,os,sqlite3,statistics,time
+import argparse,gzip,io,hashlib,hmac,json,math,os,sqlite3,statistics,time
 from contextlib import contextmanager
 from pathlib import Path
 from http.server import BaseHTTPRequestHandler,HTTPServer
@@ -108,8 +108,11 @@ def make_server(host,port,path,token):
         def log_message(self,*args):pass
         def send(self,value,status=200,mime='application/json; charset=utf-8'):
             data=value if isinstance(value,bytes) else json.dumps(value,allow_nan=False).encode()
-            self.send_response(status);self.send_header('Content-Type',mime);self.send_header('Content-Length',str(len(data)))
-            self.send_header('Cache-Control','no-store');self.end_headers();self.wfile.write(data)
+            try:
+                self.send_response(status);self.send_header('Content-Type',mime);self.send_header('Content-Length',str(len(data)))
+                self.send_header('Cache-Control','no-store');self.end_headers();self.wfile.write(data)
+            except (BrokenPipeError,ConnectionResetError):
+                self.close_connection=True
         def do_GET(self):
             url=urlparse(self.path);q=parse_qs(url.query);run=q.get('run',[None])[0];path=url.path
             try:
@@ -147,13 +150,28 @@ def make_server(host,port,path,token):
             try:
                 size=int(self.headers.get('Content-Length',0))
                 if not 0<size<=32_000_000:raise ValueError('Invalid payload size')
-                data=json.loads(self.rfile.read(size),parse_constant=lambda x:(_ for _ in ()).throw(ValueError('Nonfinite JSON')))
+                self.connection.settimeout(65)
+                chunks=[];remaining=size
+                while remaining:
+                    chunk=self.rfile.read(min(remaining,65536))
+                    if not chunk:raise ValueError('Incomplete request body; retry the complete packet')
+                    chunks.append(chunk);remaining-=len(chunk)
+                raw=b''.join(chunks)
+                encoding=self.headers.get('Content-Encoding','identity')
+                if encoding=='gzip':
+                    with gzip.GzipFile(fileobj=io.BytesIO(raw)) as stream:raw=stream.read(128_000_001)
+                    if len(raw)>128_000_000:raise ValueError('Expanded payload too large')
+                elif encoding!='identity':raise ValueError('Unsupported content encoding')
+                data=json.loads(raw,parse_constant=lambda x:(_ for _ in ()).throw(ValueError('Nonfinite JSON')))
                 if ingest:store.ingest(data)
                 elif urlparse(self.path).path.startswith('/api/notifications/'):
                     store.report(urlparse(self.path).path.rsplit('/',1)[-1],data['status'])
                 else:return self.send({'error':'HC does not control the tester'},404)
                 self.send({'ok':True})
             except (ValueError,KeyError,TypeError) as error:self.send({'error':str(error)},400)
+            except (OSError,EOFError) as error:
+                self.close_connection=True
+                self.send({'error':'Interrupted request; retry the complete packet'},400)
     return ThreadingHTTPServer((host,port),Handler)
 
 

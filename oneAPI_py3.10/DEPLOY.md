@@ -8,8 +8,8 @@ two independently presented tasks and a shared outbound JSON transport:
 - **Temperature prediction**: requested sensor1–6 predictions, measured values,
   error maps, MAE, raw vs corrected error and die details. HC page `/temperature`.
 
-Both pages use Scene 2's neutral surfaces, compact cards and blue/green/violet
-palette. There is no combined score, label or anomaly/temperature diagnosis.
+The temperature page preserves the original Scene 2 template layout, styles and controls.
+The anomaly page follows its visual style. There is no combined score, label or anomaly/temperature diagnosis.
 Both share one received event stream; a task-specific error disables that task
 without disabling the other. Transport corruption, mixed testers or queue overflow
 invalidate the shared stream and require restart. One tester per container.
@@ -29,7 +29,7 @@ The HC receiver requires Python 3.6+ and only the standard library. Identify the
 Use the actual assigned image namespace in place of grp4 if necessary:
 
 ```bash
-python3 hc/setup.py --hc-url http://HC_IP:8770 --image grp4/py-app:tasks-v2
+python3 hc/setup.py --hc-url http://HC_IP:8770 --image grp4/py-app:tasks-v3
 python3 hc/start.py --token-file hc-token.txt --data hc-reports.sqlite3
 ```
 
@@ -58,7 +58,7 @@ cd /actual/upload/path/oneAPI_py3.10
 sudo bash tag.sh
 ```
 
-Default: `unifiedserver.local/grp4/py-app:tasks-v2`.
+Default: `unifiedserver.local/grp4/py-app:tasks-v3`.
 The Docker build checks Linux Python 3.10, native SDK imports, the portable anomaly
 model's 408 reference vectors and all six temperature models. Dependencies are
 NumPy 1.26.4 and jsonschema 4.23.0. If the HC cannot access a package index, configure
@@ -99,8 +99,8 @@ request enters the ordered event queue so it sees only preceding received data.
 `set_wait(...,10,message)` and `get()` run inside the TP request callback as in
 the supplied scene2 integration. Requests have a default 0.7 second queue deadline;
 confirm timing against the test program's timeout and set_wait units on Gemini.
-Expired queued requests are cancelled, late requests after target measurement are
-rejected, and repeated requests return the original prediction. No fabricated
+Expired queued requests are cancelled, late requests use a frozen prediction computed before consuming the first target value,
+and are explicitly marked late_request_frozen (not on-time predictions), and repeated requests return the original prediction. No fabricated
 average fallback or future-measurement prediction is returned on error.
 
 The supplied Lasso design is retained with median imputation and online bias
@@ -114,7 +114,8 @@ classification confidence, and the UI keeps them separate.
 
 ## Transport and persistence
 
-Edge sends complete received-data snapshots in the background (coalesced updates),
+Edge sends gzip-compressed received-data snapshots in the background (coalesced updates),
+with a 60-second network timeout. HC verifies the complete request body before committing,
 with separate immutable anomaly report records. Outbound failure is retried from
 `REPORT_DIR/hc-outbox.sqlite3`; SDK callbacks never wait for HC networking.
 Each process has a run ID, start timestamp and increasing sequence number. HC
@@ -151,3 +152,9 @@ Python 3.10 syntax and portable model references are checked in packaging/build.
 No real HC/Edge/Nexus connection was available locally. Validate actual SDK field
 mapping, prediction deadline, TCCT display, HC network reachability and persistence
 mounts on Gemini. Neither task automatically stops the tester.
+
+## tasks-v3 field update
+
+Update HC first with git pull, stop the old HC receiver and restart it. Then build and push tasks-v3 using tag.sh; regenerate the descriptor with hc/setup.py --hc-url http://HC_IP:8770 --image grp4/py-app:tasks-v3. Copy the generated descriptor into the active SmarTest directory and restart the test environment. No token rotation is required.
+
+Late temperature requests return only pre-target frozen results. This prevents hindsight inference but does not repair external callback timing. The JSON prediction_timing field distinguishes them; they are excluded from on-time prediction values and MAE in the original temperature UI. Requests with no frozen result still fail. Confirm actual ONEAPI/test-program ordering on site.

@@ -4,7 +4,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--hc-url',required=True);p.add_argument('--image',default='grp4/py-app:tasks-v2');a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--hc-url',required=True);p.add_argument('--image',default='grp4/py-app:tasks-v3');a=p.parse_args()
     url=a.hc_url.rstrip('/');parsed=urlparse(url)
     if parsed.scheme not in ('http','https') or not parsed.hostname or parsed.hostname in ('localhost','127.0.0.1','0.0.0.0'):
         p.error('Use the HC address reachable from Edge, not localhost or the Edge IP')

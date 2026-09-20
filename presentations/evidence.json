@@ -1,0 +1,44 @@
+{
+  "evaluation": "Same 5 wafer-group folds as saved model evaluation; baseline predicts training-fold mean; excludes W2",
+  "wafers": 24,
+  "dies": 1920,
+  "features": 3036,
+  "rows": [
+    {
+      "sensor": 1,
+      "baseline_mae": 0.19790047779605266,
+      "model_mae": 0.0030962388293507928,
+      "reduction_pct": 98.43545661747132
+    },
+    {
+      "sensor": 2,
+      "baseline_mae": 0.16701069668311383,
+      "model_mae": 0.043393407385937194,
+      "reduction_pct": 74.01758794631468
+    },
+    {
+      "sensor": 3,
+      "baseline_mae": 0.3344829873903515,
+      "model_mae": 0.0309274386896964,
+      "reduction_pct": 90.75365867454323
+    },
+    {
+      "sensor": 4,
+      "baseline_mae": 0.1847952017543862,
+      "model_mae": 0.05057930849278467,
+      "reduction_pct": 72.62953366072226
+    },
+    {
+      "sensor": 5,
+      "baseline_mae": 0.18524562294407942,
+      "model_mae": 0.06573957434035033,
+      "reduction_pct": 64.51221178910376
+    },
+    {
+      "sensor": 6,
+      "baseline_mae": 0.18063382579495615,
+      "model_mae": 0.06671743504266694,
+      "reduction_pct": 63.06481648769358
+    }
+  ]
+}

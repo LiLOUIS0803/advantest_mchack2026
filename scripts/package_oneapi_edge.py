@@ -3,6 +3,7 @@ from pathlib import Path
 import ast
 import hashlib
 import json
+import runpy
 import shutil
 import zipfile
 
@@ -10,6 +11,7 @@ ROOT=Path(__file__).resolve().parents[1]
 
 
 def main():
+    runpy.run_path(str(ROOT/'scripts/restore_scene2_ui.py'),run_name='__main__')
     target=ROOT/'oneAPI_py3.10'
     runtime=('__init__.py','data.py','metrics.py','engine.py','classifier_features.py',
              'portable_model.py','classifier_engine.py','replay.py','notifications.py',
@@ -37,7 +39,7 @@ def main():
     shutil.copyfile(ROOT/'deploy/start_hc.py',target/'hc/start.py')
     descriptor=json.loads((ROOT/'SmarTest/app_descriptor.json').read_text())
     container=descriptor['edge']['containers'][0]
-    container['image']='grp4/py-app:tasks-v2'
+    container['image']='grp4/py-app:tasks-v3'
     container['environment'].pop('ACTIONS_FILE_PATH',None)
     container['environment']['REPORT_DIR']='/var/lib/wafer-watch'
     (target/'app_descriptor.json').write_text(json.dumps(descriptor,indent=2)+'\n',encoding='utf-8')

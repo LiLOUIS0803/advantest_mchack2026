@@ -29,7 +29,7 @@ The HC receiver requires Python 3.6+ and only the standard library. Identify the
 Use the actual assigned image namespace in place of grp4 if necessary:
 
 ```bash
-python3 hc/setup.py --hc-url http://HC_IP:8770 --image grp4/py-app:tasks-v3
+python3 hc/setup.py --hc-url http://HC_IP:8770 --image grp4/py-app:tasks-v4
 python3 hc/start.py --token-file hc-token.txt --data hc-reports.sqlite3
 ```
 
@@ -58,7 +58,7 @@ cd /actual/upload/path/oneAPI_py3.10
 sudo bash tag.sh
 ```
 
-Default: `unifiedserver.local/grp4/py-app:tasks-v3`.
+Default: `unifiedserver.local/grp4/py-app:tasks-v4`.
 The Docker build checks Linux Python 3.10, native SDK imports, the portable anomaly
 model's 408 reference vectors and all six temperature models. Dependencies are
 NumPy 1.26.4 and jsonschema 4.23.0. If the HC cannot access a package index, configure
@@ -153,8 +153,14 @@ No real HC/Edge/Nexus connection was available locally. Validate actual SDK fiel
 mapping, prediction deadline, TCCT display, HC network reachability and persistence
 mounts on Gemini. Neither task automatically stops the tester.
 
-## tasks-v3 field update
+## tasks-v4 field update
 
-Update HC first with git pull, stop the old HC receiver and restart it. Then build and push tasks-v3 using tag.sh; regenerate the descriptor with hc/setup.py --hc-url http://HC_IP:8770 --image grp4/py-app:tasks-v3. Copy the generated descriptor into the active SmarTest directory and restart the test environment. No token rotation is required.
+Update HC first with git pull, stop the old HC receiver and restart it. Then build and push tasks-v4 using tag.sh; regenerate the descriptor with hc/setup.py --hc-url http://HC_IP:8770 --image grp4/py-app:tasks-v4. Copy the generated descriptor into the active SmarTest directory and restart the test environment. No token rotation is required.
 
 Late temperature requests return only pre-target frozen results. This prevents hindsight inference but does not repair external callback timing. The JSON prediction_timing field distinguishes them; they are excluded from on-time prediction values and MAE in the original temperature UI. Requests with no frozen result still fail. Confirm actual ONEAPI/test-program ordering on site.
+
+## Live view and classification diagnostics (tasks-v4)
+
+Anomaly classification distinguishes insufficient sample count from incomplete measurements/sites and task errors. Data completeness is reported separately from confidence, with per-test missing-die counts. No imputation or retraining is introduced: missing-data tolerance requires separate validation.
+
+The temperature page follows the latest run only. Playback, progress scrubbing and historical source selection are disabled. Live API rejects historical run parameters, packets received more than 10 seconds ago, packets generated more than 15 seconds ago, absent test events or events older than 60 seconds, and completed wafers. It clears the charts while waiting. Edge and HC clocks must be synchronized. Reports remain stored for audit; the model still uses legitimate preceding measurements and its existing online bias strategy.

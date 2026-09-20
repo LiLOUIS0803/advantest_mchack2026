@@ -39,6 +39,15 @@ class ClassifierIntegrationTests(unittest.TestCase):
             engine.finish_batch([{'key':k,'passed':True} for k in keys])
         self.assertIsNone(engine.predicted_label)
         self.assertEqual(engine.classification_reason,'missing_measurements_or_site')
+        q=engine.snapshot()['data_quality']
+        self.assertEqual(q['completed_dies'],16)
+        self.assertEqual(q['missing_values'],16*len(engine.columns))
+        self.assertEqual(q['affected_dies'],16)
+        self.assertEqual(q['measurement_completeness'],0)
+        self.assertEqual(q['missing_test_count'],len(engine.columns))
+        self.assertEqual(q['missing_tests'][0],{'test':engine.columns[0],'missing_dies':16})
+        engine.reset('5')
+        self.assertEqual(engine.snapshot()['data_quality']['missing_values'],0)
 
 
 if __name__=='__main__':unittest.main()

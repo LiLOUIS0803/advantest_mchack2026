@@ -133,6 +133,15 @@ def make_server(host,port,path,token):
                 p=store.state(run)
                 if p is None:return self.send({'waiting':True,'message':'Waiting for Edge data'},503)
                 if path=='/api/temperature':
+                    if q.get('live')==['1']:
+                        if run:return self.send({'error':'Live temperature view does not accept historical runs'},400)
+                        event_age=time.time()-p.get('last_event_at',0) if p.get('last_event_at') else float('inf')
+                        if p['age_seconds']>10 or time.time()-p.get('sent_at',0)>15:
+                            return self.send({'waiting':True,'message':'Waiting for fresh Edge data'},503)
+                        if event_age>60 or not p.get('scene2',{}).get('wafer'):
+                            return self.send({'waiting':True,'message':'Waiting for test events'},503)
+                        if p['scene2'].get('ended'):
+                            return self.send({'waiting':True,'message':'Wafer complete. Waiting for next wafer'},503)
                     return self.send({k:p.get(k) for k in ('run_id','tester','scene2','received_at','age_seconds','last_event_at')})
                 if path=='/api/source':return self.send({k:p.get(k) for k in ('run_id','tester','received_at','age_seconds','last_event_at')})
                 if path=='/api/tests':return self.send({'tests':p['columns']})

@@ -20,6 +20,18 @@ $('formal-labels').textContent=s.predicted_label??'Collecting data';
 $('action').textContent=s.predicted_label??'Collecting data';
 $('model').textContent='Seven-class model · Updates after 16 completed dies · Trained on all 24 wafers; replay is not independent validation.';
 window.renderVisuals(s,selected);
+const reason=s.classification_reason, quality=s.data_quality;
+const label=s.error?'Processing stopped':s.predicted_label??(reason==='missing_measurements_or_site'?'Cannot classify: incomplete data':`Collecting data (${s.completed} / 16 dies)`);
+for(const id of ['status','formal-labels','action'])$(id).textContent=label;
+let panel=$('data-quality');
+if(!panel){panel=document.createElement('details');panel.id='data-quality';panel.className='card';panel.style.marginBottom='16px';$('wafer-summary').after(panel);}
+panel.hidden=!quality;
+const qualityKey=quality?JSON.stringify([s.wafer,s.batch,quality.completed_dies,quality.missing_values,quality.missing_sites]):'';
+if(quality && panel.dataset.key!==qualityKey){
+panel.dataset.key=qualityKey;
+const percent=quality.measurement_completeness==null?'—':(quality.measurement_completeness*100).toFixed(2)+'%';
+panel.innerHTML=`<summary>Data completeness ${percent} · ${quality.missing_values} missing values · ${quality.missing_sites} missing sites</summary><p>Completed dies only. Data completeness is separate from classification confidence.</p><div class="scroll"><table><thead><tr><th>Missing test</th><th>Affected dies</th></tr></thead><tbody>${quality.missing_tests.map(t=>`<tr><td>${esc(t.test)}</td><td>${t.missing_dies}</td></tr>`).join('')||'<tr><td colspan="2">No missing measurements in completed dies.</td></tr>'}</tbody></table></div>`;
+}
 }
 async function poll(){if(busy)return;busy=true;try{render(await window.dashboardAPI.get('/api/state?test='+(window.vizTest||0)));}catch(e){$('error').textContent='Connection lost: '+e.message;}finally{busy=false;}}
 async function init(){try{const c=await window.dashboardAPI.get('/api/catalog');if(c.live_only){for(const id of ['wafer','speed','start','pause']){$(id).hidden=true;document.querySelector('label[for="'+id+'"]')?.setAttribute('hidden','');}}$('wafer').innerHTML=c.wafers.map(w=>`<option value="${w.wafer}">W${String(w.wafer).padStart(2,'0')} · ${{train_normal:'Normal training',validation_normal:'Normal validation',validation_anomaly:'Anomaly validation'}[w.split]}</option>`).join('');$('wafer').value='14';$('model').textContent=`${c.model.model} · ${c.model.training_devices} training devices · ${c.model.measurement_count} Tests · 16-die rolling window. Validation labels are not used for inference.`;const e=await window.dashboardAPI.get('/api/evaluation');$('evaluation').textContent=e.selected ? `${e.selected} ? LOO ${e.models[e.selected].correct}/${e.models[e.selected].total} ? Development CV; five singleton classes. Replay uses all 24 training wafers.` : '';await poll();setInterval(poll,300);}catch(e){$('error').textContent=e.message;}}init();

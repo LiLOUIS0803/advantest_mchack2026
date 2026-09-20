@@ -1,11 +1,36 @@
-import gzip,json,re,socket,tempfile,threading,unittest
+import gzip,json,re,socket,tempfile,threading,time,unittest
 from pathlib import Path
 from urllib.request import Request,urlopen
+from urllib.error import HTTPError
 from unittest.mock import patch
 from realtime.hc_server import make_server,Store
 
 
 class TransportTests(unittest.TestCase):
+    def test_live_temperature_rejects_stale_historical_and_finished_data(self):
+        with tempfile.TemporaryDirectory() as folder:
+            path=Path(folder)/'hc.db';server=make_server('127.0.0.1',0,path,'x'*32)
+            thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start()
+            store=Store(path);now=time.time()
+            packet={'version':1,'kind':'state','run_id':'r','seq':1,'started_at':now,
+                    'sent_at':now,'last_event_at':now,'scene1':{},'scene2':{'wafer':'4','ended':False},
+                    'reference':{},'columns':[],'series':[]}
+            base='http://127.0.0.1:%d/api/temperature?live=1'%server.server_port
+            def rejected(url):
+                with self.assertRaises(HTTPError) as ctx:urlopen(url)
+                code=ctx.exception.code;ctx.exception.close();return code
+            try:
+                store.ingest(packet)
+                with urlopen(base) as response:self.assertEqual(response.status,200)
+                self.assertEqual(rejected(base+'&run=r'),400)
+                packet.update(seq=2,sent_at=now-100);store.ingest(packet)
+                self.assertEqual(rejected(base),503)
+                packet.update(seq=3,sent_at=now,last_event_at=now-100);store.ingest(packet)
+                self.assertEqual(rejected(base),503)
+                packet.update(seq=4,last_event_at=now);packet['scene2']['ended']=True;store.ingest(packet)
+                self.assertEqual(rejected(base),503)
+            finally:server.shutdown();server.server_close();thread.join()
+
     def test_truncated_upload_not_committed_then_large_gzip_retry_succeeds(self):
         with tempfile.TemporaryDirectory() as folder:
             path=Path(folder)/'hc.db';token='x'*32

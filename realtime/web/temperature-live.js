@@ -1,13 +1,24 @@
   // Data adapter only: original Scene 2 layout, CSS and controls are retained.
   let liveIdentity=null;
+  // This page follows live events only; no historical run or playback controls.
+  const liveURL=new URL(location.href);liveURL.searchParams.delete('run');history.replaceState(null,'',liveURL);
+  $('play').onclick=null;$('play').style.display='none';
+  $('td').oninput=null;$('td').disabled=true;$('td').closest('label').style.display='none';
+  wsel.disabled=true;wsel.onchange=null;
+  function clearLive(message){
+    state.pid=null;state.step=0;liveIdentity=null;
+    const empty={wafer_id:'Waiting for Edge',status:'waiting',touchdowns_done:0,devices:[],history:[],sensors:Object.fromEntries([1,2,3,4,5,6].map(k=>[k,{mu0:25,limit_hi:null}]))};
+    for(const key of Object.keys(DATA))delete DATA[key];
+    DATA[empty.wafer_id]=empty;state.wafer=empty.wafer_id;wsel.replaceChildren(new Option(empty.wafer_id,empty.wafer_id));setMax();render();$('status').textContent=message;
+  }
   async function pollLive() {
+    const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),5000);
     try {
-      const query=new URLSearchParams(location.search).get('run');
-      const response=await fetch('/api/temperature'+(query?'?run='+encodeURIComponent(query):''));
-      if(!response.ok)throw Error('Waiting for Edge');
-      const packet=await response.json(), t=packet.scene2;
+      const response=await fetch('/api/temperature?live=1',{cache:'no-store',signal:controller.signal});
+      const packet=await response.json();
+      if(!response.ok)throw Error(packet.message||'Waiting for Edge');
+      const t=packet.scene2;
       const identity=packet.run_id+':'+t.wafer, name=String(t.wafer||'Waiting for wafer');
-      const follow=!state.playing && state.step===maxStep();
       const devices=t.devices.map(v=>{
         const pred=v.pred.map((x,i)=>v.prediction_timing?.[i]==='late_request_frozen'?null:x);
         const raw=v.raw.map((x,i)=>v.prediction_timing?.[i]==='late_request_frozen'?null:x);
@@ -23,10 +34,11 @@
         for(const key of Object.keys(DATA))delete DATA[key];
         wsel.replaceChildren(new Option(name,name));state.wafer=name;state.pid=null;liveIdentity=identity;
         DATA[name]=d;setMax();state.step=maxStep();
-      }else{DATA[name]=d;setMax();if(follow)state.step=maxStep();}
+      }else{DATA[name]=d;setMax();state.step=maxStep();}
       $('td').value=state.step;render();
       $('status').textContent=name+' · '+(packet.age_seconds>10?'connection stale':t.ended?'complete':'testing');
-    }catch(error){$('status').textContent=error.message;}
+    }catch(error){clearLive(error.name==='AbortError'?'HC connection timed out':error.message);}
+    finally{clearTimeout(timeout);}
     setTimeout(pollLive,2000);
   }
   pollLive();

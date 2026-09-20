@@ -1,5 +1,6 @@
 (() => {
-  const selected = new URLSearchParams(location.search).get('run');
+  const liveOnly=location.pathname==='/temperature';
+  const selected = liveOnly?null:new URLSearchParams(location.search).get('run');
   const nav = document.createElement('nav');
   nav.className = 'task-nav';
   nav.setAttribute('aria-label', 'Task navigation');
@@ -8,10 +9,11 @@
     if (link.pathname === location.pathname) {
       link.classList.add('active');link.setAttribute('aria-current', 'page');
     }
-    if (selected && link.pathname !== '/') link.search = '?run=' + encodeURIComponent(selected);
+    if (selected && link.pathname === '/anomaly') link.search = '?run=' + encodeURIComponent(selected);
   }
   document.body.prepend(nav);
   const select = document.getElementById('hc-source'), statusLabel = document.getElementById('hc-status');
+  if(liveOnly)select.closest('label').style.display='none';
   select.onchange = e => { location.search = e.target.value ? '?run=' + encodeURIComponent(e.target.value) : ''; };
   async function status() {
     try {

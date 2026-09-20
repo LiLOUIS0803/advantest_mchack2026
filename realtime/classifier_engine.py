@@ -36,6 +36,8 @@ class ClassifierEngine(Engine):
         self.class_rows=[];self.class_values=[];self.predicted_label=None
         self.classification_history=[];self.classification_reason='minimum_16_completed_devices'
         self.classification_confidence=None
+        self.data_quality={'completed_dies':0,'required_dies':16,'measurement_completeness':None,
+                           'missing_values':0,'missing_sites':0,'affected_dies':0,'missing_test_count':0,'missing_tests':[]}
 
     def finish_batch(self,outcomes):
         # Capture received values before base engine clears the active batch.
@@ -48,6 +50,14 @@ class ClassifierEngine(Engine):
             self.class_rows.append(['','','',site,'','',0 if row['passed'] else 8])
         self.predicted_label=None
         self.classification_confidence=None
+        missing=~np.isfinite(np.asarray(self.class_values))
+        counts=missing.sum(axis=0) if missing.size else np.zeros(len(self.columns),dtype=int)
+        tests=[{'test':self.columns[i],'missing_dies':int(n)} for i,n in enumerate(counts) if n]
+        self.data_quality={'completed_dies':len(self.class_rows),'required_dies':16,
+            'measurement_completeness':float(1-missing.mean()) if missing.size else None,
+            'missing_values':int(missing.sum()),'missing_sites':sum(r[3] is None for r in self.class_rows),
+            'affected_dies':int(missing.any(axis=1).sum()) if missing.size else 0,
+            'missing_test_count':len(tests),'missing_tests':tests}
         if len(self.class_rows)<16:
             self.classification_reason='minimum_16_completed_devices'
         elif any(r[3] is None for r in self.class_rows) or not np.isfinite(self.class_values).all():
@@ -76,6 +86,7 @@ class ClassifierEngine(Engine):
             status='insufficient_data' if self.predicted_label is None else 'normal' if self.predicted_label=='Normal' else 'anomaly',
             formal_alert_count=int(self.predicted_label is not None and self.predicted_label!='Normal'),
             classification_history=list(self.classification_history),classification_reason=self.classification_reason,
+            data_quality=self.data_quality,
             prediction_basis='Single classifier output from received completed devices; official answers not read at inference.',
             classifier_model='wafer_logistic_l2',
             limitations=['All 24 available wafers used for training; replay is in-sample.',

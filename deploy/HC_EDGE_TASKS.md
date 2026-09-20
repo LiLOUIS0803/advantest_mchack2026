@@ -158,7 +158,7 @@ Late temperature requests return only pre-target frozen results. This prevents h
 
 Anomaly classification distinguishes insufficient sample count from incomplete measurements/sites and task errors. Data completeness is reported separately from confidence, with per-test missing-die counts. No imputation or retraining is introduced: missing-data tolerance requires separate validation.
 
-The temperature page follows the latest run only. Playback, progress scrubbing and historical source selection are disabled. Live API rejects historical run parameters, packets received more than 10 seconds ago, packets generated more than 15 seconds ago, absent test events or events older than 60 seconds, and completed wafers. It clears the charts while waiting. Edge and HC clocks must be synchronized. Reports remain stored for audit; the model still uses legitimate preceding measurements and its existing online bias strategy.
+The temperature page follows the latest run only. Playback, progress scrubbing and historical source selection are disabled. Live API rejects historical run parameters, packets received more than 10 seconds ago, packets generated more than 15 seconds ago, absent test events or events older than 60 seconds, and stale event streams. Fresh completed-wafer snapshots are returned with ended=true. The browser retains only its last successfully displayed state during interruptions, visibly marks it as stale, and disables horizon previews until fresh data arrives. New confirmed wafer data replaces the retained display. Edge and HC clocks must be synchronized. Reports remain stored for audit; the model still uses legitimate preceding measurements and its existing online bias strategy.
 
 ## Sensor horizon preview (tasks-v5)
 

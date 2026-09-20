@@ -7,7 +7,7 @@ from realtime.hc_server import make_server,Store
 
 
 class TransportTests(unittest.TestCase):
-    def test_live_temperature_rejects_stale_historical_and_finished_data(self):
+    def test_live_temperature_rejects_stale_history_but_returns_fresh_final_state(self):
         with tempfile.TemporaryDirectory() as folder:
             path=Path(folder)/'hc.db';server=make_server('127.0.0.1',0,path,'x'*32)
             thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start()
@@ -28,7 +28,7 @@ class TransportTests(unittest.TestCase):
                 packet.update(seq=3,sent_at=now,last_event_at=now-100);store.ingest(packet)
                 self.assertEqual(rejected(base),503)
                 packet.update(seq=4,last_event_at=now);packet['scene2']['ended']=True;store.ingest(packet)
-                self.assertEqual(rejected(base),503)
+                with urlopen(base) as response:self.assertTrue(json.load(response)['scene2']['ended'])
             finally:server.shutdown();server.server_close();thread.join()
 
     def test_truncated_upload_not_committed_then_large_gzip_retry_succeeds(self):

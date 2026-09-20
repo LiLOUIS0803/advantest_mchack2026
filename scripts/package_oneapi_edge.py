@@ -40,7 +40,7 @@ def main():
     shutil.copyfile(ROOT/'deploy/start_hc.py',target/'hc/start.py')
     descriptor=json.loads((ROOT/'SmarTest/app_descriptor.json').read_text())
     container=descriptor['edge']['containers'][0]
-    container['image']='grp4/py-app:tasks-v6'
+    container['image']='grp4/py-app:tasks-v7'
     container['environment'].pop('ACTIONS_FILE_PATH',None)
     container['environment']['REPORT_DIR']='/var/lib/wafer-watch'
     (target/'app_descriptor.json').write_text(json.dumps(descriptor,indent=2)+'\n',encoding='utf-8')

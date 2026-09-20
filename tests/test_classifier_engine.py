@@ -15,7 +15,7 @@ class ClassifierIntegrationTests(unittest.TestCase):
                 apply_event(engine,event)
                 s=engine.snapshot()
                 self.assertLessEqual(len(s['predicted_labels']),1)
-                if engine.completed==0:
+                if engine.completed<16:
                     self.assertIsNone(s['predicted_label'])
                     self.assertIsNone(s['classification_confidence'])
                 if s['predicted_label'] is not None:
@@ -52,15 +52,24 @@ class ClassifierIntegrationTests(unittest.TestCase):
         engine.reset('5')
         self.assertEqual(engine.snapshot()['data_quality']['missing_values'],0)
 
-    def test_first_completed_die_without_site_has_provisional_prediction(self):
+    def test_threshold_with_missing_measurements_and_site(self):
         engine=ClassifierEngine();engine.reset('4')
-        engine.start_batch(1,[{'key':'a'}])
-        engine.finish_batch([{'key':'a','passed':False}])
-        self.assertIn(engine.predicted_label,engine.class_labels)
-        self.assertEqual(engine.classification_confidence['observed_features'],1)
-        self.assertEqual(engine.data_quality['missing_sites'],1)
-        self.assertGreaterEqual(engine.classification_confidence['score'],0)
-        self.assertLessEqual(engine.classification_confidence['score'],1)
+        for i in range(17):
+            key=str(i)
+            engine.start_batch(i+1,[{'key':key}])
+            engine.finish_batch([{'key':key,'passed':False}])
+            if i<15:
+                self.assertIsNone(engine.predicted_label)
+                self.assertIsNone(engine.classification_confidence)
+                self.assertEqual(engine.classification_reason,'minimum_16_completed_devices')
+            else:
+                self.assertIn(engine.predicted_label,engine.class_labels)
+                self.assertTrue(engine.classification_confidence['partial_data'])
+                self.assertEqual(engine.classification_confidence['observed_features'],1)
+        self.assertEqual(engine.data_quality['required_dies'],16)
+        engine.reset('5')
+        self.assertIsNone(engine.predicted_label)
+        self.assertIsNone(engine.classification_confidence)
 
     def test_partial_features_match_complete_features_when_observed(self):
         import numpy as np

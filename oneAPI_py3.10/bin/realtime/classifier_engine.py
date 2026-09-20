@@ -34,9 +34,9 @@ class ClassifierEngine(Engine):
     def reset(self,*args,**kwargs):
         super().reset(*args,**kwargs)
         self.class_rows=[];self.class_values=[];self.predicted_label=None
-        self.classification_history=[];self.classification_reason='waiting_completed_devices'
+        self.classification_history=[];self.classification_reason='minimum_16_completed_devices'
         self.classification_confidence=None
-        self.data_quality={'completed_dies':0,'required_dies':1,'trend_window_dies':16,'measurement_completeness':None,
+        self.data_quality={'completed_dies':0,'required_dies':16,'trend_window_dies':16,'measurement_completeness':None,
                            'missing_values':0,'missing_sites':0,'affected_dies':0,'missing_test_count':0,'missing_tests':[]}
 
     def finish_batch(self,outcomes):
@@ -53,12 +53,14 @@ class ClassifierEngine(Engine):
         missing=~np.isfinite(np.asarray(self.class_values))
         counts=missing.sum(axis=0) if missing.size else np.zeros(len(self.columns),dtype=int)
         tests=[{'test':self.columns[i],'missing_dies':int(n)} for i,n in enumerate(counts) if n]
-        self.data_quality={'completed_dies':len(self.class_rows),'required_dies':1,'trend_window_dies':16,
+        self.data_quality={'completed_dies':len(self.class_rows),'required_dies':16,'trend_window_dies':16,
             'measurement_completeness':float(1-missing.mean()) if missing.size else None,
             'missing_values':int(missing.sum()),'missing_sites':sum(r[3] is None for r in self.class_rows),
             'affected_dies':int(missing.any(axis=1).sum()) if missing.size else 0,
             'missing_test_count':len(tests),'missing_tests':tests}
-        if self.class_rows:
+        if len(self.class_rows)<16:
+            self.classification_reason='minimum_16_completed_devices'
+        else:
             partial=len(self.class_rows)<16 or any(r[3] is None for r in self.class_rows) or missing.any()
             f=(extract_partial if partial else extract)(self.columns,self.class_rows,np.asarray(self.class_values))
             # Training feature means give zero standardized contribution for

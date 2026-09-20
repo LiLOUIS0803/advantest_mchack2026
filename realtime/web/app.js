@@ -18,10 +18,10 @@ const classificationCaption=document.querySelector('#hero-status > .sub');
 if(classificationCaption)classificationCaption.textContent=s.ended&&!s.classification_confidence?.partial_data?'Wafer class':'Wafer class · Provisional';
 $('formal-labels').textContent=s.predicted_label??'Collecting data';
 $('action').textContent=s.predicted_label??'Collecting data';
-$('model').textContent='Seven-class model · Updates after each completed batch · Trained on all 24 wafers; replay is not independent validation.';
+$('model').textContent='Seven-class model · Updates after 16 completed dies · Trained on all 24 wafers; replay is not independent validation.';
 window.renderVisuals(s,selected);
 const reason=s.classification_reason, quality=s.data_quality;
-const label=s.error?'Processing stopped':s.predicted_label??(reason==='missing_measurements_or_site'?'Cannot classify: incomplete data':'Waiting for completed dies');
+const label=s.error?'Processing stopped':s.predicted_label??(reason==='missing_measurements_or_site'?'Cannot classify: incomplete data':`Collecting data (${s.completed} / ${quality?.required_dies??16} dies)`);
 for(const id of ['status','formal-labels','action'])$(id).textContent=label;
 let panel=$('data-quality');
 if(!panel){panel=document.createElement('details');panel.id='data-quality';panel.className='card';panel.style.marginBottom='16px';$('wafer-summary').after(panel);}

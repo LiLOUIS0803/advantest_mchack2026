@@ -29,7 +29,7 @@ The HC receiver requires Python 3.6+ and only the standard library. Identify the
 Use the actual assigned image namespace in place of grp4 if necessary:
 
 ```bash
-python3 hc/setup.py --hc-url http://HC_IP:8770 --image grp4/py-app:tasks-v6
+python3 hc/setup.py --hc-url http://HC_IP:8770 --image grp4/py-app:tasks-v7
 python3 hc/start.py --token-file hc-token.txt --data hc-reports.sqlite3
 ```
 
@@ -58,7 +58,7 @@ cd /actual/upload/path/oneAPI_py3.10
 sudo bash tag.sh
 ```
 
-Default: `unifiedserver.local/grp4/py-app:tasks-v6`.
+Default: `unifiedserver.local/grp4/py-app:tasks-v7`.
 The Docker build checks Linux Python 3.10, native SDK imports, the portable anomaly
 model's 408 reference vectors and all six temperature models. Dependencies are
 NumPy 1.26.4 and jsonschema 4.23.0. If the HC cannot access a package index, configure
@@ -82,7 +82,7 @@ Do not use the nested recipe's differently spelled `OnPostBin` configuration.
 
 ## Event behavior
 
-Anomaly inference updates after each TestEnd with completed dies, even when measurements are incomplete. Unavailable aggregate features use training feature means; the UI marks partial-data predictions and uncalibrated confidence. Temporal trend features still require 16 completed dies. Notifications retain the existing >=24 dies and three
+Anomaly inference updates after each TestEnd once at least 16 dies have completed, even when measurements are incomplete. Unavailable aggregate features use training feature means; the UI marks partial-data predictions and uncalibrated confidence. Temporal trend features still require 16 completed dies. Notifications retain the existing >=24 dies and three
 consecutive matching non-Normal classifications, or anomalous WaferEnd. Each label
 is notified once per wafer run using `set_message`. TCCT collects messages via
 `prod_action` / `get_prod`. Final notification delivery still depends on a later
@@ -147,19 +147,19 @@ No real HC/Edge/Nexus connection was available locally. Validate actual SDK fiel
 mapping, prediction deadline, TCCT display, HC network reachability and persistence
 mounts on Gemini. Neither task automatically stops the tester.
 
-## tasks-v6 field update
+## tasks-v7 field update
 
-Update HC first with git pull, stop the old HC receiver and restart it. Then build and push tasks-v6 using tag.sh; regenerate the descriptor with hc/setup.py --hc-url http://HC_IP:8770 --image grp4/py-app:tasks-v6. Copy the generated descriptor into the active SmarTest directory and restart the test environment. No token rotation is required.
+Update HC first with git pull, stop the old HC receiver and restart it. Then build and push tasks-v7 using tag.sh; regenerate the descriptor with hc/setup.py --hc-url http://HC_IP:8770 --image grp4/py-app:tasks-v7. Copy the generated descriptor into the active SmarTest directory and restart the test environment. No token rotation is required.
 
 Late temperature requests return only pre-target frozen results. This prevents hindsight inference but does not repair external callback timing. The JSON prediction_timing field distinguishes them; they are excluded from on-time prediction values and MAE in the original temperature UI. Requests with no frozen result still fail. Confirm actual ONEAPI/test-program ordering on site.
 
-## Live view and classification diagnostics (tasks-v6)
+## Live view and classification diagnostics (tasks-v7)
 
-Anomaly classification updates after each completed batch, including incomplete measurements and missing site metadata. Available statistics use observed values only; unavailable aggregate features use the original training feature mean (zero standardized contribution). Temporal trend features still require 16 completed dies. Raw missing measurements remain missing. The selected official class and uncalibrated model score are shown with Partial data when applicable, alongside independent completeness diagnostics. This is a provisional inference fallback, not retraining or validated missing-data accuracy. No label is emitted before the first completed die.
+Anomaly classification updates after each completed batch once at least 16 dies have completed, including incomplete measurements and missing site metadata. Available statistics use observed values only; unavailable aggregate features use the original training feature mean (zero standardized contribution). Temporal trend features still require 16 completed dies. Raw missing measurements remain missing. The selected official class and uncalibrated model score are shown with Partial data when applicable, alongside independent completeness diagnostics. This is a provisional inference fallback, not retraining or validated missing-data accuracy. No label is emitted before 16 completed dies.
 
 The temperature page follows the latest run only. Playback, progress scrubbing and historical source selection are disabled. Live API rejects historical run parameters, packets received more than 10 seconds ago, packets generated more than 15 seconds ago, absent test events or events older than 60 seconds, and stale event streams. Fresh completed-wafer snapshots are returned with ended=true. The browser retains only its last successfully displayed state during interruptions, visibly marks it as stale, and disables target previews until fresh data arrives. New confirmed wafer data replaces the retained display. Edge and HC clocks must be synchronized. Reports remain stored for audit; the model still uses legitimate preceding measurements and its existing online bias strategy.
 
-## Test-flow target selection (tasks-v6)
+## Test-flow target selection (tasks-v7)
 
 Touchdown columns follow the actual received site count. The target slider selects a measurement suite along the supplied Main.flow and recursively expanded subflows. Six supported sensor targets are shortcuts at their actual flow positions. Other suites explicitly show No forecast model. Each site shows its latest received suite and distance to the selected target in measurement-suite executions, not test-number differences, seconds, or individual result counts. Unknown flow positions and already-passed targets have no preview. The selection does not advance testing or replay data. Flow metadata must match the deployed SmarTest program. Predictions use a private predictor copy. Recursive predictions are inputs only within that copy; previews never update official request predictions, online bias, or tester actions. No old wafers or future measured values are replayed. Completed dies have no target preview.
 

@@ -4,7 +4,7 @@
   "edge": {
     "containers": [
       {
-        "image": "grp4/py-app:tasks-v5",
+        "image": "grp4/py-app:tasks-v6",
         "metrics": {},
         "name": "py-app",
         "requirements": {

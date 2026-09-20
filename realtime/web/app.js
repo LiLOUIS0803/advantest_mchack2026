@@ -15,13 +15,13 @@ $('alerts').innerHTML=s.alerts.map(a=>{const devices=a.devices.slice(0,6).map(d=
 const a=s.alerts.find(a=>a.id===selected);$('evidence-title').textContent=a?`/ ${a.label}`:'';$('confidence').textContent=a?a.confidence.reason:'';$('evidence').innerHTML=a?a.evidence.map(e=>`<tr><td class="evidence-name">${esc(e.test||'Cumulative yield')}</td><td>${esc(e.metric)}</td><td>${fmt(e.value)}</td><td>${e.low!=null&&e.high!=null?'Outside  ['+fmt(e.low)+', '+fmt(e.high)+']':e.low!=null?'Below  '+fmt(e.low):'Above  '+fmt(e.high)}${e.metric==='cumulative_yield'?' (yield and its upper bound below 80%)':''}</td><td>${e.sample_count}</td></tr>`).join(''):'';
 $('status').textContent=s.predicted_label??'Collecting data';
 const classificationCaption=document.querySelector('#hero-status > .sub');
-if(classificationCaption)classificationCaption.textContent=s.ended?'Wafer class':'Wafer class · Provisional';
+if(classificationCaption)classificationCaption.textContent=s.ended&&!s.classification_confidence?.partial_data?'Wafer class':'Wafer class · Provisional';
 $('formal-labels').textContent=s.predicted_label??'Collecting data';
 $('action').textContent=s.predicted_label??'Collecting data';
-$('model').textContent='Seven-class model · Updates after 16 completed dies · Trained on all 24 wafers; replay is not independent validation.';
+$('model').textContent='Seven-class model · Updates after each completed batch · Trained on all 24 wafers; replay is not independent validation.';
 window.renderVisuals(s,selected);
 const reason=s.classification_reason, quality=s.data_quality;
-const label=s.error?'Processing stopped':s.predicted_label??(reason==='missing_measurements_or_site'?'Cannot classify: incomplete data':`Collecting data (${s.completed} / 16 dies)`);
+const label=s.error?'Processing stopped':s.predicted_label??(reason==='missing_measurements_or_site'?'Cannot classify: incomplete data':'Waiting for completed dies');
 for(const id of ['status','formal-labels','action'])$(id).textContent=label;
 let panel=$('data-quality');
 if(!panel){panel=document.createElement('details');panel.id='data-quality';panel.className='card';panel.style.marginBottom='16px';$('wafer-summary').after(panel);}

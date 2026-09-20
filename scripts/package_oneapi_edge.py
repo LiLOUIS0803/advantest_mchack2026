@@ -11,6 +11,7 @@ ROOT=Path(__file__).resolve().parents[1]
 
 
 def main():
+    runpy.run_path(str(ROOT/'scripts/build_temperature_flow.py'),run_name='__main__')
     runpy.run_path(str(ROOT/'scripts/restore_scene2_ui.py'),run_name='__main__')
     target=ROOT/'oneAPI_py3.10'
     runtime=('__init__.py','data.py','metrics.py','engine.py','classifier_features.py',
@@ -26,7 +27,7 @@ def main():
         shutil.copyfile(ROOT/'realtime/web'/name,dest)
     for name in ('normal_model.npz','model_info.json','wafer_classifier/model.npz',
                  'wafer_classifier/info.json','wafer_classifier/portable_validation.json','wafer_classifier/portable_cases.npz',
-                 'scene2/temp_models.json','scene2/evaluation.json','scene2/uncertainty.json'):
+                 'scene2/temp_models.json','scene2/evaluation.json','scene2/uncertainty.json','scene2/test_flow.json'):
         dest=target/'bin/artifacts'/name;dest.parent.mkdir(parents=True,exist_ok=True)
         shutil.copyfile(ROOT/'artifacts'/name,dest)
     for name in ('__init__.py','temp_predictor.py'):
@@ -39,7 +40,7 @@ def main():
     shutil.copyfile(ROOT/'deploy/start_hc.py',target/'hc/start.py')
     descriptor=json.loads((ROOT/'SmarTest/app_descriptor.json').read_text())
     container=descriptor['edge']['containers'][0]
-    container['image']='grp4/py-app:tasks-v5'
+    container['image']='grp4/py-app:tasks-v6'
     container['environment'].pop('ACTIONS_FILE_PATH',None)
     container['environment']['REPORT_DIR']='/var/lib/wafer-watch'
     (target/'app_descriptor.json').write_text(json.dumps(descriptor,indent=2)+'\n',encoding='utf-8')

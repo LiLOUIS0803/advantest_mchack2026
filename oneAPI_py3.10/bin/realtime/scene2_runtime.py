@@ -12,6 +12,8 @@ class TemperatureRuntime:
         self.tp=TempPredictor(str(ROOT/'artifacts/scene2/temp_models.json'))
         path=ROOT/'artifacts/scene2/uncertainty.json'
         self.uncertainty=json.loads(path.read_text()) if path.exists() else None
+        self.flow=json.loads((ROOT/'artifacts/scene2/test_flow.json').read_text())
+        self.flow_positions={s['suite']:s['position'] for s in self.flow['steps']}
         self.config=config;self.wafer='';self.batch=0;self.completed=[];self.current={};self.cache={};self.errors=[];self.pre_target={};self.ended=False
 
     def on_event(self,kind,payload):
@@ -26,9 +28,17 @@ class TemperatureRuntime:
                 if site in self.current:raise ValueError('Scene 2 requires distinct site numbers across active heads')
                 self.current[site]={'key':f"{self.batch}:{r['head']}:{site}",'site':site,'head':r['head'],
                     'batch':self.batch,'pid':None,'x':None if r['x']==-32768 else r['x'],'y':None if r['y']==-32768 else r['y'],
+                    'flow_position':0,'current_suite':'Start',
                     'pred':[None]*6,'actual':[None]*6,'raw':[None]*6,'forecast':[None]*6,'missing':[None]*6,'completed':False}
         elif kind in ('parametric','multi_parametric'):
             for r in payload['rows']:
+                if r['site'] in self.current and self.current[r['site']]['head']==r['head']:
+                    d=self.current[r['site']]
+                    position=self.flow_positions.get(r['suite'])
+                    # Unknown or out-of-order events must not imply a verified distance.
+                    previous=d.get('flow_position')
+                    d['flow_position']=position if position is not None and (previous is None or position>=previous) else None
+                    d['current_suite']=r['suite']
                 if integer(r['flag']) not in self.config['valid_test_flags']:continue
                 if r['site'] not in self.current:raise ValueError('Temperature measurement outside active batch')
                 if self.current[r['site']]['head']!=r['head']:raise ValueError('Head mismatch')
@@ -90,14 +100,18 @@ class TemperatureRuntime:
             site=d['site'];d['preview']=[];ahead=0
             for k in range(1,7):
                 if predictor.target_key[k] in predictor.buf.get(site,{}):continue
+                target=self.flow['targets'][k-1]
+                position=d.get('flow_position')
+                if position is None or position>=target['position']:continue
                 ahead+=1
                 keys=predictor.model_keys[k];buf=predictor.buf.get(site,{})
                 measured=sum(key in buf for key in keys)
                 value,info=predictor.predict_site(k,site)
                 d['preview'].append({'sensor':k,'value':round(value,3),'steps_ahead':ahead,
+                    'target_position':target['position'],'suites_ahead':target['position']-position,
                     'measured_inputs':measured,'total_inputs':len(keys),'imputed_inputs':info['n_missing'],
                     'predicted_inputs':len(keys)-measured-info['n_missing'],'sent_to_tester':False})
-        return {'wafer':self.wafer,'batch':self.batch,'ended':self.ended,'devices':devices,'uncertainty':self.uncertainty,
+        return {'wafer':self.wafer,'batch':self.batch,'ended':self.ended,'devices':devices,'uncertainty':self.uncertainty,'test_flow':self.flow,
                 'errors':list(self.errors),'bias_correction':True,'excluded_wafers':[2],
                 'model':'Standardized Lasso + received-data online bias correction',
                 'limits':{str(k):{'lo':m['limit_lo'],'hi':m['limit_hi']} for k,m in self.tp.models.items()}}

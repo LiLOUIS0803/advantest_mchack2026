@@ -3,7 +3,7 @@ import json
 import numpy as np
 from .data import ROOT
 from .engine import Engine
-from .classifier_features import extract
+from .classifier_features import extract, extract_partial
 from .portable_model import PortableClassifier
 
 
@@ -34,9 +34,9 @@ class ClassifierEngine(Engine):
     def reset(self,*args,**kwargs):
         super().reset(*args,**kwargs)
         self.class_rows=[];self.class_values=[];self.predicted_label=None
-        self.classification_history=[];self.classification_reason='minimum_16_completed_devices'
+        self.classification_history=[];self.classification_reason='waiting_completed_devices'
         self.classification_confidence=None
-        self.data_quality={'completed_dies':0,'required_dies':16,'measurement_completeness':None,
+        self.data_quality={'completed_dies':0,'required_dies':1,'trend_window_dies':16,'measurement_completeness':None,
                            'missing_values':0,'missing_sites':0,'affected_dies':0,'missing_test_count':0,'missing_tests':[]}
 
     def finish_batch(self,outcomes):
@@ -53,23 +53,26 @@ class ClassifierEngine(Engine):
         missing=~np.isfinite(np.asarray(self.class_values))
         counts=missing.sum(axis=0) if missing.size else np.zeros(len(self.columns),dtype=int)
         tests=[{'test':self.columns[i],'missing_dies':int(n)} for i,n in enumerate(counts) if n]
-        self.data_quality={'completed_dies':len(self.class_rows),'required_dies':16,
+        self.data_quality={'completed_dies':len(self.class_rows),'required_dies':1,'trend_window_dies':16,
             'measurement_completeness':float(1-missing.mean()) if missing.size else None,
             'missing_values':int(missing.sum()),'missing_sites':sum(r[3] is None for r in self.class_rows),
             'affected_dies':int(missing.any(axis=1).sum()) if missing.size else 0,
             'missing_test_count':len(tests),'missing_tests':tests}
-        if len(self.class_rows)<16:
-            self.classification_reason='minimum_16_completed_devices'
-        elif any(r[3] is None for r in self.class_rows) or not np.isfinite(self.class_values).all():
-            self.classification_reason='missing_measurements_or_site'
-        else:
-            f=extract(self.columns,self.class_rows,np.asarray(self.class_values))
-            probabilities=self.classifier.predict_proba([[f[k] for k in self.feature_names]])[0]
+        if self.class_rows:
+            partial=len(self.class_rows)<16 or any(r[3] is None for r in self.class_rows) or missing.any()
+            f=(extract_partial if partial else extract)(self.columns,self.class_rows,np.asarray(self.class_values))
+            # Training feature means give zero standardized contribution for
+            # unavailable features; no later measurements or answers are used.
+            means=self.classifier.mean if hasattr(self.classifier,'mean') else self.classifier.steps[0][1].mean_
+            probabilities=self.classifier.predict_proba([[f.get(k,float(means[i])) for i,k in enumerate(self.feature_names)]])[0]
             best=int(np.argmax(probabilities))
             label=str(self.classifier.classes_[best])
             if label not in self.class_labels:raise ValueError('Unexpected classifier label')
-            self.predicted_label=label;self.classification_reason=None
-            self.classification_confidence={'score':float(probabilities[best]),'calibrated':False,'method':'predict_proba'}
+            self.predicted_label=label;self.classification_reason='partial_data' if partial else None
+            self.classification_confidence={'score':float(probabilities[best]),'calibrated':False,'method':'predict_proba',
+                'partial_data':bool(partial),'observed_features':len(f),'total_features':len(self.feature_names),
+                'fallback_features':[k for k in self.feature_names if k not in f],
+                'fallback_method':'training_feature_mean','partial_data_validated':False}
         self.classification_history.append({'batch':self.batch,'completed':self.completed,
             'predicted_label':self.predicted_label,'reason':self.classification_reason,'confidence':self.classification_confidence})
 

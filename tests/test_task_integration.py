@@ -64,6 +64,20 @@ class IntegrationTests(unittest.TestCase):
         self.assertEqual([p['sensor'] for p in next_preview],[2,3,4,5,6])
         self.assertEqual(next_preview[0]['steps_ahead'],1)
         self.assertEqual(next_preview[0]['measured_inputs'],1)
+        self.assertEqual(next_preview[0]['suites_ahead'],501)
+    def test_flow_targets_follow_suites_not_test_number_arithmetic(self):
+        runtime=self.bridge.temperature
+        row=dict(self.row,number=999999,text='CP',suite='Main.subflow1.Flow1_Suite250',measurement='x',flag=0,values=[28.],scaling=0)
+        runtime.on_event('parametric',{'rows':[row]})
+        d=runtime.snapshot()['devices'][0]
+        self.assertEqual([p['sensor'] for p in d['preview']],[2,3,4,5,6])
+        self.assertEqual(d['preview'][0]['suites_ahead'],251)
+        row['suite']='Unknown.program'
+        runtime.on_event('parametric',{'rows':[row]})
+        self.assertEqual(runtime.snapshot()['devices'][0]['preview'],[])
+        runtime.on_event('test_end',{'rows':[dict(self.row,pid='D1',pf=0,sbin=1,hbin=1)]})
+        runtime.on_event('test_start',{'rows':[self.row]})
+        self.assertEqual(runtime.snapshot()['devices'][-1]['flow_position'],0)
     def test_late_prediction_frozen_before_target_updates(self):
         runtime=self.bridge.temperature
         expected=runtime.tp.predict_site(1,1)[0]

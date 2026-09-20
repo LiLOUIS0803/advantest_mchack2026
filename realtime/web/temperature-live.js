@@ -1,28 +1,40 @@
-  // Data adapter only: original Scene 2 layout, CSS and controls are retained.
+  // Target selection follows the supplied SmarTest flow, independently of live progress.
   let liveIdentity=null;
   let liveTemperature=null;
-  let pausedMessage='',lastDisplayedAt=null;
+  let pausedMessage='',lastDisplayedAt=null,selectedPosition=null;
   const previewPanel=document.createElement('section');previewPanel.className='card';
   previewPanel.style.cssText='margin:16px;overflow-x:auto';
-  previewPanel.innerHTML='<h2>Confidence & forecast preview</h2><div id="temperature-confidence"></div><label style="display:flex;align-items:center;gap:12px;margin:14px 0">Forecast horizon <input id="forecast-horizon" type="range" min="1" max="6" value="1"><span id="forecast-distance"></span></label><div id="forecast-preview"></div><p class="muted">Preview only · Uses current measurements · Not sent to tester</p>';
+  previewPanel.innerHTML='<h2>Prediction target</h2><div id="flow-current" class="muted"></div><progress id="flow-progress" value="0" max="1" style="width:100%" aria-label="Latest received flow position"></progress><label style="display:flex;align-items:center;gap:12px;margin:14px 0">Target in test flow <input id="forecast-target" type="range" min="1" max="1" value="1" style="flex:1" aria-label="Prediction target in test flow"></label><div id="flow-targets" style="display:flex;gap:8px;flex-wrap:wrap"></div><h3 id="forecast-distance"></h3><div id="temperature-confidence" class="muted"></div><div id="forecast-preview"></div><p class="muted">Preview only &middot; Current measurements &middot; Not sent to tester</p>';
   document.querySelector('main').before(previewPanel);
   const escapePreview=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   function renderForecast(){
     if(pausedMessage)$('status').textContent=pausedMessage;
-    const horizon=Number($('forecast-horizon').value);
-    $('forecast-distance').textContent='Next '+horizon+' sensor'+(horizon===1?'':'s');
-    const uncertainty=liveTemperature?.uncertainty?.sensors?.[String(state.sensor)];
-    $('temperature-confidence').textContent=uncertainty
-      ? `sensor${state.sensor} · Offline 95th-percentile absolute error: ${uncertainty.absolute_error_p95.toFixed(3)} °C · Live confidence not calibrated`
-      : 'Confidence unavailable until Edge provides validation statistics';
-    $('temperature-confidence').title='Out-of-wafer raw model errors with preceding measurements available. This is not a 95% guarantee for live or multi-step forecasts.';
-    const devices=pausedMessage?[]:(liveTemperature?.devices||[]).filter(d=>!d.completed);
-    $('forecast-horizon').disabled=!devices.some(d=>d.preview?.length);
-    const rows=devices.flatMap(d=>(d.preview||[]).filter(p=>p.steps_ahead<=horizon).map(p=>
-      `<tr><td>${escapePreview(d.site)}</td><td>sensor${p.sensor}</td><td>${p.value.toFixed(3)} °C</td><td>${p.measured_inputs} / ${p.total_inputs}</td><td>${p.predicted_inputs}</td><td>${p.imputed_inputs}</td><td>Not calibrated</td></tr>`));
-    $('forecast-preview').innerHTML=rows.length?'<table style="width:100%"><thead><tr><th>Site</th><th>Target</th><th>Preview</th><th>Measured inputs</th><th>Predicted inputs</th><th>Imputed inputs</th><th>Confidence</th></tr></thead><tbody>'+rows.join('')+'</tbody></table>':pausedMessage?'Preview paused until fresh data arrives':'Waiting for an active die with unmeasured sensors';
+    const flow=liveTemperature?.test_flow,steps=flow?.steps||[],targets=flow?.targets||[];
+    const devices=(liveTemperature?.devices||[]).filter(d=>!d.completed);
+    const active=!pausedMessage&&devices.length>0;
+    const positions=devices.map(d=>d.flow_position).filter(Number.isFinite);
+    $('flow-current').textContent=devices.length?devices.map(d=>`Site ${d.site}: ${d.current_suite||'Position unknown'}`).join(' | '):'Waiting for an active test';
+    $('flow-progress').max=Math.max(1,steps.length);
+    $('flow-progress').value=positions.length?Math.min(...positions):0;
+    $('flow-progress').title='Received measurement-suite position; sites can advance separately. Not elapsed time.';
+    if(selectedPosition===null&&targets.length)selectedPosition=targets.find(t=>devices.some(d=>(d.preview||[]).some(p=>p.sensor===t.sensor)))?.position||targets[0].position;
+    const slider=$('forecast-target');slider.max=Math.max(1,steps.length);slider.value=selectedPosition||1;slider.disabled=!active||!steps.length;
+    const target=targets.find(t=>t.position===selectedPosition),step=steps.find(s=>s.position===selectedPosition);
+    slider.setAttribute('aria-valuetext',step?.suite||'Waiting for flow metadata');
+    $('flow-targets').innerHTML=targets.map(t=>`<button type="button" data-position="${t.position}" aria-pressed="${t.position===selectedPosition}" ${!active?'disabled':''} style="${t.position===selectedPosition?'border:2px solid var(--accent,#5684c5)':''}">sensor${t.sensor} &middot; Test ${t.test_number}</button>`).join('');
+    $('forecast-distance').textContent=target?`${target.suite} / ${target.pin} - Test ${target.test_number}`:step?`${step.suite} - No forecast model`:'Waiting for Edge flow metadata';
+    const uncertainty=target&&liveTemperature?.uncertainty?.sensors?.[String(target.sensor)];
+    $('temperature-confidence').textContent=uncertainty?`Offline 95th-percentile absolute error: ${uncertainty.absolute_error_p95.toFixed(3)} \u00b0C | Live forecast confidence: not calibrated`:'';
+    $('temperature-confidence').title='Validation uses preceding measured inputs; this error is not a guarantee for recursive previews.';
+    const rows=active&&target?devices.map(d=>{
+      const p=(d.preview||[]).find(p=>p.sensor===target.sensor);
+      const reason=d.actual?.[target.sensor-1]!=null?'Already measured':d.flow_position==null?'Flow position unknown':d.flow_position>=target.position?'Target already passed':'Prediction unavailable';
+      return `<tr><td>${escapePreview(d.site)}</td><td>${escapePreview(d.current_suite||'Unknown')}</td><td>${p?p.suites_ahead+' suites':'\u2014'}</td><td>${p?p.value.toFixed(3)+' \u00b0C':reason}</td><td>${p?p.measured_inputs+' / '+p.total_inputs:'\u2014'}</td><td>${p?p.predicted_inputs:'\u2014'}</td><td>${p?p.imputed_inputs:'\u2014'}</td></tr>`;
+    }):[];
+    $('forecast-preview').innerHTML=rows.length?'<table style="width:100%"><thead><tr><th>Site</th><th>Current test suite</th><th>Distance to target</th><th>Forecast</th><th>Measured inputs</th><th>Predicted inputs</th><th>Imputed inputs</th></tr></thead><tbody>'+rows.join('')+'</tbody></table>':pausedMessage?'Preview paused until fresh data arrives':step&&!target?'No model for this test suite. Select a supported target above.':'Waiting for an active test';
   }
-  $('forecast-horizon').oninput=renderForecast;
+  $('forecast-target').oninput=e=>{selectedPosition=Number(e.target.value);renderForecast();};
+  $('flow-targets').onclick=e=>{const button=e.target.closest('button[data-position]');if(button){selectedPosition=Number(button.dataset.position);renderForecast();}};
   const originalRender=render;render=function(){originalRender();renderForecast();};
   // This page follows live events only; no historical run or playback controls.
   const liveURL=new URL(location.href);liveURL.searchParams.delete('run');history.replaceState(null,'',liveURL);

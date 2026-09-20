@@ -23,12 +23,26 @@ class TransportTests(unittest.TestCase):
                 store.ingest(packet)
                 with urlopen(base) as response:self.assertEqual(response.status,200)
                 self.assertEqual(rejected(base+'&run=r'),400)
+                self.assertEqual(rejected(base+'&retain=1&run=r'),400)
                 packet.update(seq=2,sent_at=now-100);store.ingest(packet)
                 self.assertEqual(rejected(base),503)
+                with urlopen(base+'&retain=1') as response:
+                    retained=json.load(response)
+                    self.assertEqual(retained['stream_status'],'stale')
+                    self.assertEqual(retained['run_id'],'r')
                 packet.update(seq=3,sent_at=now,last_event_at=now-100);store.ingest(packet)
                 self.assertEqual(rejected(base),503)
+                with urlopen(base+'&retain=1') as response:self.assertEqual(json.load(response)['stream_status'],'idle')
                 packet.update(seq=4,last_event_at=now);packet['scene2']['ended']=True;store.ingest(packet)
                 with urlopen(base) as response:self.assertTrue(json.load(response)['scene2']['ended'])
+                packet.update(seq=5,last_event_at=now-100,sent_at=now-100);store.ingest(packet)
+                with urlopen(base+'&retain=1') as response:self.assertTrue(json.load(response)['scene2']['ended'])
+                newer=dict(packet,run_id='new',seq=1,started_at=now+1,sent_at=time.time(),last_event_at=time.time(),scene2={'wafer':'5','ended':False})
+                store.ingest(newer)
+                with urlopen(base+'&retain=1') as response:
+                    current=json.load(response)
+                    self.assertEqual(current['run_id'],'new')
+                    self.assertEqual(current['stream_status'],'live')
             finally:server.shutdown();server.server_close();thread.join()
 
     def test_truncated_upload_not_committed_then_large_gzip_retry_succeeds(self):

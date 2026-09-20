@@ -19,11 +19,14 @@
   async function pollLive() {
     const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),5000);
     try {
-      const response=await fetch('/api/temperature?live=1',{cache:'no-store',signal:controller.signal});
+      const response=await fetch('/api/temperature?live=1&retain=1',{cache:'no-store',signal:controller.signal});
       const packet=await response.json();
       if(!response.ok)throw Error(packet.message||'Waiting for Edge');
       const t=packet.scene2;
       pausedMessage='';lastDisplayedAt=packet.received_at;
+      if(packet.stream_status==='stale'||packet.stream_status==='idle'){
+        pausedMessage=(packet.message||'Waiting for data')+' | Last received: '+new Date(lastDisplayedAt*1000).toLocaleTimeString('en-US');
+      }
       const identity=packet.run_id+':'+t.wafer, name=String(t.wafer||'Waiting for wafer');
       const devices=t.devices.map(v=>{
         const pred=v.pred.map((x,i)=>v.prediction_timing?.[i]==='late_request_frozen'?null:x);
@@ -42,7 +45,7 @@
         DATA[name]=d;setMax();state.step=maxStep();
       }else{DATA[name]=d;setMax();state.step=maxStep();}
       $('td').value=state.step;render();
-      $('status').textContent=name+' · '+(packet.age_seconds>10?'connection stale':t.ended?'complete':'testing');
+      $('status').textContent=pausedMessage||name+' · '+(packet.age_seconds>10?'connection stale':t.ended?'complete':'testing');
     }catch(error){
       const message=error.name==='AbortError'?'HC connection timed out':error.message;
       if(liveIdentity){
@@ -50,7 +53,6 @@
         renderLiveStatus();
       }else{clearLive(message);}
     }
-    finally{clearTimeout(timeout);}
-    setTimeout(pollLive,2000);
+    finally{clearTimeout(timeout);setTimeout(pollLive,2000);}
   }
   pollLive();

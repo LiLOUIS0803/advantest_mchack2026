@@ -164,3 +164,7 @@ The temperature page follows the latest run only. Playback, progress scrubbing a
 The temperature page retains the original wafer maps, prediction/measurement views, MAE plots and touchdown details, plus task navigation and the live-data adapter. The added Prediction target panel, target slider, shortcut buttons and offline error text have been removed. Historical replay stays disabled and temporary disconnections retain the last received state with a stale status. Actual site-count layout fixes remain.
 
 This is a presentation-only update. For an existing tasks-v7 Edge deployment, pull the update on HC, restart hc/start.py with the existing token/database, and hard-refresh the browser. No Edge rebuild or SmarTest restart is required for the HC dashboard change.
+
+## Temperature refresh recovery
+
+The temperature page requests the latest stream with live=1&retain=1. HC returns its latest snapshot even when idle or stale, explicitly marked with stream_status and a waiting message. This restores the same view after a browser reload without selecting or replaying historical runs. An empty newest run does not fall back to older runs. Polling always retries; fresh events replace the retained state. Update HC and restart its receiver; no Edge image rebuild is required.

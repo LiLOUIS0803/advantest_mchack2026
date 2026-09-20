@@ -18,6 +18,7 @@ def main():
     html=html.replace('</head>',navigation+'\n</head>')
     # Use real batch numbers, not the original static-demo assumption of four dies.
     html=html.replace('const td = Math.floor(idx / 4) + 1;', 'const td = v.batch || Math.floor(idx / 4) + 1;')
+    html=html.replace("$('tdgrid').innerHTML = html;", "$('tdgrid').style.gridTemplateColumns = `90px repeat(${Math.max(1,rows.length)}, minmax(100px,1fr))`; $('tdgrid').style.overflowX='auto'; $('tdgrid').innerHTML = html;")
     # A live snapshot can contain measurements for only some sites of a batch.
     html=html.replace("v.actual[i] == null ? 'pd' : 'ms'", "v.actual[i] == null ? (v.pred[i] == null ? 'none' : 'pd') : 'ms'")
     hook=(ROOT/'realtime/web/temperature-live.js').read_text(encoding='utf-8')

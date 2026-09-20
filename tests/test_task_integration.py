@@ -49,6 +49,21 @@ class IntegrationTests(unittest.TestCase):
         f=concurrent.futures.Future();f.cancel()
         self.bridge.process('tester','predict',{'sensor':1,'future':f})
         self.assertEqual(self.bridge.temperature.cache,{})
+    def test_preview_is_causal_and_never_changes_official_predictor(self):
+        import copy
+        runtime=self.bridge.temperature
+        before=copy.deepcopy((runtime.tp.buf,runtime.tp.bias,runtime.tp.last_pred,runtime.tp.last_raw,runtime.tp.stats,runtime.cache))
+        first=runtime.snapshot()['devices'][0]['preview']
+        self.assertEqual([p['sensor'] for p in first],[1,2,3,4,5,6])
+        self.assertEqual(first[-1]['predicted_inputs'],5)
+        self.assertTrue(all(not p['sent_to_tester'] for p in first))
+        self.assertEqual(before,(runtime.tp.buf,runtime.tp.bias,runtime.tp.last_pred,runtime.tp.last_raw,runtime.tp.stats,runtime.cache))
+        row=dict(self.row,number=100,text='CP',suite='Main.sensor1',measurement='Main.sensor1.measurement',flag=0,values=[28.],scaling=0)
+        runtime.on_event('parametric',{'rows':[row]})
+        next_preview=runtime.snapshot()['devices'][0]['preview']
+        self.assertEqual([p['sensor'] for p in next_preview],[2,3,4,5,6])
+        self.assertEqual(next_preview[0]['steps_ahead'],1)
+        self.assertEqual(next_preview[0]['measured_inputs'],1)
     def test_late_prediction_frozen_before_target_updates(self):
         runtime=self.bridge.temperature
         expected=runtime.tp.predict_site(1,1)[0]

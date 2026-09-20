@@ -1,6 +1,7 @@
 """Causal Scene 2 integration using the supplied NumPy predictor, no file polling."""
 import copy
 import logging
+import json
 from .data import ROOT
 from .oneapi_adapter import integer
 from scene2.temp_predictor import TempPredictor
@@ -9,6 +10,8 @@ from scene2.temp_predictor import TempPredictor
 class TemperatureRuntime:
     def __init__(self,config):
         self.tp=TempPredictor(str(ROOT/'artifacts/scene2/temp_models.json'))
+        path=ROOT/'artifacts/scene2/uncertainty.json'
+        self.uncertainty=json.loads(path.read_text()) if path.exists() else None
         self.config=config;self.wafer='';self.batch=0;self.completed=[];self.current={};self.cache={};self.errors=[];self.pre_target={};self.ended=False
 
     def on_event(self,kind,payload):
@@ -78,7 +81,23 @@ class TemperatureRuntime:
         self.cache[k]=message;return message
 
     def snapshot(self):
-        return {'wafer':self.wafer,'batch':self.batch,'ended':self.ended,'devices':copy.deepcopy(self.completed+list(self.current.values())),
+        devices=copy.deepcopy(self.completed+list(self.current.values()))
+        # Preview uses a private predictor. It never changes official predictions,
+        # residual calibration, request caches or data sent back to the tester.
+        predictor=copy.deepcopy(self.tp)
+        for d in devices:
+            if d['completed']:continue
+            site=d['site'];d['preview']=[];ahead=0
+            for k in range(1,7):
+                if predictor.target_key[k] in predictor.buf.get(site,{}):continue
+                ahead+=1
+                keys=predictor.model_keys[k];buf=predictor.buf.get(site,{})
+                measured=sum(key in buf for key in keys)
+                value,info=predictor.predict_site(k,site)
+                d['preview'].append({'sensor':k,'value':round(value,3),'steps_ahead':ahead,
+                    'measured_inputs':measured,'total_inputs':len(keys),'imputed_inputs':info['n_missing'],
+                    'predicted_inputs':len(keys)-measured-info['n_missing'],'sent_to_tester':False})
+        return {'wafer':self.wafer,'batch':self.batch,'ended':self.ended,'devices':devices,'uncertainty':self.uncertainty,
                 'errors':list(self.errors),'bias_correction':True,'excluded_wafers':[2],
                 'model':'Standardized Lasso + received-data online bias correction',
                 'limits':{str(k):{'lo':m['limit_lo'],'hi':m['limit_hi']} for k,m in self.tp.models.items()}}

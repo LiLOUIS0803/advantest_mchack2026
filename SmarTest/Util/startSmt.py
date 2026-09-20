@@ -48,14 +48,20 @@ if __name__ == "__main__":
     python_file_path = os.path.abspath(__file__)
     program_path = os.path.dirname(python_file_path)   
     root_path = os.path.dirname(program_path)
-    tpName="TestCase1_4site_ft.prog"
-    recipeName="acs_tcct_4site_ft.xml"
-
-    CreateWorkSpace(root_path)
     execMode:str="eng"
     if len(sys.argv) >=2:
         execMode = sys.argv[1].lower().strip()
-    print (f"run mode: {execMode}")
+    if execMode not in ("eng", "prod"):
+        sys.exit("Usage: startSmt.py {eng|prod} {cp|ft}")
+    if execMode == "prod" and len(sys.argv) < 3:
+        sys.exit("Production requires an explicit test type: startSmt.py prod cp (wafer) or prod ft")
+    testType = sys.argv[2].lower().strip() if len(sys.argv) >= 3 else "ft"
+    if testType not in ("cp", "ft"):
+        sys.exit("Test type must be cp or ft")
+    tpName=f"TestCase1_4site_{testType}.prog"
+    recipeName=f"acs_tcct_4site_{testType}.xml"
+    print (f"run mode: {execMode}; test type: {testType}; recipe: {recipeName}", flush=True)
+    CreateWorkSpace(root_path)
     if execMode =="eng":
         count =0
         max_count=6
@@ -84,7 +90,6 @@ if __name__ == "__main__":
     
         
      
-
 
 
 

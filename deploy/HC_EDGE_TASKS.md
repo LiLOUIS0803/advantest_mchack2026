@@ -73,14 +73,9 @@ unconfigured app_descriptor.json, into the existing HC SmarTest directory as
 `app_descriptor.json`. It sets the exact image plus `HC_INGEST_URL` and
 `HC_SHARED_TOKEN`. `runTp.sh` copies it to Nexus configuration.
 
-Use the existing `Util/startSmt.py` settings:
+The updated launcher requires an explicit test type. Use `bash runTp.sh prod_run cp` for wafer monitoring. Bare `prod_run` is rejected. `prod_run ft` is available only for intentional FT operation; the current wafer anomaly task requires CP events. If the active SmarTest directory is outside this checkout, update both runTp.sh and Util/startSmt.py there (back up first), or use its existing supported `python3 Util/startSmt.py prod cp` after synchronizing the descriptor.
 
-```python
-tpName="TestCase1_4site_cp.prog"
-recipeName="acs_tcct_4site_cp.xml"
-```
-
-From that SmarTest directory execute `./runTp.sh prod_run`. This restarts
+This restarts
 SmarTest/TCCT. Keep `py-app` as the container name for both the temperature
 `predict` calls in Main.flow and the outer recipe's `On_POSTBIN` / `prod_action`.
 Do not use the nested recipe's differently spelled `OnPostBin` configuration.

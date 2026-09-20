@@ -1,7 +1,17 @@
 #!/bin/bash
-action=$1
+set -eu
+action=${1:-}
 current_path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-cp ${current_path}/app_descriptor.json /opt/acs/nexus/conf/app_descriptor.json
+case "$action" in
+ load|eng_run) ;;
+ prod_run)
+    case "${2:-}" in
+      cp|ft) ;;
+      *) echo "Usage: bash runTp.sh prod_run {cp|ft}; use cp for wafer monitoring" >&2; exit 1 ;;
+    esac ;;
+ *) echo "Usage: bash runTp.sh {load|eng_run|prod_run}; prod_run requires cp or ft" >&2; exit 1 ;;
+esac
+cp "${current_path}/app_descriptor.json" /opt/acs/nexus/conf/app_descriptor.json
 if [[ "$action" == "load" ]]; then
  command=${current_path}/Util/startSmt.py
  echo "command =${command}"
@@ -17,13 +27,11 @@ elif [[ "$action" == "eng_run" ]]; then
     echo "command =${command}"
     /opt/hp93000/testcell/bin/run ${command} ${loop}
 elif [[ "$action" == "prod_run" ]]; then
-    command="${current_path}/Util/startSmt.py prod"
-    echo "command =${command}"
-    python3 ${command}
+    echo "command =${current_path}/Util/startSmt.py prod $2"
+    python3 "${current_path}/Util/startSmt.py" prod "$2"
 else
    echo "Usage: $0 {load|eng_run|prod_run} [loop_count]"
   exit 1
 
 fi
-
 

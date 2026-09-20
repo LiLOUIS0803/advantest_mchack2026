@@ -1,6 +1,6 @@
 {
   "app_descriptor.json": "8fade72b3f3dbe8a2cd37932653a578e7b219151e08b3ea2a16be278f3ddeb37",
-  "DEPLOY.md": "8c6b397c9f0f1ad070df0f93ab3ec5ad24bf8d2636fffe6cdc38e97d6bcd0ea8",
+  "DEPLOY.md": "b154565916a46fba1fab217901ab1f558717c7d1df680abf58015384857bc62c",
   "py-app.dockerfile": "00fb63e339beedd1a5f6da87712cb5830151836a717514eb739c6f2d21ba9397",
   "requirements.txt": "fb8d11b9ccfbbced8ce206d8c64efd8a00f6a56048cb8551fc04926ac3066610",
   "tag.sh": "4ab88338cc35c69a291b3616d447f0116217e2a332c9382253cc7ef6879b0e4c",

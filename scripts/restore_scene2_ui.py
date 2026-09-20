@@ -9,6 +9,13 @@ def main():
     empty={'wafer_id':'Waiting for Edge','status':'waiting','touchdowns_done':0,
            'devices':[],'history':[],'sensors':{str(k):{'mu0':25,'limit_hi':None} for k in range(1,7)}}
     html=source.replace('__DATA__',json.dumps({'Waiting for Edge':empty}))
+    # Navigation is the only addition to the original Scene 2 layout.
+    navigation='''<style id="task-navigation-style">
+    .task-nav{display:flex;gap:20px;align-items:center;flex-wrap:wrap;padding:14px 16px;border-bottom:1px solid var(--border);background:var(--surface)}
+    .task-nav a{color:var(--text-2);text-decoration:none}.task-nav a.active{color:var(--s1);border-bottom:2px solid var(--s1)}
+    .task-nav label{display:flex;gap:8px;align-items:center}.task-nav .source-status{margin-left:auto;color:var(--text-2);font-size:13px}
+    </style><script src="/task-nav.js" defer></script>'''
+    html=html.replace('</head>',navigation+'\n</head>')
     # Use real batch numbers, not the original static-demo assumption of four dies.
     html=html.replace('const td = Math.floor(idx / 4) + 1;', 'const td = v.batch || Math.floor(idx / 4) + 1;')
     # A live snapshot can contain measurements for only some sites of a batch.

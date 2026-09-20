@@ -110,6 +110,11 @@
   .mapcell .t b { color: var(--text); }
   @media (max-width: 1100px) { .charts { grid-template-columns: 1fr; } }
 </style>
+<style id="task-navigation-style">
+    .task-nav{display:flex;gap:20px;align-items:center;flex-wrap:wrap;padding:14px 16px;border-bottom:1px solid var(--border);background:var(--surface)}
+    .task-nav a{color:var(--text-2);text-decoration:none}.task-nav a.active{color:var(--s1);border-bottom:2px solid var(--s1)}
+    .task-nav label{display:flex;gap:8px;align-items:center}.task-nav .source-status{margin-left:auto;color:var(--text-2);font-size:13px}
+    </style><script src="/task-nav.js" defer></script>
 </head>
 <body>
 <header>

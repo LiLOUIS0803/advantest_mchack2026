@@ -1,4 +1,4 @@
-import gzip,json,socket,tempfile,threading,unittest
+import gzip,json,re,socket,tempfile,threading,unittest
 from pathlib import Path
 from urllib.request import Request,urlopen
 from unittest.mock import patch
@@ -29,4 +29,6 @@ class TransportTests(unittest.TestCase):
     def test_scene2_original_layout_and_styles_preserved(self):
         original=Path('scene2/web/wafer_map_template.html').read_text(encoding='utf-8')
         deployed=Path('realtime/web/temperature.html').read_text(encoding='utf-8')
+        self.assertIn('<script src="/task-nav.js" defer></script>',deployed)
+        deployed=re.sub(r'<style id="task-navigation-style">.*?</style><script src="/task-nav.js" defer></script>\n','',deployed,flags=re.S)
         self.assertEqual(original.split('<script id="data"')[0],deployed.split('<script id="data"')[0])
